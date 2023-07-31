@@ -15,37 +15,43 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/','test@home');
+Route::get('/', [\App\Http\Controllers\webshop::class, 'home'] );
 
-Route::get('/panel','test@panel');
-
-Route::get('/header', 'test@header');
-
-Route::get('/footer', 'test@footer');
-
-Route::get('/singin', 'test@singin');
-
-Route::get('/login', 'test@login');
-
-Route::get('/users', 'test@users');
-
-Route::get('/panel', 'test@panel');
-
-Route::get('/addusers', 'test@addusers');
-
-Route::get('/connusers','test@connusers');
-
-Route::get('/addusers.blade.php', 'test@addusers');
-
-Route::get('/connusers.blade.php', 'test@connusers');
-
-Route::get('/users.blade.php', 'test@usersgo');
-
-Route::get('/login.blade.php', 'test@logingo');
-
-Route::get('/singin.blade.php', 'test@singingo');
-
-Route::get('/panel.blade.php', 'test@panelgo');
+Route::get('/panel', [\App\Http\Controllers\webshop::class, 'panel'] );
 
 
+Route::get('/header', [\App\Http\Controllers\webshop::class, 'header'] );
 
+
+Route::get('/footer', [\App\Http\Controllers\webshop::class, 'footer'] );
+
+
+Route::get('/singin', [\App\Http\Controllers\webshop::class, 'singin'] );
+
+
+Route::get('/login', [\App\Http\Controllers\webshop::class, 'login'] );
+
+
+Route::get('/users', [\App\Http\Controllers\webshop::class, 'users'] );
+
+
+Route::get('/panel', [\App\Http\Controllers\webshop::class, 'panel'] );
+
+Route::get('/addusers', [\App\Http\Controllers\webshop::class, 'addusers'] );
+
+Route::get('/connusers', [\App\Http\Controllers\webshop::class, 'connusers'] );
+
+Route::get('/addusers.blade.php', [\App\Http\Controllers\webshop::class, 'addusers'] );
+
+Route::get('/connusers.blade.php', [\App\Http\Controllers\webshop::class, 'connusers'] );
+
+Route::get('/users.blade.php', [\App\Http\Controllers\webshop::class, 'usersgo'] );
+
+
+Route::get('/login.blade.php', [\App\Http\Controllers\webshop::class, 'logingo'] );
+
+
+Route::get('/singin.blade.php', [\App\Http\Controllers\webshop::class, 'singingo'] );
+
+
+Route::get('/panel.blade.php', [\App\Http\Controllers\webshop::class, 'panelgo'] );
