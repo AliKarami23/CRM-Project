@@ -15,40 +15,46 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//Route::post('/register' , function () {
-//    return "ok";
-//})->name('register');
+Route::get('/', [\App\Http\Controllers\webshop::class, 'panel'] );
 
-//Route::get('/abcd' , function (){
-//    return view('welcome');
-//});
+Route::get('/panel', [\App\Http\Controllers\webshop::class, 'panel'] );
 
 
-
-//Route::post('/register' , function () {
-//    return response()->json(request()->toArray());
-//})->name('register');
+Route::get('/header', [\App\Http\Controllers\webshop::class, 'header'] );
 
 
-Route::get('/', function () {
-    $obj = ['', '', '', '', '', ''];
-    return view('welcome', ['array' => $obj]);
-});
-
-Route::post('/register', function () {
-    $info = request()->toArray();
-    unset($info["_token"]);
-    return view('welcome', ['array' => $info]);
-})->name('register');
+Route::get('/footer', [\App\Http\Controllers\webshop::class, 'footer'] );
 
 
+Route::get('/singin', [\App\Http\Controllers\webshop::class, 'singin'] );
 
-Route::prefix('admin')->group(function () {
-    Route::get('/' , function (){
-        return "admin page";
-    });
 
-    Route::get('/users' , function (){
-        return "users  page";
-    });
-});
+Route::get('/login', [\App\Http\Controllers\webshop::class, 'login'] );
+
+
+Route::get('/users', [\App\Http\Controllers\webshop::class, 'users'] );
+
+
+Route::get('/panel', [\App\Http\Controllers\webshop::class, 'panel'] );
+
+Route::get('/addusers', [\App\Http\Controllers\webshop::class, 'addusers'] );
+
+Route::get('/connusers', [\App\Http\Controllers\webshop::class, 'connusers'] );
+
+Route::get('/addusers.blade.php', [\App\Http\Controllers\webshop::class, 'addusers'] );
+
+Route::get('/connusers.blade.php', [\App\Http\Controllers\webshop::class, 'connusers'] );
+
+Route::get('/users.blade.php', [\App\Http\Controllers\webshop::class, 'usersgo'] );
+
+
+Route::get('/login.blade.php', [\App\Http\Controllers\webshop::class, 'logingo'] );
+
+
+Route::get('/singin.blade.php', [\App\Http\Controllers\webshop::class, 'singingo'] );
+
+
+Route::get('/panel.blade.php', [\App\Http\Controllers\webshop::class, 'panelgo'] );
+
+
+
