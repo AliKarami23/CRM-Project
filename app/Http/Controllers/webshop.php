@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use APP\test;
+
 class webshop extends Controller
 {
-    public function home()
+    public static function home()
     {
         return view('layout.panel');
     }
@@ -69,11 +68,6 @@ class webshop extends Controller
     {
         return view('layout.connusers');
     }
-    public function test(){
 
-        $test = $test::all();
-
-
-    }
 
 }

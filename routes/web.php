@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [\App\Http\Controllers\webshop::class, 'panel'] );
+Route::get('/', [\App\Http\Controllers\webshop::class, 'home'] );
 
 Route::get('/panel', [\App\Http\Controllers\webshop::class, 'panel'] );
 
