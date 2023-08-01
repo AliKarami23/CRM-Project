@@ -6,7 +6,6 @@
 </head>
 
 
-
 <body class="sidebar-mini sidebar-open" style="height: auto;">
 <div class="wrapper">
     <!-- Navbar -->
@@ -17,7 +16,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="../../index3.html" class="nav-link">خانه</a>
+                <a href="panel.blade.php" class="nav-link">خانه</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">تماس</a>
@@ -163,7 +162,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="singin.blade.php" class="nav-link">
+                                    <a href="login.blade.php" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>کاربر جدید </p>
                                     </a>
@@ -341,41 +340,28 @@
                             <div class="card-header">
                                 <h3 class="card-title"> کاربران</h3>
                             </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form role="form">
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">آدرس ایمیل</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ایمیل را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="پسورد را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">ارسال فایل</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">انتخاب فایل</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">مرا بخاطر بسپار</label>
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
+                            <table style="width:100%">
+                                <tr>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">نام</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">رمز عبور</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
+                                </tr>
+                                <tr>
+                                    <td><div style="margin-right: 15px">علی</div></td>
+                                    <td><div style="margin-bottom: 15px">12415</div></td>
+                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
+                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                </tr>
+                                <tr>
+                                    <td><div style="margin-right: 15px">محمد</div></td>
+                                    <td><div style="margin-bottom: 15px">15428</div></td>
+                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
+                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                </tr>
+                            </table>
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">ارسال</button>
-                                </div>
-                            </form>
+
                         </div>
                         <!-- /.card -->
 
