@@ -33,6 +33,7 @@
 
 </head>
 
+
 <body class="sidebar-mini sidebar-open" style="height: auto;">
 <div class="wrapper">
     <!-- Navbar -->
