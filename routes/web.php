@@ -80,3 +80,5 @@ Route::get('/Neworder.blade.php', [\App\Http\Controllers\webshop::class, 'Neword
 
 Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newproduct'] );
 
+
+
