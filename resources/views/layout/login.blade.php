@@ -305,7 +305,7 @@
                             </ul>
                         </li>
                     </ul>
-                </nav>
+           git      </nav>
                 <!-- /.sidebar-menu -->
             </div>
         </div>
