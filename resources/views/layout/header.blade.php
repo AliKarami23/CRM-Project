@@ -6,7 +6,10 @@
 </head>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4eb8ef4412dcf14eda85160970529c31952d3952
 <body class="sidebar-mini sidebar-open" style="height: auto;">
 <div class="wrapper">
     <!-- Navbar -->
