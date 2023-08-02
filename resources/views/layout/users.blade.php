@@ -185,13 +185,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Newproduct.blade.php" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>محصول جدید</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="productsList.blade.php" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست محصولات</p>
                                     </a>
@@ -208,13 +208,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Neworder.blade.php" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>سفارش جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Listoforders.blade.php" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست سفارشات</p>
                                     </a>

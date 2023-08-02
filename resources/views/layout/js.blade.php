@@ -34,3 +34,5 @@
 <script src="{{asset('css/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('css/dist/js/demo.js')}}"></script>
+</body>
+</html>
