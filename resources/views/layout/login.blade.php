@@ -310,7 +310,8 @@
             </div>
         </div>
     </aside>
-
+    <br>
+    <br>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
         <!-- Main content -->
@@ -318,7 +319,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
