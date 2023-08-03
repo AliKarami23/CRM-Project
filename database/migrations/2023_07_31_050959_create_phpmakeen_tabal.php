@@ -11,12 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('phpmakeen', function (Blueprint $table) {
+        Schema::create('addusersinpanel', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('lastname');
-            $table->string('password');
+            $table->string('fname');
+            $table->string('dadname');
+            $table->string('email');
+            $table->integer('phonenumber');
+            $table->string('country');
+            $table->string('City');
+            $table->string('Address');
+            $table->string('gender');
+            $table->integer('nationalcode');
+            $table->string('job');
+            $table->string('image');
+            $table->string('education');
+            $table->string('cityofeducation');
+            $table->integer('password');
         });
     }
 
@@ -25,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('phpmakeen');
+        Schema::dropIfExists('addusersinpanel');
     }
 };

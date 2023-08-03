@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\newmodel;
 
 use Illuminate\Http\Request;
 use APP\test;
@@ -96,6 +97,54 @@ class webshop extends Controller
         return view('layout.Newproduct');
     }
 
+
+    public function create()
+    {
+        return view('users.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'fname' => 'required',
+            'dadname' => 'required',
+            'email' => 'required',
+            'phonenumber' => 'required|numeric',
+            'country' => 'required',
+            'City' => 'required',
+            'Address' => 'required',
+            'gender' => 'required',
+            'nationalcode' => 'required|numeric',
+            'job' => 'required',
+            'image' => 'required',
+            'education' => 'required',
+            'cityofeducation' => 'required',
+            'password' => 'required',
+
+        ]);
+
+        $newUser = new newmodel();
+        $newUser->name = $request->input('name');
+        $newUser->fname = $request->input('fname');
+        $newUser->dadname = $request->input('dadname');
+        $newUser->email = $request->input('email');
+        $newUser->phonenumber = $request->input('phonenumber');
+        $newUser->country = $request->input('country');
+        $newUser->City = $request->input('City');
+        $newUser->Address = $request->input('Address');
+        $newUser->gender = $request->input('gender');
+        $newUser->nationalcode = $request->input('nationalcode');
+        $newUser->job = $request->input('job');
+        $newUser->image = $request->input('image');
+        $newUser->education  = $request->input('education');
+        $newUser->cityofeducation = $request->input('cityofeducation');
+        $newUser->password = $request->input('password');
+        $newUser->save();
+
+        return view('layout.users');
+
+    }
 
 
 }

@@ -139,9 +139,6 @@
             <div style="direction: rtl">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
-                    </div>
                     <div class="info">
                         <a href="#" class="d-block">حسام موسوی</a>
                     </div>
@@ -315,15 +312,6 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">داشبورد</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                            <li class="breadcrumb-item active">داشبورد ورژن 2</li>
-                        </ol>
-                    </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
