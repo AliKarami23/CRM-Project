@@ -374,7 +374,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">شغل</label>
-                                        <input name="job" type="text" class="form-control" id="exampleInputPassword1" placeholder="تاریخ تولد را انتخاب کنید">
+                                        <input name="job" type="text" class="form-control" id="exampleInputPassword1" placeholder=" شغل را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="imageUpload">آپلود عکس</label>

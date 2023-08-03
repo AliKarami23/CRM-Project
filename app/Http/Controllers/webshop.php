@@ -142,7 +142,9 @@ class webshop extends Controller
         $newUser->password = $request->input('password');
         $newUser->save();
 
-        return view('layout.users');
+        return redirect()->route('panel');
+
+
 
     }
 
