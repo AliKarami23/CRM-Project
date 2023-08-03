@@ -66,3 +66,32 @@ Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newp
 
 
 
+<<<<<<< HEAD
+=======
+Route::get('/addusers.blade.php', [\App\Http\Controllers\webshop::class, 'addusers'] );
+
+Route::get('/connusers.blade.php', [\App\Http\Controllers\webshop::class, 'connusers'] );
+
+Route::get('/users.blade.php', [\App\Http\Controllers\webshop::class, 'usersgo'] );
+
+
+Route::get('/login.blade.php', [\App\Http\Controllers\webshop::class, 'logingo'] );
+
+
+Route::get('/singin.blade.php', [\App\Http\Controllers\webshop::class, 'singingo'] );
+
+
+Route::get('/panel.blade.php', [\App\Http\Controllers\webshop::class, 'panelgo'] );
+
+
+Route::get('/productsList.blade.php', [\App\Http\Controllers\webshop::class, 'listproducts'] );
+
+Route::get('/Listoforders.blade.php', [\App\Http\Controllers\webshop::class, 'listorders'] );
+
+Route::get('/Neworder.blade.php', [\App\Http\Controllers\webshop::class, 'Neworder'] );
+
+Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newproduct'] );
+
+
+
+>>>>>>> 1cc38513f2c998938d163e8ebc5ee1c470b42130
