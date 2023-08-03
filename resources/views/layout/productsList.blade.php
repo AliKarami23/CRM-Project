@@ -334,7 +334,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
@@ -344,18 +344,21 @@
                                 <tr>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">نام</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">رمز عبور</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ایمیل</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
                                 </tr>
                                 <tr>
                                     <td><div style="margin-right: 15px">علی</div></td>
                                     <td><div style="margin-bottom: 15px">12415</div></td>
+                                    <td><div style="margin-bottom: 15px">ali@gmail.com</div></td>
                                     <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
                                     <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
                                 </tr>
                                 <tr>
                                     <td><div style="margin-right: 15px">محمد</div></td>
                                     <td><div style="margin-bottom: 15px">15428</div></td>
+                                    <td><div style="margin-bottom: 15px">gasem@gmail.com</div></td>
                                     <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
                                     <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
                                 </tr>
