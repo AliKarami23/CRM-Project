@@ -66,8 +66,7 @@ Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newp
 
 
 
-<<<<<<< HEAD
-=======
+
 Route::get('/addusers.blade.php', [\App\Http\Controllers\webshop::class, 'addusers'] );
 
 Route::get('/connusers.blade.php', [\App\Http\Controllers\webshop::class, 'connusers'] );
@@ -94,4 +93,3 @@ Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newp
 
 
 
->>>>>>> 1cc38513f2c998938d163e8ebc5ee1c470b42130
