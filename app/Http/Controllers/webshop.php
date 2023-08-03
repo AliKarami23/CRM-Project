@@ -82,15 +82,7 @@ class webshop extends Controller
         return view('layout.productsList');
     }
 
-    public function listorders()
-    {
-        return view('layout.Listoforders');
-    }
 
-    public function Neworder()
-    {
-        return view('layout.Neworder');
-    }
 
     public function newproduct()
     {

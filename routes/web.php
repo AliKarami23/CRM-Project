@@ -84,12 +84,13 @@ Route::get('/panel.blade.php', [\App\Http\Controllers\webshop::class, 'panelgo']
 
 
 Route::get('/productsList.blade.php', [\App\Http\Controllers\webshop::class, 'listproducts'] );
-
-Route::get('/Listoforders.blade.php', [\App\Http\Controllers\webshop::class, 'listorders'] );
-
-Route::get('/Neworder.blade.php', [\App\Http\Controllers\webshop::class, 'Neworder'] );
-
 Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newproduct'] );
 
+
+
+Route::get('/Listoforders.blade.php', [\App\Http\Controllers\OrderController::class, 'listorders'] );
+Route::get('/Neworder.blade.php', [\App\Http\Controllers\OrderController::class, 'Neworder'] );
+Route::post('/layout/Neworder', [\App\Http\Controllers\OrderController::class, 'add_order'])->name('add_order');
+Route::get('Listoforders' , [\App\Http\Controllers\OrderController::class , 'list_orders'])->name('list_order');
 
 
