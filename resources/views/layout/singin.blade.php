@@ -87,7 +87,7 @@
                 </a>
             </div>
 
-            <a href="login.blade.php" class="text-center">من قبلا ثبت نام کرده ام</a>
+            <a href="adduser.blade.php" class="text-center">من قبلا ثبت نام کرده ام</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

@@ -4,12 +4,6 @@
 <head>
     @include('layout.css');
 </head>
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 4eb8ef4412dcf14eda85160970529c31952d3952
 <body class="sidebar-mini sidebar-open" style="height: auto;">
 <div class="wrapper">
     <!-- Navbar -->
@@ -316,30 +310,13 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>فرم‌های عمومی</h1>
-                    </div>
-                    <div class="col-sm-6">
-
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
 
 
 
-                    </div>
-                </div>
-            </div>
+
+
+
     </div>
-</div>
-</section>
-
-
 
 
     @include('layout.js');
