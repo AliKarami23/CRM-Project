@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('education');
             $table->string('cityofeducation');
             $table->integer('password');
+
         });
     }
 

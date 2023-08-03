@@ -305,37 +305,21 @@
                             </ul>
                         </li>
                     </ul>
-                </nav>
+                    git      </nav>
                 <!-- /.sidebar-menu -->
             </div>
         </div>
     </aside>
-
+    <br>
+    <br>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>فرم‌های عمومی</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                            <li class="breadcrumb-item active">فرم‌های عمومی</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
@@ -343,24 +327,87 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form">
+                            <form role="form" action="{{ route('store') }}" method="POST">
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">نام و نام خانوادگی</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="  نام و نام خانوادگی را وارد کنید">
+                                        <label for="exampleInputEmail1">نام</label>
+                                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="  نام را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">نام خانوادگی</label>
+                                        <input name="fname" type="text" class="form-control" id="exampleInputPassword1" placeholder="نام خانوادگی را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">نام پدر</label>
+                                        <input name="dadname" type="text" class="form-control" id="exampleInputPassword1" placeholder="نام پدر را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">آدرس ایمیل</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="ایمیل را وارد کنید">
+                                        <input name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="ایمیل را وارد کنید">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="پسورد را وارد کنید">
+                                        <label for="exampleInputPassword1">شماره تماس</label>
+                                        <input name="phonenumber" type="number" class="form-control" id="exampleInputPassword1" placeholder="شماره تماس را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">کشور</label>
+                                        <input name="country" type="text" class="form-control" id="exampleInputPassword1" placeholder="کشور را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">شهر</label>
+                                        <input name="City" type="text" class="form-control" id="exampleInputPassword1" placeholder="شهر را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>آدرس</label>
+                                        <textarea name="Address" class="form-control" rows="3" placeholder="آدرس را کامل وارد کنید"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>جنسیت</label>
+                                        <select name="gender" class="form-control">
+                                            <option>مرد</option>
+                                            <option>زن</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">کد ملی</label>
+                                        <input name="nationalcode" type="number" class="form-control" id="exampleInputPassword1" placeholder="کد ملی را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">شغل</label>
+                                        <input name="job" type="text" class="form-control" id="exampleInputPassword1" placeholder=" شغل را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageUpload">آپلود عکس</label>
+                                        <input name="image" type="text" class="form-control" id="imageUpload" placeholder="لینک عکس مورد نظر را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>تحصیلات</label>
+                                        <select name="education" class="form-control">
+                                            <option>زیر دیپلم</option>
+                                            <option>دیپلم</option>
+                                            <option>کارشناسی</option>
+                                            <option>کارشناسی ارشد</option>
+                                            <option>دکترا</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">شهر محل تحصیل</label>
+                                        <input name="cityofeducation" type="text" class="form-control" id="exampleInputPassword1" placeholder="شهر محل تحصیل را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">رمز عبور</label>
+                                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="رمز را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">تکرار رمز عبور</label>
+                                        <input name="confrim" type="password" class="form-control" id="exampleInputPassword1" placeholder="رمز را تکرار کنید">
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">مرا بخاطر بسپار</label>
                                     </div>
+
                                 </div>
                                 <!-- /.card-body -->
 
