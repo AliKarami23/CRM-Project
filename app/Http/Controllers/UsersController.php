@@ -5,6 +5,8 @@ use App\Models\phpmakeen;
 
 use Illuminate\Http\Request;
 use APP\test;
+use Illuminate\Support\Facades\DB;
+
 class usersController extends Controller
 {
     public function home()
@@ -41,12 +43,6 @@ class usersController extends Controller
         return view('layout.panel');
     }
 
-    public function test(){
-
-        $test = $test::all();
-
-
-    }
 
     public function listproducts()
     {
@@ -76,42 +72,53 @@ class usersController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'fname' => 'required',
-            'dadname' => 'required',
-            'email' => 'required',
-            'phonenumber' => 'required|numeric',
-            'country' => 'required',
-            'City' => 'required',
-            'Address' => 'required',
-            'gender' => 'required',
-            'nationalcode' => 'required|numeric',
-            'job' => 'required',
-            'image' => 'required',
-            'education' => 'required',
-            'cityofeducation' => 'required',
-            'password' => 'required',
+        if (strlen($request->name) == 0) {
+            $error = "لطفا نام خود را پر بکنید";
+            die(json_encode($error));
+        }
+        if (strlen($request->name) > 50) {
+            $error = "نام شما طولانی است";
+            die(json_encode($error));
+        }
+
+        if (strlen($request->fname) == 0) {
+            $error = "لطفان نام خانوادگی را پر بکنید";
+            die(json_encode($error));
+        }
+        if (strlen($request->fname) > 50) {
+            $error = "نام خانوادگی شما طولانی است";
+            die(json_encode($error));
+        }
+        if (!($request->nationalcode == 10)) {
+            $error = "کد ملی صحیح نیست";
+            die(json_encode($error));
+        }
+        if (!($request->password == $request->confrim)) {
+            $error = "رمز عبور یکسان نیست";
+            die(json_encode($error));
+        }
+
+
+
+        $addusersinpanel = DB::table('addusersinpanel')->insert([
+            'name' => $request->name,
+            'fname' => $request->fname,
+            'dadname' => $request->dadname,
+            'email' => $request->email,
+            'phonenumber' => $request->phonenumber,
+            'country' => $request->country,
+            'City' => $request->City,
+            'Address' => $request->Address,
+            'gender' => $request->gender,
+            'nationalcode' => $request->nationalcode,
+            'job' => $request->job,
+            'image' => $request->image,
+            'education' => $request->education,
+            'cityofeducation' => $request->cityofeducation,
+            'password' => $request->password
+
 
         ]);
-
-        $newUser = new phpmakeen();
-        $newUser->name = $request->input('name');
-        $newUser->fname = $request->input('fname');
-        $newUser->dadname = $request->input('dadname');
-        $newUser->email = $request->input('email');
-        $newUser->phonenumber = $request->input('phonenumber');
-        $newUser->country = $request->input('country');
-        $newUser->City = $request->input('City');
-        $newUser->Address = $request->input('Address');
-        $newUser->gender = $request->input('gender');
-        $newUser->nationalcode = $request->input('nationalcode');
-        $newUser->job = $request->input('job');
-        $newUser->image = $request->input('image');
-        $newUser->education  = $request->input('education');
-        $newUser->cityofeducation = $request->input('cityofeducation');
-        $newUser->password = $request->input('password');
-        $newUser->save();
 
         return redirect()->route('panel');
 
