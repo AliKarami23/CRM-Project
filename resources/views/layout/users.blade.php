@@ -75,22 +75,16 @@
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
                                 </tr>
+                                @foreach($users as $user)
                                 <tr>
-                                    <td><div style="margin-right: 15px">علی</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">ali@gmail.com</div></td>
+                                    <td><div style="margin-right: 15px">{{$user->name}}</div></td>
+                                    <td><div style="margin-bottom: 15px">{{$user->fname}}</div></td>
+                                    <td><div style="margin-bottom: 15px">{{$user->email}}</div></td>
+                                    <td><div style="margin-bottom: 15px">{{$user->phonenumber}}</div></td>
                                     <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
                                     <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
                                 </tr>
-                                <tr>
-                                    <td><div style="margin-right: 15px">محمد</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">gasem@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
-                                </tr>
+                                @endforeach
                             </table>
 
 

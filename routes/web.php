@@ -40,6 +40,7 @@ Route::prefix('/panel')->group(function () {
     Route::get('/Newproduct', [\App\Http\Controllers\usersController::class, 'Newproduct'] )->name('Newproduct');
 
 
+
 });
 
 

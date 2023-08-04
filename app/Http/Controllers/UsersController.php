@@ -35,7 +35,10 @@ class usersController extends Controller
 
     public function users()
     {
-        return view('layout.users');
+        $result = DB::table('addusersinpanel')
+            ->select('id', 'name', 'fname', 'email', 'phonenumber')
+            ->get();
+        return view('layout.users', ['users' => $result]);
     }
 
     public function panel()
@@ -89,7 +92,7 @@ class usersController extends Controller
             $error = "نام خانوادگی شما طولانی است";
             die(json_encode($error));
         }
-        if (!($request->nationalcode == 10)) {
+        if (strlen($request->nationalcode) != 10) {
             $error = "کد ملی صحیح نیست";
             die(json_encode($error));
         }
@@ -100,7 +103,7 @@ class usersController extends Controller
 
 
 
-        $addusersinpanel = DB::table('addusersinpanel')->insert([
+        $result = DB::table('addusersinpanel')->insert([
             'name' => $request->name,
             'fname' => $request->fname,
             'dadname' => $request->dadname,
