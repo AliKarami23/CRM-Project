@@ -81,7 +81,7 @@
                                     <td><div style="margin-bottom: 15px">{{$user->fname}}</div></td>
                                     <td><div style="margin-bottom: 15px">{{$user->email}}</div></td>
                                     <td><div style="margin-bottom: 15px">{{$user->phonenumber}}</div></td>
-                                    <td><a href="{{ route('edituser',['id' => $user->id])}}" class="nav-link">حذف</a></td>
+                                    <td><a href="{{ route('deleteduser',['id' => $user->id])}}" class="nav-link">حذف</a></td>
                                     <td><a href="{{ route('edituser',['id' => $user->id])}}" class="nav-link">ویرایش</a></td>
                                 </tr>
                                 @endforeach

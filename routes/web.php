@@ -25,7 +25,7 @@ Route::get('/singin', [\App\Http\Controllers\usersController::class, 'singin'] )
 
 Route::prefix('/panel')->group(function () {
 
-    Route::get('', [\App\Http\Controllers\usersController::class, 'panel'] )->name('panel');
+    Route::get('', [\App\Http\Controllers\usersController::class, 'home'] )->name('panel');
 
     Route::get('/adduser', [\App\Http\Controllers\usersController::class, 'adduser'] )->name('adduser');
 
@@ -33,7 +33,15 @@ Route::prefix('/panel')->group(function () {
 
     Route::get('/edituser/{id}', [\App\Http\Controllers\usersController::class, 'edituser'])->name('edituser');
 
+    Route::get('/deleteduser/{id}', [\App\Http\Controllers\usersController::class, 'deleteduser'])->name('deleteduser');
+
+    Route::get('/deleteduser/{id}/panel', [\App\Http\Controllers\usersController::class, 'deleteduser'] )->name('deleteduser');
+
     Route::get('/edituser/{id}/panel', [\App\Http\Controllers\usersController::class, 'editusergo'] )->name('editusergo');
+
+    Route::get('/deleteduser/{id}/panel', [\App\Http\Controllers\usersController::class, 'deletedusergo'] )->name('deletedusergo');
+
+    Route::get('/deleteduser/   {id}/panel', [\App\Http\Controllers\usersController::class, 'deletedusergo'] )->name('deletedusergo');
 
     Route::post('/users/edituser/{id}', [\App\Http\Controllers\usersController::class, 'edited_user'] )->name('edited_user');
 
@@ -53,14 +61,3 @@ Route::prefix('/panel')->group(function () {
 
 //add user in panel for db
 Route::post('/layout/users', [\App\Http\Controllers\usersController::class, 'store'])->name('store');
-
-
-
-
-
-
-
-
-
-
-

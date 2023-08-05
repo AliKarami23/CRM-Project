@@ -22,6 +22,10 @@ class usersController extends Controller
     {
         return view('layout.footer');
     }
+    public function panel()
+    {
+        return view('layout.panel');
+    }
 
     public function singin()
     {
@@ -80,13 +84,24 @@ class usersController extends Controller
                 'updated_at' => now(),
             ]);
         return redirect()->route('panel');
+
     }
 
-    public function panel()
+    public function deleteduser($id)
+    {
+        $deleted = DB::table('addusersinpanel')->where('id', '=', $id)->delete();
+
+        return redirect()->route('panel');
+
+
+
+    }
+
+    public function deletedusergo()
     {
         return view('layout.panel');
-    }
 
+    }
 
     public function listproducts()
     {
