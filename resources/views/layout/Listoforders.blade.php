@@ -73,10 +73,11 @@
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">خریدار</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">توضیحات</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">وضعیت</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
                                 </tr>
-<<<<<<< HEAD
+
                               @foreach($orders as $order)
                                     <tr>
                                         <td><div style="margin-right: 15px">{{$order->id}}</div></td>
@@ -84,29 +85,23 @@
                                         <td><div style="margin-bottom: 15px">{{$order->price}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->buyer}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->description}}</div></td>
-                                        <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                        <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->status}}</div></td>
+                                        <td>
+                                            <form action="/panel/delete/{{$order->id}}" method="post">
+                                              @csrf
+                                               @method('delete')
+                                                <button class="btn btn-outline-warning">حذف</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/panel/edit/{{$order->id}}" method="get">
+                                                <button class="btn btn-outline-success">ویرایش</button>
+                                            </form>
+                                        </td>
                                     </tr>
                               @endforeach
 
-=======
-                                <tr>
-                                    <td><div style="margin-right: 15px">علی</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">ali@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
-                                </tr>
-                                <tr>
-                                    <td><div style="margin-right: 15px">محمد</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">gasem@gmail.com</div></td>
-                                    <td><a>حذف</a></td>
-                                    <td><a>اصلاح</a></td>
-                                </tr>
->>>>>>> 8a1194b45f8f8171965651f9a2c0d3d3ed416f01
+
                             </table>
 
 

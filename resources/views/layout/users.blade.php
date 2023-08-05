@@ -73,7 +73,7 @@
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ایمیل</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">شماره</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
                                 </tr>
                                 @foreach($users as $user)
                                 <tr>
