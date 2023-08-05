@@ -64,7 +64,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product" type="text" class="form-control" value="{{$order->product}}">
+                                        <input name="product_id" type="text" class="form-control" value="{{$order->product}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">  قیمت </label>
@@ -92,16 +92,16 @@
                             </form>
                         </div>
 
-                        <div class=" aler alert-danger">
-                            @if($errors->any())
-                                <ui>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                    @endforeach
-                                </ui>
-                            @endif
-                        </div>
 
+
+                    </div> <div class=" aler alert-danger">
+                        @if($errors->any())
+                            <ui>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ui>
+                        @endif
                     </div>
                 </div>
             </div>

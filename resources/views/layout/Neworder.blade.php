@@ -66,7 +66,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product" type="text" class="form-control" id="exampleInputEmail1" placeholder=" ">
+                                        <input name="product_id" type="text" class="form-control" id="exampleInputEmail1" placeholder=" ">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">  قیمت </label>

@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function add_order(){
 
         $valid = request()->validate([
-            'product'=>'required' ,
+            'product_id'=>'required' ,
             'price'=>'required' ,
             'description'=>'required' ,
             'buyer'=>'required' ,
@@ -19,7 +19,7 @@ class OrderController extends Controller
         ]);
 
         $insert = new Order();
-        $insert->product = request('product');
+        $insert->product = request('product_id');
         $insert->price = request('price');
         $insert->description = request('description');
         $insert->buyer = request('buyer');
@@ -48,7 +48,7 @@ class OrderController extends Controller
     public  function  edit($id) {
 
         $valid = request()->validate([
-            'product'=>'required' ,
+            'product_id'=>'required' ,
             'price'=>'required' ,
             'description'=>'required' ,
             'buyer'=>'required' ,
@@ -57,7 +57,7 @@ class OrderController extends Controller
 
         $order = Order::findOrFail($id);
         $order->update([
-          $order->product = request('product'),
+          $order->product = request('product_id'),
           $order->price = request('price'),
           $order->description = request('description'),
           $order->buyer = request('buyer'),
