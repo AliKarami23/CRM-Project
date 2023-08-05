@@ -16,7 +16,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="panel.blade.php" class="nav-link">خانه</a>
+                <a href="" class="nav-link">خانه</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">تماس</a>
@@ -132,7 +132,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-dark-info" style="min-height: 689.2px;">
         <!-- Brand Logo -->
-        <a href="panel.blade.php" class="brand-link bg-success">
+        <a href="#" class="brand-link bg-success">
 
             <span class="brand-text font-weight-light">پنل مدیریت</span>
         </a>
@@ -162,13 +162,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="login.blade.php" class="nav-link">
+                                    <a href="adduser" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>کاربر جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="users.blade.php" class="nav-link">
+                                    <a href="users" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست کاربران </p>
                                     </a>
@@ -185,13 +185,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="Newproduct.blade.php" class="nav-link">
+                                    <a href="Newproduct" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>محصول جدید</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="productsList.blade.php" class="nav-link">
+                                    <a href="productsList" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست محصولات</p>
                                     </a>
@@ -208,13 +208,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="Neworder.blade.php" class="nav-link">
+                                    <a href="Neworder" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>سفارش جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Listoforders.blade.php" class="nav-link">
+                                    <a href="Listoforders" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست سفارشات</p>
                                     </a>
@@ -332,33 +332,30 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"> کاربران</h3>
+                                <h3 class="card-title"> سفارشات</h3>
                             </div>
                             <table style="width:100%">
                                 <tr>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">نام</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">نام خانوادگی</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ایمیل</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">شماره</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">آی دی سفارش</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px"> آی دی محصول</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">خریدار</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">توضیحات</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
                                 </tr>
-                                <tr>
-                                    <td><div style="margin-right: 15px">علی</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">ali@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
-                                </tr>
-                                <tr>
-                                    <td><div style="margin-right: 15px">محمد</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">gasem@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
-                                </tr>
+                              @foreach($orders as $order)
+                                    <tr>
+                                        <td><div style="margin-right: 15px">{{$order->id}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->product}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->price}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->buyer}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->description}}</div></td>
+                                        <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
+                                        <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                    </tr>
+                              @endforeach
+
                             </table>
 
 

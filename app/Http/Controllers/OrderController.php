@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class OrderController extends Controller
 
     public function listorders()
     {
-        return view('layout.Listoforders');
+        return view('layout.Listoforders' , ['orders'=>Order::all()]);
     }
 
     public function Neworder()

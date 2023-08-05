@@ -130,7 +130,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="panel.blade.php" class="brand-link">
+        <a href="#" class="brand-link">
             <span class="brand-text font-weight-light">پنل مدیریت</span>
         </a>
 
@@ -157,13 +157,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="login.blade.php" class="nav-link">
+                                    <a href="panel/adduser" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>کاربر جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="users.blade.php" class="nav-link">
+                                    <a href="panel/users" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست کاربران </p>
                                     </a>
@@ -180,13 +180,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="Newproduct.blade.php" class="nav-link">
+                                    <a href="panel/Newproduct" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>محصول جدید</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="productsList.blade.php" class="nav-link">
+                                    <a href="panel/productsList" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست محصولات</p>
                                     </a>
@@ -203,13 +203,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="Neworder.blade.php" class="nav-link">
+                                    <a href="panel/Neworder" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>سفارش جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Listoforders.blade.php" class="nav-link">
+                                    <a href="panel/Listoforders" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست سفارشات</p>
                                     </a>

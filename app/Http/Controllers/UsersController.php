@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\newmodel;
+use App\Models\phpmakeen;
 
 use Illuminate\Http\Request;
 use APP\test;
-class webshop extends Controller
+class usersController extends Controller
 {
     public function home()
     {
@@ -26,9 +26,9 @@ class webshop extends Controller
         return view('layout.singin');
     }
 
-    public function login()
+    public function adduser()
     {
-        return view('layout.login');
+        return view('layout.adduser');
     }
 
     public function users()
@@ -41,35 +41,6 @@ class webshop extends Controller
         return view('layout.panel');
     }
 
-    public function usersgo()
-    {
-        return view('layout.users');
-    }
-
-    public function logingo()
-    {
-        return view('layout.login');
-    }
-
-    public function singingo()
-    {
-        return view('layout.singin');
-    }
-
-    public function panelgo()
-    {
-        return view('layout.panel');
-    }
-
-    public function addusers()
-    {
-        return view('layout.addusers');
-    }
-
-    public function connusers()
-    {
-        return view('layout.connusers');
-    }
     public function test(){
 
         $test = $test::all();
@@ -116,7 +87,7 @@ class webshop extends Controller
 
         ]);
 
-        $newUser = new newmodel();
+        $newUser = new phpmakeen();
         $newUser->name = $request->input('name');
         $newUser->fname = $request->input('fname');
         $newUser->dadname = $request->input('dadname');
