@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,5 +31,6 @@
     <!-- template rtl version -->
     <link rel="stylesheet" href="{{asset('css/dist/css/custom-style.css')}}">
 </head>
-<body>
+<body class="hold-transition sidebar-mini">
+
 

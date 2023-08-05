@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('fname');
             $table->string('dadname');
             $table->string('email');
-            $table->integer('phonenumber');
+            $table->string('phonenumber');
             $table->string('country');
             $table->string('City');
             $table->string('Address');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('education');
             $table->string('cityofeducation');
-            $table->integer('password');
+            $table->string('password');
 
         });
     }
