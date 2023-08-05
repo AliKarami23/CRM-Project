@@ -88,8 +88,8 @@
                                     <td><div style="margin-bottom: 15px">15428</div></td>
                                     <td><div style="margin-bottom: 15px">15428</div></td>
                                     <td><div style="margin-bottom: 15px">gasem@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                    <td><a>حذف</a></td>
+                                    <td><a>اصلاح</a></td>
                                 </tr>
                             </table>
 

@@ -31,6 +31,12 @@ Route::prefix('/panel')->group(function () {
 
     Route::get('/users', [\App\Http\Controllers\usersController::class, 'users'] )->name('users');
 
+    Route::get('/edituser/{id}', [\App\Http\Controllers\usersController::class, 'edituser'])->name('edituser');
+
+    Route::get('/edituser/{id}/panel', [\App\Http\Controllers\usersController::class, 'editusergo'] )->name('editusergo');
+
+    Route::post('/users/edituser/{id}', [\App\Http\Controllers\usersController::class, 'edited_user'] )->name('edited_user');
+
     Route::get('/productsList', [\App\Http\Controllers\usersController::class, 'listproducts'] )->name('listproducts');
 
     Route::get('/Listoforders', [\App\Http\Controllers\usersController::class, 'listorders'] )->name('listorders');

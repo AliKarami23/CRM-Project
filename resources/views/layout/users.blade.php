@@ -81,8 +81,8 @@
                                     <td><div style="margin-bottom: 15px">{{$user->fname}}</div></td>
                                     <td><div style="margin-bottom: 15px">{{$user->email}}</div></td>
                                     <td><div style="margin-bottom: 15px">{{$user->phonenumber}}</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                    <td><a href="{{ route('edituser',['id' => $user->id])}}" class="nav-link">حذف</a></td>
+                                    <td><a href="{{ route('edituser',['id' => $user->id])}}" class="nav-link">ویرایش</a></td>
                                 </tr>
                                 @endforeach
                             </table>

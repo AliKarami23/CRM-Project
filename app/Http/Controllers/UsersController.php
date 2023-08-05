@@ -41,6 +41,47 @@ class usersController extends Controller
         return view('layout.users', ['users' => $result]);
     }
 
+        public function edituser($id)
+    {
+        $result = DB::table('addusersinpanel')
+            ->where(['id' => $id])
+            ->first();
+        return view('layout.edituser', ['users' => $result]);
+    }
+
+    public function editusergo(){
+
+        return view('layout.panel');
+
+    }
+
+    public function edited_user(Request $request, $id)
+    {
+        DB::table('addusersinpanel')
+            ->where([
+                'id' => $id
+            ])
+            ->update([
+                'name' => $request->name,
+                'fname' => $request->fname,
+                'dadname' => $request->dadname,
+                'email' => $request->email,
+                'phonenumber' => $request->phonenumber,
+                'country' => $request->country,
+                'City' => $request->City,
+                'Address' => $request->Address,
+                'gender' => $request->gender,
+                'nationalcode' => $request->nationalcode,
+                'job' => $request->job,
+                'image' => $request->image,
+                'education' => $request->education,
+                'cityofeducation' => $request->cityofeducation,
+                'password' => $request->password,
+                'updated_at' => now(),
+            ]);
+        return redirect()->route('panel');
+    }
+
     public function panel()
     {
         return view('layout.panel');
@@ -67,11 +108,6 @@ class usersController extends Controller
         return view('layout.Newproduct');
     }
 
-
-    public function create()
-    {
-        return view('users.create');
-    }
 
     public function store(Request $request)
     {
