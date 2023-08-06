@@ -75,9 +75,7 @@
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">توضیحات</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
-                                </tr>
-<<<<<<< HEAD
-                              @foreach($orders as $order)
+                                </tr>@foreach($orders as $order)
                                     <tr>
                                         <td><div style="margin-right: 15px">{{$order->id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->product}}</div></td>
@@ -88,8 +86,6 @@
                                         <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
                                     </tr>
                               @endforeach
-
-=======
                                 <tr>
                                     <td><div style="margin-right: 15px">علی</div></td>
                                     <td><div style="margin-bottom: 15px">12415</div></td>
@@ -106,18 +102,12 @@
                                     <td><a>حذف</a></td>
                                     <td><a>اصلاح</a></td>
                                 </tr>
->>>>>>> 8a1194b45f8f8171965651f9a2c0d3d3ed416f01
                             </table>
-
-
                         </div>
-                        <!-- /.card -->
-
-                        <!-- Form Element sizes -->
-
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 </section>

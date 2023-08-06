@@ -57,35 +57,6 @@ Route::prefix('/panel')->group(function () {
 
 //add user in panel for db
 Route::post('/layout/users', [\App\Http\Controllers\usersController::class, 'store'])->name('store');
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-Route::get('/addusers.blade.php', [\App\Http\Controllers\webshop::class, 'addusers'] );
-
-Route::get('/connusers.blade.php', [\App\Http\Controllers\webshop::class, 'connusers'] );
-
-Route::get('/users.blade.php', [\App\Http\Controllers\webshop::class, 'usersgo'] );
-
-
-Route::get('/login.blade.php', [\App\Http\Controllers\webshop::class, 'logingo'] );
-
-
-Route::get('/singin.blade.php', [\App\Http\Controllers\webshop::class, 'singingo'] );
-
-
-Route::get('/panel.blade.php', [\App\Http\Controllers\webshop::class, 'panelgo'] );
-
-
-Route::get('/productsList.blade.php', [\App\Http\Controllers\webshop::class, 'listproducts'] );
-Route::get('/Newproduct.blade.php', [\App\Http\Controllers\webshop::class, 'Newproduct'] );
-
 
 
 
@@ -94,5 +65,3 @@ Route::post('/panel/Neworder', [\App\Http\Controllers\OrderController::class, 'a
 Route::get('/panel/Listoforders' , [\App\Http\Controllers\OrderController::class , 'listorders'])->name('list_order');
 
 
-=======
->>>>>>> 8a1194b45f8f8171965651f9a2c0d3d3ed416f01
