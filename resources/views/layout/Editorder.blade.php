@@ -54,58 +54,54 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"> سفارش جدید</h3>
+                                <h3 class="card-title"> ویرایش سفارش </h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-
-
-                            <form role="form" action="{{ route('add_order') }}" method="POST">
+                            <form role="form" action="/panel/edit/{{$order->id}}" method="POST">
                                 @csrf
+                                @method('put')
                                 <div class="card-body">
-
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product_id" type="text" class="form-control" id="exampleInputEmail1" placeholder=" ">
+                                        <input name="product_id" type="text" class="form-control" value="{{$order->product}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">  قیمت </label>
-                                        <input name="price" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="price" type="text" class="form-control" value="{{$order->price}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> توضیحات</label>
-                                        <input name="description" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="description" type="text" class="form-control" value="{{$order->description}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="buyer" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="buyer" type="text" class="form-control" value="{{$order->buyer}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> وضعیت سفارش</label>
-                                        <input name="status" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="status" type="text" class="form-control" {{$order->status}}>
                                     </div>
 
                                 </div>
                                 <!-- /.card-body -->
 
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">ثبت</button>
+                                    <button type="submit" class="btn btn-primary">ویرایش</button>
                                 </div>
                             </form>
                         </div>
 
 
-                        <div class="alert alert-danger">
-                            @if($errors->any())
-                                <ui>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                    @endforeach
-                                </ui>
-                            @endif
-                        </div>
 
-
+                    </div> <div class=" aler alert-danger">
+                        @if($errors->any())
+                            <ui>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ui>
+                        @endif
                     </div>
                 </div>
             </div>

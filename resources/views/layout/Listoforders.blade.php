@@ -73,19 +73,39 @@
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">خریدار</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">توضیحات</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">وضعیت</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
+<<<<<<< HEAD
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">اصلاح</div></th>
                                 </tr>@foreach($orders as $order)
+=======
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
+                                </tr>
+
+                              @foreach($orders as $order)
+>>>>>>> 9e314ed26d885a450299d7d0fc294ad5b54faeaf
                                     <tr>
                                         <td><div style="margin-right: 15px">{{$order->id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->product}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->price}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->buyer}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->description}}</div></td>
-                                        <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                        <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->status}}</div></td>
+                                        <td>
+                                            <form action="/panel/delete/{{$order->id}}" method="post">
+                                              @csrf
+                                               @method('delete')
+                                                <button class="btn btn-outline-warning">حذف</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/panel/edit/{{$order->id}}" method="get">
+                                                <button class="btn btn-outline-success">ویرایش</button>
+                                            </form>
+                                        </td>
                                     </tr>
                               @endforeach
+<<<<<<< HEAD
                                 <tr>
                                     <td><div style="margin-right: 15px">علی</div></td>
                                     <td><div style="margin-bottom: 15px">12415</div></td>
@@ -102,6 +122,10 @@
                                     <td><a>حذف</a></td>
                                     <td><a>اصلاح</a></td>
                                 </tr>
+=======
+
+
+>>>>>>> 9e314ed26d885a450299d7d0fc294ad5b54faeaf
                             </table>
                         </div>
                     </div>
