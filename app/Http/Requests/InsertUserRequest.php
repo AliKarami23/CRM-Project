@@ -21,7 +21,9 @@ class InsertUserRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
+
             'name' => 'required|min:2|max:50',
             'fname' => 'required|min:2|max:50',
             'dadname' => 'required|min:2|max:50',

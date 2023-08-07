@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('addusersinpanel', function (Blueprint $table) {
+        Schema::create('Users', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name');
@@ -29,7 +29,6 @@ return new class extends Migration
             $table->string('education');
             $table->string('cityofeducation');
             $table->string('password');
-
         });
     }
 
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('addusersinpanel');
+        Schema::dropIfExists('Users');
     }
 };
