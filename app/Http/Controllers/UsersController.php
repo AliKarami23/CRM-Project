@@ -61,11 +61,11 @@ class UsersController extends Controller
     //update user in panel
     public function edited_user(InsertUserRequest $request, $id)
     {
-        User::updated($request->merge([
+        User::where('id',$id)->update($request->merge([
             "password"=>Hash::make($request->password)
-        ])->toArray());
+        ])->except('_token'));
 
-        return redirect()->route('panel');
+        return redirect()->route('users');
     }
     //delete user in panel
     public function deleteduser($id)
@@ -101,7 +101,7 @@ class UsersController extends Controller
         ])->toArray());
 
 
-        return redirect()->route('panel');
+        return redirect()->route('users');
     }
 
 
