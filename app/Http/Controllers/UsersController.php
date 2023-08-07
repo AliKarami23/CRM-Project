@@ -43,7 +43,6 @@ class usersController extends Controller
 
         return view('layout.users', ['users' => $users]);
     }
-
     public function edituser($id)
     {
         $user = Users::find($id);
@@ -57,6 +56,7 @@ class usersController extends Controller
 
     }
 
+    //update user in panel
     public function edited_user(Request $request, $id)
     {
         $user = Users::where('id', $id)->firstOrFail();
@@ -82,7 +82,7 @@ class usersController extends Controller
 
         return redirect()->route('panel');
     }
-
+    //delete user in panel
     public function deleteduser($id)
     {
         $user = Users::find($id);
@@ -112,7 +112,7 @@ class usersController extends Controller
         return view('layout.Newproduct');
     }
 
-
+    //add user in panel
     public function store(Request $request)
     {
 

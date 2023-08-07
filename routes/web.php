@@ -58,16 +58,13 @@ Route::prefix('/panel')->group(function () {
 
 
 //add user in panel for db
-<<<<<<< HEAD
 Route::post('/layout/users', [\App\Http\Controllers\usersController::class, 'store'])->name('store');
 
 
 
-Route::get('/panel/Neworder', [\App\Http\Controllers\OrderController::class, 'Neworder'] );
+Route::get('/panel/Neworder', [\App\Http\Controllers\OrderController::class, 'Neworder'] )->name('Neworder');
 Route::post('/panel/Neworder', [\App\Http\Controllers\OrderController::class, 'add_order'])->name('add_order');
 Route::get('/panel/Listoforders' , [\App\Http\Controllers\OrderController::class , 'listorders'])->name('list_order');
-
-=======
 Route::post('/layout/users', [usersController::class, 'store'])->name('store');
 
 
@@ -75,15 +72,11 @@ Route::post('/layout/users', [usersController::class, 'store'])->name('store');
 
 Route::prefix('/panel')->group(function () {
 
-  Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('New_order');
+  Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('Neworder');
   Route::post('Neworder', [OrderController::class, 'add_order'])->name('add_order');
-
-  Route::get('/Listoforders' , [OrderController::class , 'listorders'])->name('list_order');
-
+  Route::get('/Listoforders' , [OrderController::class , 'listorders'])->name('listorders');
   Route::get('/edit/{id}' , [OrderController::class , 'show_edit_order'])->name('show_edit_order');
   Route::put('/edit/{id}' , [OrderController::class , 'edit'])->name('edit');
-
   Route::delete('/delete/{id}' , [OrderController::class , 'delete'])->name('delete');
 });
->>>>>>> 9e314ed26d885a450299d7d0fc294ad5b54faeaf
 
