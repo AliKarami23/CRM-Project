@@ -73,7 +73,6 @@
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">خریدار</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">توضیحات</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">وضعیت</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
                                 </tr>
