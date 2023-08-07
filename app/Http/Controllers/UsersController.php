@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\InsertUserRequest;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -58,8 +59,14 @@ class usersController extends Controller
     }
 
     //update user in panel
-    public function edited_user(Request $request, $id)
+    public function edited_user(InsertUserRequest $request, $id)
     {
+        $validator = $request->validated();
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $user = Users::where('id', $id)->firstOrFail();
 
         $user->update([
@@ -114,28 +121,10 @@ class usersController extends Controller
     }
 
     //add user in panel
-    public function store(Request $request)
+    public function store(InsertUserRequest $request)
     {
+        $validator = $request->validated();
 
-        $validator = Validator::make($request->all(), [
-
-            'name' => 'required|min:2|max:50',
-            'fname' => 'required|min:2|max:50',
-            'dadname' => 'required|min:2|max:50',
-            'email' => 'required|email',
-            'phonenumber' => 'required|numeric',
-            'country' => 'required',
-            'City' => 'required',
-            'Address' => 'required',
-            'gender' => 'required',
-            'nationalcode' => 'required',
-            'job' => 'required',
-            'image' => 'required',
-            'education' => 'required',
-            'cityofeducation' => 'required',
-            'password' => 'required|min:8',
-
-        ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
