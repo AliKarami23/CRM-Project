@@ -54,25 +54,8 @@ Route::prefix('/panel')->group(function () {
 
 
 });
-
-
-
 //add user in panel for db
-<<<<<<< HEAD
-Route::post('/layout/users', [\App\Http\Controllers\usersController::class, 'store'])->name('store');
-
-
-
-Route::get('/panel/Neworder', [\App\Http\Controllers\OrderController::class, 'Neworder'] );
-Route::post('/panel/Neworder', [\App\Http\Controllers\OrderController::class, 'add_order'])->name('add_order');
-Route::get('/panel/Listoforders' , [\App\Http\Controllers\OrderController::class , 'listorders'])->name('list_order');
-
-=======
 Route::post('/layout/users', [usersController::class, 'store'])->name('store');
-
-
-
-
 Route::prefix('/panel')->group(function () {
 
   Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('New_order');
@@ -85,5 +68,3 @@ Route::prefix('/panel')->group(function () {
 
   Route::delete('/delete/{id}' , [OrderController::class , 'delete'])->name('delete');
 });
->>>>>>> 9e314ed26d885a450299d7d0fc294ad5b54faeaf
-
