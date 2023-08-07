@@ -91,13 +91,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label>آدرس</label>
-                                        <textarea name="Address" class="form-control" value="{{$users->Address}}" rows="3" placeholder="آدرس را کامل وارد کنید"></textarea>
+                                        <textarea name="Address" class="form-control" rows="3" placeholder="آدرس را کامل وارد کنید">{{$users->Address}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>جنسیت</label>
-                                        <select name="gender" class="form-control" value="{{$users->gender}}">
-                                            <option>مرد</option>
-                                            <option>زن</option>
+                                        <select name="gender" class="form-control">
+                                            <option {{$users->gender == 'مرد'?'selected':''}}>مرد</option>
+                                            <option {{$users->gender == 'زن'?'selected':''}}>زن</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -114,12 +114,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label>تحصیلات</label>
-                                        <select name="education" class="form-control" value="{{$users->education}}">
-                                            <option>زیر دیپلم</option>
-                                            <option>دیپلم</option>
-                                            <option>کارشناسی</option>
-                                            <option>کارشناسی ارشد</option>
-                                            <option>دکترا</option>
+                                        <select name="education" class="form-control">
+                                            <option {{$users->education == 'زیر دیپلم'?'selected':''}}>زیر دیپلم</option>
+                                            <option {{$users->education == 'دیپلم'?'selected':''}}>دیپلم</option>
+                                            <option {{$users->education == 'کارشناسی'?'selected':''}}>کارشناسی</option>
+                                            <option {{$users->education == 'کارشناسی ارشد'?'selected':''}}>کارشناسی ارشد</option>
+                                            <option {{$users->education == 'دکترا'?'selected':''}}>دکترا</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

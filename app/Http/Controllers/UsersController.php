@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -120,7 +121,7 @@ class usersController extends Controller
 
             'name' => 'required|min:2|max:50',
             'fname' => 'required|min:2|max:50',
-            'dadname' => 'required|min:5|max:50',
+            'dadname' => 'required|min:2|max:50',
             'email' => 'required|email',
             'phonenumber' => 'required|numeric',
             'country' => 'required',
@@ -155,7 +156,7 @@ class usersController extends Controller
         $user->image = request('image');
         $user->education = request('education');
         $user->cityofeducation = request('cityofeducation');
-        $user->password = request('password');
+        $user->password = Hash::make(request('password'));
         $user->save();
 
 
