@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\phpmakeen;
-
+use App\Models\Users;
 use Illuminate\Http\Request;
-use APP\test;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+
 
 class usersController extends Controller
 {
@@ -39,18 +39,16 @@ class usersController extends Controller
 
     public function users()
     {
-        $result = DB::table('addusersinpanel')
-            ->select('id', 'name', 'fname', 'email', 'phonenumber')
-            ->get();
-        return view('layout.users', ['users' => $result]);
+        $users = Users::select('id', 'name', 'fname', 'email', 'phonenumber')->get();
+
+        return view('layout.users', ['users' => $users]);
     }
 
-        public function edituser($id)
+    public function edituser($id)
     {
-        $result = DB::table('addusersinpanel')
-            ->where(['id' => $id])
-            ->first();
-        return view('layout.edituser', ['users' => $result]);
+        $user = Users::find($id);
+
+        return view('layout.edituser', ['users' => $user]);
     }
 
     public function editusergo(){
@@ -61,40 +59,39 @@ class usersController extends Controller
 
     public function edited_user(Request $request, $id)
     {
-        DB::table('addusersinpanel')
-            ->where([
-                'id' => $id
-            ])
-            ->update([
-                'name' => $request->name,
-                'fname' => $request->fname,
-                'dadname' => $request->dadname,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'country' => $request->country,
-                'City' => $request->City,
-                'Address' => $request->Address,
-                'gender' => $request->gender,
-                'nationalcode' => $request->nationalcode,
-                'job' => $request->job,
-                'image' => $request->image,
-                'education' => $request->education,
-                'cityofeducation' => $request->cityofeducation,
-                'password' => $request->password,
-                'updated_at' => now(),
-            ]);
-        return redirect()->route('panel');
+        $user = Users::where('id', $id)->firstOrFail();
 
+        $user->update([
+            'name' => $request->name,
+            'fname' => $request->fname,
+            'dadname' => $request->dadname,
+            'email' => $request->email,
+            'phonenumber' => $request->phonenumber,
+            'country' => $request->country,
+            'City' => $request->City,
+            'Address' => $request->Address,
+            'gender' => $request->gender,
+            'nationalcode' => $request->nationalcode,
+            'job' => $request->job,
+            'image' => $request->image,
+            'education' => $request->education,
+            'cityofeducation' => $request->cityofeducation,
+            'password' => $request->password,
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('panel');
     }
 
     public function deleteduser($id)
     {
-        $deleted = DB::table('addusersinpanel')->where('id', '=', $id)->delete();
+        $user = Users::find($id);
+
+        if ($user) {
+            $user->delete();
+        }
 
         return redirect()->route('panel');
-
-
-
     }
 
     public function deletedusergo()
@@ -118,58 +115,51 @@ class usersController extends Controller
 
     public function store(Request $request)
     {
-        if (strlen($request->name) == 0) {
-            $error = "لطفا نام خود را پر بکنید";
-            die(json_encode($error));
-        }
-        if (strlen($request->name) > 50) {
-            $error = "نام شما طولانی است";
-            die(json_encode($error));
-        }
 
-        if (strlen($request->fname) == 0) {
-            $error = "لطفان نام خانوادگی را پر بکنید";
-            die(json_encode($error));
-        }
-        if (strlen($request->fname) > 50) {
-            $error = "نام خانوادگی شما طولانی است";
-            die(json_encode($error));
-        }
-        if (strlen($request->nationalcode) != 10) {
-            $error = "کد ملی صحیح نیست";
-            die(json_encode($error));
-        }
-        if (!($request->password == $request->confrim)) {
-            $error = "رمز عبور یکسان نیست";
-            die(json_encode($error));
-        }
+        $validator = Validator::make($request->all(), [
 
-
-
-        $result = DB::table('addusersinpanel')->insert([
-            'name' => $request->name,
-            'fname' => $request->fname,
-            'dadname' => $request->dadname,
-            'email' => $request->email,
-            'phonenumber' => $request->phonenumber,
-            'country' => $request->country,
-            'City' => $request->City,
-            'Address' => $request->Address,
-            'gender' => $request->gender,
-            'nationalcode' => $request->nationalcode,
-            'job' => $request->job,
-            'image' => $request->image,
-            'education' => $request->education,
-            'cityofeducation' => $request->cityofeducation,
-            'password' => $request->password
-
+            'name' => 'required|min:2|max:50',
+            'fname' => 'required|min:2|max:50',
+            'dadname' => 'required|min:5|max:50',
+            'email' => 'required|email',
+            'phonenumber' => 'required|numeric',
+            'country' => 'required',
+            'City' => 'required',
+            'Address' => 'required',
+            'gender' => 'required',
+            'nationalcode' => 'required',
+            'job' => 'required',
+            'image' => 'required',
+            'education' => 'required',
+            'cityofeducation' => 'required',
+            'password' => 'required|min:8',
 
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = new Users();
+
+        $user->name = request('name');
+        $user->fname = request('fname');
+        $user->dadname = request('dadname');
+        $user->email = request('email');
+        $user->phonenumber =  request('phonenumber');
+        $user->country = request('country');
+        $user->City = request('City');
+        $user->Address = request('Address');
+        $user->gender = request('gender');
+        $user->nationalcode = request('nationalcode');
+        $user->job = request('job');
+        $user->image = request('image');
+        $user->education = request('education');
+        $user->cityofeducation = request('cityofeducation');
+        $user->password = request('password');
+        $user->save();
+
 
         return redirect()->route('panel');
-
-
-
     }
 
 

@@ -86,19 +86,13 @@
                                 </tr>
                                 @endforeach
                             </table>
-
-
                         </div>
-                        <!-- /.card -->
-
-                        <!-- Form Element sizes -->
-
                     </div>
                 </div>
             </div>
+        </section>
     </div>
 </div>
-</section>
 
 
 
