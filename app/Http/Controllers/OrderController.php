@@ -15,7 +15,6 @@ class OrderController extends Controller
             'price'=>'required' ,
             'description'=>'required' ,
             'buyer'=>'required' ,
-            'status'=>'required'
         ]);
 
         $insert = new Order();
@@ -23,7 +22,6 @@ class OrderController extends Controller
         $insert->price = request('price');
         $insert->description = request('description');
         $insert->buyer = request('buyer');
-        $insert->status = request('status');
         $insert->save();
 
    return redirect()->route('panel');
@@ -52,7 +50,6 @@ class OrderController extends Controller
             'price'=>'required' ,
             'description'=>'required' ,
             'buyer'=>'required' ,
-            'status'=>'required'
         ]);
 
         $order = Order::findOrFail($id);
@@ -61,7 +58,6 @@ class OrderController extends Controller
           $order->price = request('price'),
           $order->description = request('description'),
           $order->buyer = request('buyer'),
-          $order->status = request('status'),
           $order->save()
         ]);
 

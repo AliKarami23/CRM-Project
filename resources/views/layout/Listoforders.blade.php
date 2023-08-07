@@ -84,7 +84,6 @@
                                         <td><div style="margin-bottom: 15px">{{$order->price}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->buyer}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->description}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$order->status}}</div></td>
                                         <td>
                                             <form action="/panel/delete/{{$order->id}}" method="post">
                                               @csrf

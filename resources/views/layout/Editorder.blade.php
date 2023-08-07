@@ -78,10 +78,6 @@
                                         <label for="exampleInputPassword1">خریدار </label>
                                         <input name="buyer" type="text" class="form-control" value="{{$order->buyer}}">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1"> وضعیت سفارش</label>
-                                        <input name="status" type="text" class="form-control" {{$order->status}}>
-                                    </div>
 
                                 </div>
                                 <!-- /.card-body -->

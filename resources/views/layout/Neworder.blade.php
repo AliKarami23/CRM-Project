@@ -80,10 +80,10 @@
                                         <label for="exampleInputPassword1">خریدار </label>
                                         <input name="buyer" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1"> وضعیت سفارش</label>
-                                        <input name="status" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="exampleInputPassword1"> وضعیت سفارش</label>--}}
+{{--                                        <input name="status" type="text" class="form-control" id="exampleInputPassword1" placeholder="">--}}
+{{--                                    </div>--}}
 
                                 </div>
                                 <!-- /.card-body -->
