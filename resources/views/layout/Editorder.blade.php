@@ -64,7 +64,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product_id" type="text" class="form-control" value="{{$order->product}}">
+                                        <input name="product_id" type="text" class="form-control" value="{{$order->product_id}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">  قیمت </label>
@@ -73,10 +73,11 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> توضیحات</label>
                                         <input name="description" type="text" class="form-control" value="{{$order->description}}">
+
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="buyer" type="text" class="form-control" value="{{$order->buyer}}">
+                                        <input name="user_id" type="text" class="form-control" value="{{$order->user_id}}">
                                     </div>
 
                                 </div>

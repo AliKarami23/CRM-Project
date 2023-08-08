@@ -14,14 +14,15 @@ class OrderController extends Controller
             'product_id'=>'required' ,
             'price'=>'required' ,
             'description'=>'required' ,
-            'buyer'=>'required' ,
+            'user_id'=>'required' ,
+
         ]);
 
         $insert = new Order();
-        $insert->product = request('product_id');
+        $insert->product_id = request('product_id');
         $insert->price = request('price');
         $insert->description = request('description');
-        $insert->buyer = request('buyer');
+        $insert->user_id = request('user_id');
         $insert->save();
 
    return redirect()->route('panel');
@@ -49,15 +50,15 @@ class OrderController extends Controller
             'product_id'=>'required' ,
             'price'=>'required' ,
             'description'=>'required' ,
-            'buyer'=>'required' ,
+            'user_id'=>'required' ,
         ]);
 
         $order = Order::findOrFail($id);
         $order->update([
-          $order->product = request('product_id'),
+          $order->product_id = request('product_id'),
           $order->price = request('price'),
           $order->description = request('description'),
-          $order->buyer = request('buyer'),
+          $order->user_id = request('user_id'),
           $order->save()
         ]);
 

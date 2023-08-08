@@ -66,24 +66,20 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product_id" type="text" class="form-control" id="exampleInputEmail1" placeholder=" ">
+                                        <input name="product_id" type="text" class="form-control" id="exampleInputEmail1">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">  قیمت </label>
-                                        <input name="price" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="price" type="text" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> توضیحات</label>
-                                        <input name="description" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="description" type="text" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="buyer" type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        <input name="user_id" type="text" class="form-control" id="exampleInputPassword1">
                                     </div>
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="exampleInputPassword1"> وضعیت سفارش</label>--}}
-{{--                                        <input name="status" type="text" class="form-control" id="exampleInputPassword1" placeholder="">--}}
-{{--                                    </div>--}}
 
                                 </div>
                                 <!-- /.card-body -->
