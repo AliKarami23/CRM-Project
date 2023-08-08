@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\usersController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,47 +15,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [usersController::class, 'panel'] )->name('home');
+Route::get('/', [UsersController::class, 'panel'] )->name('home');
 
-Route::get('/header', [usersController::class, 'header'] )->name('header');
+Route::get('/header', [UsersController::class, 'header'] )->name('header');
 
-Route::get('/footer', [usersController::class, 'footer'] )->name('footer');
+Route::get('/footer', [UsersController::class, 'footer'] )->name('footer');
 
-Route::get('/singin', [usersController::class, 'singin'] )->name('singin');
+Route::get('/singin', [UsersController::class, 'singin'] )->name('singin');
 
 
 
 Route::prefix('/panel')->group(function () {
 
-    Route::get('', [usersController::class, 'home'] )->name('panel');
+    Route::get('', [UsersController::class, 'home'] )->name('panel');
 
-    Route::get('/adduser', [usersController::class, 'adduser'] )->name('adduser');
+    Route::get('/adduser', [UsersController::class, 'adduser'] )->name('adduser');
 
-    Route::get('/users', [usersController::class, 'users'] )->name('users');
+    Route::get('/users', [UsersController::class, 'users'] )->name('users');
 
-    Route::get('/edituser/{id}', [usersController::class, 'edituser'])->name('edituser');
+    Route::get('/edituser/{id}', [UsersController::class, 'edituser'])->name('edituser');
 
-    Route::get('/deleteduser/{id}', [usersController::class, 'deleteduser'])->name('deleteduser');
+    Route::get('/deleteduser/{id}', [UsersController::class, 'deleteduser'])->name('deleteduser');
 
-    Route::get('/deleteduser/{id}/panel', [usersController::class, 'deleteduser'] )->name('deleteduser');
+    Route::get('/deleteduser/{id}/panel', [UsersController::class, 'deleteduser'] )->name('deleteduser');
 
-    Route::get('/edituser/{id}/panel', [usersController::class, 'editusergo'] )->name('editusergo');
+    Route::get('/edituser/{id}/panel', [UsersController::class, 'editusergo'] )->name('editusergo');
 
-    Route::get('/deleteduser/{id}/panel', [usersController::class, 'deletedusergo'] )->name('deletedusergo');
+    Route::get('/deleteduser/{id}/panel', [UsersController::class, 'deletedusergo'] )->name('deletedusergo');
 
-    Route::get('/deleteduser/   {id}/panel', [usersController::class, 'deletedusergo'] )->name('deletedusergo');
+    Route::get('/deleteduser/   {id}/panel', [UsersController::class, 'deletedusergo'] )->name('deletedusergo');
 
-    Route::post('/users/edituser/{id}', [usersController::class, 'edited_user'] )->name('edited_user');
+    Route::post('/users/edituser/{id}', [UsersController::class, 'edited_user'] )->name('edited_user');
 
-    Route::get('/productsList', [usersController::class, 'listproducts'] )->name('listproducts');
+    Route::get('/productsList', [UsersController::class, 'listproducts'] )->name('listproducts');
 
-    Route::get('/Newproduct', [usersController::class, 'Newproduct'] )->name('Newproduct');
+    Route::get('/Newproduct', [UsersController::class, 'Newproduct'] )->name('Newproduct');
 
 
 
 });
 
-Route::post('/layout/users', [usersController::class, 'store'])->name('store');
+Route::post('/layout/users', [UsersController::class, 'store'])->name('store');
 Route::prefix('/panel')->group(function () {
 
   Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('Neworder');
