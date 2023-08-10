@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
+    use HasFactory;
     use HasFactory;
     protected $fillable = [
         'id',
@@ -18,5 +20,11 @@ class Product extends Model
         'color' ,
         'image',
     ];
+
+
+    public function factor(): BelongsTo
+    {
+        return $this->belongsTo(Factor::class);
+    }
 
 }

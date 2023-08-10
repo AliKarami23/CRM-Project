@@ -32,8 +32,9 @@ class ProductController extends Controller
         $insert->image = request('image');
         $insert->save();
 
-   return redirect()->route('panel');
+        return redirect()->route('panel');
     }
+
 
     public function productlist()
     {
@@ -44,8 +45,6 @@ class ProductController extends Controller
     {
         return view('layout.Newproduct');
     }
-
-
 
 
 }

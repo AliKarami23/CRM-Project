@@ -63,7 +63,14 @@
                             <form role="form" action="{{ route('add_order') }}" method="POST">
                                 @csrf
                                 <div class="card-body">
-
+                                    <div class="form-group">
+                                        <label>تحصیلات</label>
+                                        <select name="user_id" class="form-control">
+                                            @foreach($users as $user)
+                                                <option value="{{$user->id}}">{{'['.$user->id.'] '.$user->name . ' ' . $user->fname}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
                                         <input name="product_id" type="text" class="form-control" id="exampleInputEmail1">
@@ -76,40 +83,27 @@
                                         <label for="exampleInputPassword1"> توضیحات</label>
                                         <input name="description" type="text" class="form-control" id="exampleInputPassword1">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="user_id" type="text" class="form-control" id="exampleInputPassword1">
-                                    </div>
-
                                 </div>
-                                <!-- /.card-body -->
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">ثبت</button>
                                 </div>
                             </form>
                         </div>
-
-
-
-                            @if($errors->any())
+                        @if ($errors->any())
                             <div class="alert alert-danger">
-                                <ui>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
                                     @endforeach
-                                </ui>
+                                </ul>
                             </div>
-                            @endif
-
-
-
+                        @endif
                     </div>
                 </div>
             </div>
+        </section>
     </div>
 </div>
-</section>
 
 
 
