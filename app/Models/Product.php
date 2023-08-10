@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Product extends Model
 {
     use HasFactory;
+    use HasFactory;
     protected $fillable = [
         'id',
         'product_name' ,
@@ -19,6 +20,7 @@ class Product extends Model
         'color' ,
         'image',
     ];
+
 
     public function factor(): BelongsTo
     {

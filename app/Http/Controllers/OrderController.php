@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +26,8 @@ class OrderController extends Controller
         $insert->user_id = request('user_id');
         $insert->save();
 
+
+
    return redirect()->route('panel');
     }
 
@@ -35,7 +38,8 @@ class OrderController extends Controller
 
     public function Neworder()
     {
-        return view('layout.Neworder');
+        $users = User::select('id','name','fname')->get();
+        return view('layout.Neworder',['users'=>$users]);
     }
 
     public function show_edit_order($id){

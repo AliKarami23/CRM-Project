@@ -41,9 +41,10 @@ class UsersController extends Controller
 
     public function users()
     {
-        $users = User::select('id', 'name', 'fname', 'email', 'phonenumber')->get();
+        $users = User::with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->get();
 
         return view('layout.users', ['users' => $users]);
+
     }
     public function edituser($id)
     {
