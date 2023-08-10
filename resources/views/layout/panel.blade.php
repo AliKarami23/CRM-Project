@@ -250,13 +250,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/panel/newopportunity" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>ثبت فرصت جدید</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/panel/listopportunity" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست فرصت ها</p>
                                     </a>
