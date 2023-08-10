@@ -68,29 +68,26 @@
                             </div>
                             <table style="width:100%">
                                 <tr>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">نام</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">نام خانوادگی</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ایمیل</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">شماره</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">شناسه</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">عنوان</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">موجودی</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">دسته بندی</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">تصویر</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">رنگ</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف/ویرایش</div></th>
                                 </tr>
                                 <tr>
-                                    <td><div style="margin-right: 15px">علی</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">12415</div></td>
-                                    <td><div style="margin-bottom: 15px">ali@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
+                                    <td><div style="margin-right: 15px">111</div></td>
+                                    <td><div style="margin-right: 15px">آچار فرانسه</div></td>
+                                    <td><div style="margin-right: 15px">300.000</div></td>
+                                    <td><div style="margin-bottom: 15px">5</div></td>
+                                    <td><div style="margin-bottom: 15px">ابزار</div></td>
+                                    <td><div style="margin-bottom: 15px">#</div></td>
+                                    <td><div style="margin-bottom: 15px">مشکی</div></td>
+                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
                                 </tr>
-                                <tr>
-                                    <td><div style="margin-right: 15px">محمد</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">15428</div></td>
-                                    <td><div style="margin-bottom: 15px">gasem@gmail.com</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button></td>
-                                    <td><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
-                                </tr>
+                               
                             </table>
 
 

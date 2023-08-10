@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,15 +48,15 @@ Route::prefix('/panel')->group(function () {
 
     Route::post('/users/edituser/{id}', [UsersController::class, 'edited_user'] )->name('edited_user');
 
-    Route::get('/productsList', [UsersController::class, 'listproducts'] )->name('listproducts');
 
-    Route::get('/Newproduct', [UsersController::class, 'Newproduct'] )->name('Newproduct');
 
 
 
 });
 
 Route::post('/layout/users', [UsersController::class, 'store'])->name('store');
+
+
 Route::prefix('/panel')->group(function () {
 
   Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('Neworder');
@@ -65,3 +66,11 @@ Route::prefix('/panel')->group(function () {
   Route::put('/edit/{id}' , [OrderController::class , 'edit'])->name('edit');
   Route::delete('/delete/{id}' , [OrderController::class , 'delete'])->name('delete');
 });
+
+Route::prefix('/panel')->group(function(){
+
+    Route::get('/Newproduct' , [ProductController::class , 'Newproduct']);
+    Route::post('Newproduct' ,[ProductController::class , 'add_product'])->name('add_product');
+
+});
+
