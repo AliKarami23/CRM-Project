@@ -62,10 +62,6 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">شناسه محصول</label>
-                                        <input name="product_id" type="number" class="form-control" id="productid" placeholder="  شناسه محصول را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
                                         <label for="exampleInputPassword1">عنوان محصول</label>
                                         <input name="product_name" type="text" class="form-control" id="productname" placeholder="عنوان محصول را وارد کنید">
                                     </div>

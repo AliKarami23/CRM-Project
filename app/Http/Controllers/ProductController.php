@@ -9,24 +9,22 @@ class ProductController extends Controller
 {
     public function add_product(){
         $valid = request()->validate([
-            'product_id'=>'required' ,
             'product_name'=>'required' ,
-            'description'=>'required' ,
+            'Description'=>'required' ,
             'Category'=>'required' ,
             'Price'=>'required' ,
-            'inventory'=>'' ,
-            'color'=>'' ,
-            'image'=>'' ,
+            'inventory'=>'required' ,
+            'color'=>'required' ,
+            'image'=>'required' ,
 
 
 
 
         ]);
 
-        $insert = new product();
-        $insert->product_id = request('product_id');
+        $insert = new Product();
         $insert->product_name = request('product_name');
-        $insert->description = request('description');
+        $insert->Description = request('Description');
         $insert->Category = request('Category');
         $insert->Price = request('Price');
         $insert->inventory = request('inventory');
@@ -39,7 +37,7 @@ class ProductController extends Controller
 
     public function productlist()
     {
-        return view('layout.productsList' , ['products'=>product::all()]);
+        return view('layout.productsList' , ['products'=>Product::all()]);
     }
 
     public function Newproduct()
