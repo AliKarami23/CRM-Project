@@ -37,6 +37,9 @@
             </li>
         </ul>
     </nav>
+</div>
+
+
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
@@ -93,6 +96,7 @@
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">ثبت محصول</button>
                                 </div>
+                                </div>
                             </form>
                         </div>
                         <!-- /.card -->
@@ -102,8 +106,6 @@
                     </div>
                 </div>
             </div>
-    </div>
-</div>
 </section>
 
 
@@ -114,13 +116,13 @@
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+        <aside class="control-sidebar control-sidebar-dark"></aside>>
 
-    </div>
 
 
 
     @include('layout.js');
 
 </body>
+
 </html>

@@ -73,6 +73,7 @@ Route::prefix('/panel')->group(function(){
 
     Route::get('/Newproduct' , [ProductController::class , 'Newproduct']);
     Route::post('Newproduct' ,[ProductController::class , 'add_product'])->name('add_product');
+    Route::get('/productsList' , [ProductController::class , 'productsList']);
 
 });
 

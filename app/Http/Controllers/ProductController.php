@@ -36,9 +36,8 @@ class ProductController extends Controller
     }
 
 
-    public function productlist()
-    {
-        return view('layout.productsList' , ['products'=>Product::all()]);
+    public function productsList(){
+        return view('layout.ProductsList' , ['products'=>Product::all()]);
     }
 
     public function Newproduct()

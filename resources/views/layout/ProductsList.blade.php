@@ -64,42 +64,46 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"> کاربران</h3>
+                                <h3 class="card-title"> محصولات</h3>
                             </div>
                             <table style="width:100%">
                                 <tr>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">شناسه</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">عنوان</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">موجودی</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">شناسه محصول</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">نام محصول</div></th>
                                     <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">دسته بندی</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">تصویر</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">رنگ</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف/ویرایش</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">تعداد</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
+                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
                                 </tr>
-                                <tr>
-                                    <td><div style="margin-right: 15px">111</div></td>
-                                    <td><div style="margin-right: 15px">آچار فرانسه</div></td>
-                                    <td><div style="margin-right: 15px">300.000</div></td>
-                                    <td><div style="margin-bottom: 15px">5</div></td>
-                                    <td><div style="margin-bottom: 15px">ابزار</div></td>
-                                    <td><div style="margin-bottom: 15px">#</div></td>
-                                    <td><div style="margin-bottom: 15px">مشکی</div></td>
-                                    <td><button style="height: 35px;width:55px;background-color: red;border-radius: 15px;margin-bottom: 15px">حذف</button><button style="height: 35px;width:55px;background-color: #fff200;border-radius: 15px;margin-bottom: 15px">اصلاح</button></td>
-                                </tr>
-                               
+                                @foreach($products as $product)
+                                    <tr>
+                                        <td><div style="margin-right: 15px">{{$product->id}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$product->product_name}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$product->Category}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$product->inventory}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$product->Price}}</div></td>
+                                        <td>
+                                            <form action="/panel/delete/product/{{$product->id}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-outline-warning">حذف</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/panel/edit/product/{{$product->id}}" method="get">
+                                                <button class="btn btn-outline-success">ویرایش</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </table>
-
-
                         </div>
-                        <!-- /.card -->
-
-                        <!-- Form Element sizes -->
-
                     </div>
                 </div>
             </div>
     </div>
+</div>
 </div>
 </section>
 
@@ -111,7 +115,7 @@
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+<aside class="control-sidebar control-sidebar-dark"></aside>>
 
     </div>
 
