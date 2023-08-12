@@ -82,10 +82,6 @@ class UsersController extends Controller
 
     }
 
-    public function listproducts()
-    {
-        return view('layout.productsList');
-    }
 
 
 
@@ -104,7 +100,6 @@ class UsersController extends Controller
 
         return redirect()->route('users');
     }
-
 
 }
 
