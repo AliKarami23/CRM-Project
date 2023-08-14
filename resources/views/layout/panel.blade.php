@@ -326,14 +326,14 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{$orders}}</h3>
 
                                 <p>سفارشات جدید</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="/panel/Listoforders" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -341,14 +341,14 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                <h3>{{$products}}<sup style="font-size: 20px"></sup></h3>
 
-                                <p>افزایش امتیاز</p>
+                                <p>محصولات</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="/panel/productsList" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -356,14 +356,14 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3>{{$users}}</h3>
 
                                 <p>کاربران ثبت شده</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="panel/users" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -371,9 +371,9 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
+                                <h3>{{$factors}}</h3>
 
-                                <p>بازدید جدید</p>
+                                <p>فاکتور ها</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>

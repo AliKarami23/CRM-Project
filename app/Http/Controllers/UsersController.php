@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\InsertUserRequest;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,20 @@ class UsersController extends Controller
 {
     public function home()
     {
-        return view('layout.panel');
+        $ordera = Order::count();
+        $users = Order::count();
+        $products = Order::count();
+        $factors = Order::count();
+
+
+
+
+        return view('layout.panel' , [
+            'users' => $users,
+            'products' => $products,
+            'orders' => $ordera,
+            'factors' => $factors,
+        ]);
     }
 
     public function header()
