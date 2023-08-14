@@ -14,18 +14,15 @@ class UsersController extends Controller
 {
     public function home()
     {
-        $ordera = Order::count();
+        $orders = Order::count();
         $users = Order::count();
         $products = Order::count();
         $factors = Order::count();
 
-
-
-
         return view('layout.panel' , [
             'users' => $users,
             'products' => $products,
-            'orders' => $ordera,
+            'orders' => $orders,
             'factors' => $factors,
         ]);
     }

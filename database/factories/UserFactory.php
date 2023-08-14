@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Ybazli\Faker\Facades\Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -19,20 +20,20 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'fname' => fake()->name(),
-            'dadname' => fake()->name(),
-            'email' => fake()->unique()->email(),
-            'phonenumber' => fake()->phoneNumber(),
+            'name' => Faker::firstName(),
+            'fname' => Faker::lastName(),
+            'dadname' => Faker::fullName(),
+            'email' => fake()->email(),
+            'phonenumber' => Faker::mobile(),
             'country' => fake()->country(),
-            'City' => fake()->city(),
-            'Address' => fake()->address(),
+            'City' => Faker::city(),
+            'Address' => Faker::address(),
             'gender' => 'female',
             'nationalcode' => '1234567890',
-            'job' => fake()->jobTitle(),
+            'job' => Faker::jobTitle(),
             'image' => '-',
             'education' => fake()->country(),
-            'cityofeducation' => fake()->city(),
+            'cityofeducation' => Faker::city(),
             'password' => Hash::make('12345'),
 
         ];
