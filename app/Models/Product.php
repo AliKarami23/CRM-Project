@@ -27,4 +27,9 @@ class Product extends Model
         return $this->belongsTo(Factor::class);
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
 }
