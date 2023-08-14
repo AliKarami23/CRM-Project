@@ -72,8 +72,12 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product_id" type="text" class="form-control" id="exampleInputEmail1">
+                                        <label>محصول</label>
+                                        <select name="user_id" class="form-control">
+                                            @foreach($Products as $Product)
+                                                <option value="{{$Product->id}}">{{'['.$Product->id.'] '.$Product->product_name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">  قیمت </label>

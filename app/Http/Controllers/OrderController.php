@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,7 @@ class OrderController extends Controller
 
 
 
-   return redirect()->route('panel');
+        return redirect()->route('panel');
     }
 
     public function listorders()
@@ -39,7 +40,8 @@ class OrderController extends Controller
     public function Neworder()
     {
         $users = User::select('id','name','fname')->get();
-        return view('layout.Neworder',['users'=>$users]);
+        $Products = Product::select('id','product_name')->get();
+        return view('layout.Neworder',compact('users', 'Products'));
     }
 
     public function show_edit_order($id){
@@ -59,11 +61,11 @@ class OrderController extends Controller
 
         $order = Order::findOrFail($id);
         $order->update([
-          $order->product_id = request('product_id'),
-          $order->price = request('price'),
-          $order->description = request('description'),
-          $order->user_id = request('user_id'),
-          $order->save()
+            $order->product_id = request('product_id'),
+            $order->price = request('price'),
+            $order->description = request('description'),
+            $order->user_id = request('user_id'),
+            $order->save()
         ]);
 
         return redirect('/panel/Listoforders');
