@@ -64,7 +64,7 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>تحصیلات</label>
+                                        <label>سفارش دهنده</label>
                                         <select name="user_id" class="form-control">
                                             @foreach($users as $user)
                                                 <option value="{{$user->id}}">{{'['.$user->id.'] '.$user->name . ' ' . $user->fname}}</option>
