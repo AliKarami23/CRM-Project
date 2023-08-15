@@ -48,62 +48,62 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
                         <!-- general form elements -->
                         <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title"> کاربران</h3>
-                            </div>
+                            <div class="card shadow">
+
+                                <div class="card-header bg-primary text-white">{{ __('اضافه کردن کاربر جدید') }}</div>
+
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="{{ route('store') }}" method="POST">
+                                <form role="form" action="{{ route('store') }}" method="POST">
                                 @csrf
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">نام</label>
-                                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="  نام را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">نام</label>
+                                            <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="  نام را وارد کنید">
+                                        </div>
+                                        <div class="form-group">
                                         <label for="exampleInputPassword1">نام خانوادگی</label>
                                         <input name="fname" type="text" class="form-control" id="exampleInputPassword1" placeholder="نام خانوادگی را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">نام پدر</label>
-                                        <input name="dadname" type="text" class="form-control" id="exampleInputPassword1" placeholder="نام پدر را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">آدرس ایمیل</label>
-                                        <input name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="ایمیل را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">شماره تماس</label>
-                                        <input name="phonenumber" type="number" class="form-control" id="exampleInputPassword1" placeholder="شماره تماس را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">کشور</label>
-                                        <input name="country" type="text" class="form-control" id="exampleInputPassword1" placeholder="کشور را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">شهر</label>
-                                        <input name="City" type="text" class="form-control" id="exampleInputPassword1" placeholder="شهر را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>آدرس</label>
-                                        <textarea name="Address" class="form-control" rows="3" placeholder="آدرس را کامل وارد کنید"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>جنسیت</label>
-                                        <select name="gender" class="form-control">
-                                            <option>مرد</option>
-                                            <option>زن</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">کد ملی</label>
-                                        <input name="nationalcode" type="number" class="form-control" id="exampleInputPassword1" placeholder="کد ملی را وارد کنید">
-                                    </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">نام پدر</label>
+                                            <input name="dadname" type="text" class="form-control" id="exampleInputPassword1" placeholder="نام پدر را وارد کنید">
+                                       </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">آدرس ایمیل</label>
+                                            <input name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="ایمیل را وارد کنید">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">شماره تماس</label>
+                                            <input name="phonenumber" type="number" class="form-control" id="exampleInputPassword1" placeholder="شماره تماس را وارد کنید">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">کشور</label>
+                                            <input name="country" type="text" class="form-control" id="exampleInputPassword1" placeholder="کشور را وارد کنید">
+                                        </div>
+                                        <div class="form-group">
+                                             <label for="exampleInputPassword1">شهر</label>
+                                              <input name="City" type="text" class="form-control" id="exampleInputPassword1" placeholder="شهر را وارد کنید">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>آدرس</label>
+                                            <textarea name="Address" class="form-control" rows="3" placeholder="آدرس را کامل وارد کنید"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>جنسیت</label>
+                                            <select name="gender" class="form-control">
+                                                <option>مرد</option>
+                                                <option>زن</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">کد ملی</label>
+                                            <input name="nationalcode" type="number" class="form-control" id="exampleInputPassword1" placeholder="کد ملی را وارد کنید">
+                                        </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">شغل</label>
                                         <input name="job" type="text" class="form-control" id="exampleInputPassword1" placeholder=" شغل را وارد کنید">
@@ -169,7 +169,7 @@
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+<aside class="control-sidebar control-sidebar-dark"></aside>
 
     </div>
 

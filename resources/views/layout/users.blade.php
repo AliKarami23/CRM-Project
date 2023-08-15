@@ -44,16 +44,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>فرم‌های عمومی</h1>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
+        <br>
 
         <!-- Main content -->
         <section class="content">
@@ -62,31 +53,66 @@
                     <!-- left column -->
                     <div class="col-md-12">
                         <!-- general form elements -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title"> کاربران</h3>
-                            </div>
-                            <table style="width:100%">
-                                <tr>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">نام</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">نام خانوادگی</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ایمیل</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">شماره</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
-                                </tr>
-                                @foreach($users as $user)
-                                <tr>
-                                    <td><div style="margin-right: 15px">{{$user->name}}</div></td>
-                                    <td><div style="margin-bottom: 15px">{{$user->fname}}</div></td>
-                                    <td><div style="margin-bottom: 15px">{{$user->email}}</div></td>
-                                    <td><div style="margin-bottom: 15px">{{$user->phonenumber}}</div></td>
-                                    <td><a href="{{ route('deleteduser',['id' => $user->id])}}" class="nav-link">حذف</a></td>
-                                    <td><a href="{{ route('edituser',['id' => $user->id])}}" class="nav-link">ویرایش</a></td>
-                                </tr>
-                                @endforeach
-                            </table>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <form action="{{ route('users') }}" class="d-flex flex-wrap col-md-8 mt-100 mb-200 m-auto" method="GET">
+                                <div class="form-group col-md-3">
+                                        <label for="exampleInputPassword1">نام</label>
+                                        <input name="name" type="text" class="form-control" placeholder="نام">
+                                </div>
+                                <div class="form-group col-md-3">
+                                        <label for="exampleInputPassword1">نام خانوادگی</label>
+                                        <input name="fname" type="text" class="form-control" placeholder="نام خانوادگی">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>سفارش</label>
+                                    <select name="orders" class="form-control">
+                                        <option value="has">دارد</option>
+                                        <option value="does_not_have">ندارد</option>
+                                        <option value="all">همه</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                        <label>فاکتور</label>
+                                        <select name="factors" class="form-control">
+                                            <option>دارد</option>
+                                            <option>ندارد</option>
+                                            <option>همه</option>
+
+                                        </select>
+                                </div>
+                                <div class="col-md-12 d-flex justify-content-center mt-3">
+                                        <button type="submit" class="btn btn-primary mx-2">اعمال فیلتر</button>
+                                        <button type="reset" class="btn btn-secondary mx-2">حذف فیلتر</button>
+                                </div>
+                            </form>
                         </div>
+                        <br>
+                        <br>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">نام</th>
+                                <th scope="col">نام خانوادگی</th>
+                                <th scope="col">ایمیل</th>
+                                <th scope="col">شماره موبایل</th>
+                                <th scope="col">عملیات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->fname}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->phonenumber}}</td>
+                                    <td>
+                                        <a href="{{ route('deleteduser', ['id' => $user->id]) }}" class="btn btn-danger">حذف</a>
+                                        <a href="{{ route('edituser', ['id' => $user->id]) }}" class="btn btn-primary">ویرایش</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -102,10 +128,7 @@
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-
-    </div>
-
+<aside class="control-sidebar control-sidebar-dark"></aside>
 
 
     @include('layout.js');

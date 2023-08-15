@@ -53,13 +53,34 @@ class UsersController extends Controller
         return view('layout.adduser');
     }
 
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->get();
+        $query = User::query();
+
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->input('name') . '%');
+        }
+
+        if ($request->has('fname')) {
+            $query->where('fname', 'like', '%' . $request->input('fname') . '%');
+        }
+
+        if ($request->has('orders')) {
+            $ordersFilter = $request->input('orders');
+
+            if ($ordersFilter == 'has') {
+                $query->has('orders');
+            } elseif ($ordersFilter == 'does_not_have') {
+                $query->doesntHave('orders');
+            }
+        }
+
+
+        $users = $query->with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->get();
 
         return view('layout.users', ['users' => $users]);
-
     }
+
     public function edituser($id)
     {
         $user = User::find($id);
@@ -87,7 +108,7 @@ class UsersController extends Controller
     {
         User::destroy($id);
 
-        return redirect()->route('panel');
+        return redirect()->route('users');
     }
 
     public function deletedusergo()
