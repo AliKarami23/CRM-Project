@@ -1,5 +1,4 @@
-@include('layout.css');
-
+@include('layout.css')
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
 <div class="wrapper">
@@ -11,7 +10,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="" class="nav-link">خانه</a>
+                <a href="#" class="nav-link">خانه</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">تماس</a>
@@ -56,15 +55,15 @@
                         <div class="d-flex flex-wrap justify-content-center">
                             <form action="{{ route('users') }}" class="d-flex flex-wrap col-md-8 mt-100 mb-200 m-auto" method="GET">
                                 <div class="form-group col-md-3">
-                                        <label for="exampleInputPassword1">نام</label>
-                                        <input name="name" type="text" class="form-control" placeholder="نام">
+                                    <label for="name">نام</label>
+                                    <input name="name" type="text" class="form-control" placeholder="نام">
                                 </div>
                                 <div class="form-group col-md-3">
-                                        <label for="exampleInputPassword1">نام خانوادگی</label>
-                                        <input name="fname" type="text" class="form-control" placeholder="نام خانوادگی">
+                                    <label for="fname">نام خانوادگی</label>
+                                    <input name="fname" type="text" class="form-control" placeholder="نام خانوادگی">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>سفارش</label>
+                                    <label for="orders">سفارش</label>
                                     <select name="orders" class="form-control">
                                         <option value="has">دارد</option>
                                         <option value="does_not_have">ندارد</option>
@@ -72,17 +71,16 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
-                                        <label>فاکتور</label>
-                                        <select name="factors" class="form-control">
-                                            <option>دارد</option>
-                                            <option>ندارد</option>
-                                            <option>همه</option>
-
-                                        </select>
+                                    <label for="factors">فاکتور</label>
+                                    <select name="factors" class="form-control">
+                                        <option>دارد</option>
+                                        <option>ندارد</option>
+                                        <option>همه</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-12 d-flex justify-content-center mt-3">
-                                        <button type="submit" class="btn btn-primary mx-2">اعمال فیلتر</button>
-                                        <button type="reset" class="btn btn-secondary mx-2">حذف فیلتر</button>
+                                    <button type="submit" class="btn btn-primary mx-2">اعمال فیلتر</button>
+                                    <button type="reset" class="btn btn-secondary mx-2">حذف فیلتر</button>
                                 </div>
                             </form>
                         </div>
@@ -91,6 +89,7 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
+                                <th scope="col">شماره</th>
                                 <th scope="col">نام</th>
                                 <th scope="col">نام خانوادگی</th>
                                 <th scope="col">ایمیل</th>
@@ -99,12 +98,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach($users as $index => $user)
                                 <tr>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->fname}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->phonenumber}}</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->fname }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phonenumber }}</td>
                                     <td>
                                         <a href="{{ route('deleteduser', ['id' => $user->id]) }}" class="btn btn-danger">حذف</a>
                                         <a href="{{ route('edituser', ['id' => $user->id]) }}" class="btn btn-primary">ویرایش</a>
@@ -113,16 +113,15 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="pagination-container d-flex justify-content-center mt-4">
+                            {{ $users->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 </div>
-
-
-
-
 <footer class="main-footer">
     <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
 </footer>
@@ -130,8 +129,7 @@
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark"></aside>
 
+@include('layout.js')
 
-    @include('layout.js');
 
-</body>
-</html>
+

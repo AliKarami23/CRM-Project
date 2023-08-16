@@ -118,11 +118,8 @@
 
 <!-- Control Sidebar -->
 
-    </div>
+<aside class="control-sidebar control-sidebar-dark"></aside>
 
 
 
     @include('layout.js');
-
-</body>
-</html>

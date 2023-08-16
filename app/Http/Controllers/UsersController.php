@@ -75,11 +75,11 @@ class UsersController extends Controller
             }
         }
 
+        $users = $query->with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->paginate(10);
 
-        $users = $query->with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->get();
-
-        return view('layout.users', ['users' => $users]);
+        return view('layout.users', compact('users'));
     }
+
 
     public function edituser($id)
     {
