@@ -41,12 +41,6 @@ Route::prefix('/panel')->group(function () {
 
     Route::get('/deleteduser/{id}/panel', [UsersController::class, 'deleteduser'] )->name('deleteduser');
 
-    Route::get('/edituser/{id}/panel', [UsersController::class, 'editusergo'] )->name('editusergo');
-
-    Route::get('/deleteduser/{id}/panel', [UsersController::class, 'deletedusergo'] )->name('deletedusergo');
-
-    Route::get('/deleteduser/   {id}/panel', [UsersController::class, 'deletedusergo'] )->name('deletedusergo');
-
     Route::post('/users/edituser/{id}', [UsersController::class, 'edited_user'] )->name('edited_user');
 
 

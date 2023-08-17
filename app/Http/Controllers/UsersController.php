@@ -89,13 +89,7 @@ class UsersController extends Controller
         return view('layout.edituser', ['users' => $user]);
     }
 
-    public function editusergo(){
 
-        return view('layout.panel');
-
-    }
-
-    //update user in panel
     public function edited_user(InsertUserRequest $request, $id)
     {
         User::where('id',$id)->update($request->merge([
@@ -104,7 +98,6 @@ class UsersController extends Controller
 
         return redirect()->route('users');
     }
-    //delete user in panel
     public function deleteduser($id)
     {
         User::destroy($id);
@@ -112,21 +105,7 @@ class UsersController extends Controller
         return redirect()->route('users');
     }
 
-    public function deletedusergo()
-    {
-        return view('layout.panel');
 
-    }
-
-
-
-
-    public function newproduct()
-    {
-        return view('layout.Newproduct');
-    }
-
-    //add user in panel
     public function store(InsertUserRequest $request)
     {
         User::create($request->merge([

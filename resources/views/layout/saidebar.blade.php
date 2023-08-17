@@ -32,7 +32,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{'adduser'}}" class="nav-link">
+                                <a href="{{ route('adduser') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>کاربر جدید </p>
                                 </a>
@@ -55,13 +55,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{'Newproduct'}}" class="nav-link">
+                                <a href="{{ route('Newproduct') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>محصول جدید</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{'productsList'}}" class="nav-link">
+                                <a href="{{ route('productsList') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست محصولات</p>
                                 </a>
@@ -78,13 +78,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{'Neworder'}}" class="nav-link">
+                                <a href="{{ route('Neworder') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>سفارش جدید </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('listorders')}}" class="nav-link">
+                                <a href="{{ route('listorders') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>لیست سفارشات</p>
                                 </a>
