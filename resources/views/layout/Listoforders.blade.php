@@ -91,7 +91,7 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="panel/panel/edit/{{$order->id}}" method="get">
+                                            <form action="/panel/edit/{{$order->id}}" method="get">
                                                 <button class="btn btn-outline-success">ویرایش</button>
                                             </form>
                                         </td>
@@ -115,7 +115,7 @@
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+<aside class="control-sidebar control-sidebar-dark"> </aside>
 
     </div>
 
