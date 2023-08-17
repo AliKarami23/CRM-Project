@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UsersController::class, 'panel'] )->name('home');
+Route::get('/', [UsersController::class, 'home'] )->name('home');
 
 Route::get('/header', [UsersController::class, 'header'] )->name('header');
 
@@ -29,7 +29,7 @@ Route::get('/singin', [UsersController::class, 'singin'] )->name('singin');
 //USERS
 Route::prefix('/panel')->group(function () {
 
-    Route::get('', [UsersController::class, 'home'] )->name('panel');
+    Route::get('', [UsersController::class, 'panel'] )->name('panel');
 
     Route::get('/adduser', [UsersController::class, 'adduser'] )->name('adduser');
 

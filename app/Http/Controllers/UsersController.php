@@ -16,18 +16,7 @@ class UsersController extends Controller
 {
     public function home()
     {
-        $orders = Order::count();
-        $users = user::count();
-        $products = Product::count();
-        $factors = Factor::count();
-
-
-        return view('layout.panel' , [
-            'users' => $users,
-            'products' => $products,
-            'orders' => $orders,
-            'factors' => $factors,
-        ]);
+        return redirect()->route('panel');
     }
 
     public function header()
@@ -40,7 +29,19 @@ class UsersController extends Controller
     }
     public function panel()
     {
-        return view('layout.panel');
+        $orders = Order::count();
+        $users = user::count();
+        $products = Product::count();
+        $factors = Factor::count();
+
+
+        return view('layout.panel' , [
+            'users' => $users,
+            'products' => $products,
+            'orders' => $orders,
+            'factors' => $factors,
+        ]);
+
     }
 
     public function singin()
