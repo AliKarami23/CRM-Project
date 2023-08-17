@@ -66,14 +66,18 @@ Route::prefix('/panel')->group(function () {
   Route::get('/edit/{id}' , [OrderController::class , 'show_edit_order'])->name('show_edit_order');
   Route::put('/edit/{id}' , [OrderController::class , 'edit'])->name('edit');
   Route::delete('/delete/{id}' , [OrderController::class , 'delete'])->name('delete');
+
+
+
+
 });
 
 //PRODUCTS
 Route::prefix('/panel')->group(function(){
 
-    Route::get('/Newproduct' , [ProductController::class , 'Newproduct']);
+    Route::get('/Newproduct' , [ProductController::class , 'Newproduct'])->name('Newproduct');
     Route::post('Newproduct' ,[ProductController::class , 'add_product'])->name('add_product');
-    Route::get('/productsList' , [ProductController::class , 'productsList']);
+    Route::get('/productsList' , [ProductController::class , 'productsList'])->name('productsList');
 
 });
 

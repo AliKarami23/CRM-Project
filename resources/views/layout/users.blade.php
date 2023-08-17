@@ -106,7 +106,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phonenumber }}</td>
                                     <td>
-                                        <a href="{{ route('deleteduser', ['id' => $user->id]) }}" class="btn btn-danger">حذف</a>
+                                        <a href="{{ route('deleteduser', ['id' => $user->id]) }}" class="btn btn-danger" onclick="confirm('مطمئن هستید؟')">حذف</a>
                                         <a href="{{ route('edituser', ['id' => $user->id]) }}" class="btn btn-primary">ویرایش</a>
                                     </td>
                                 </tr>
