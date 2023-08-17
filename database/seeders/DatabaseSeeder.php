@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $product = Product::factory()->count(12)->create();
         User::factory()->count(10)
-            ->has(Order::factory()->count(5))
-            ->create();
-        Product::factory()->count(12)->create();
+                ->has(Order::factory()->count(5)
+                ->hasAttached($product->skip(0)->take(3)))
+                ->create();
     }
 
 
