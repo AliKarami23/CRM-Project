@@ -80,7 +80,7 @@
                                 @foreach($oppos as $oppo)
                                     <tr>
                                         <td><div style="margin-right: 15px">{{$oppo->id}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$oppo->user_id}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$oppo->customer_id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$oppo->product_id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$oppo->number}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$oppo->total_price}}</div></td>

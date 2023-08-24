@@ -51,7 +51,7 @@ class OpportunityController extends Controller
 
     public function edit_oppo($id){
         $valid = request()->validate([
-            'user_id'=>'required' ,
+            'customer_id'=>'required' ,
             'category'=>'required' ,
             'product_id'=>'required' ,
             'number'=>'required' ,
@@ -62,7 +62,7 @@ class OpportunityController extends Controller
 
         $insert = Opportunity::findOrFail($id);
         $insert->update([
-        $insert->user_id = request('user_id'),
+        $insert->customer_id = request('customer_id'),
         $insert->category= request('category'),
         $insert->product_id = request('product_id'),
         $insert->number = request('number'),

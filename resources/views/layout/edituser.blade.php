@@ -58,77 +58,77 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="{{route('edited_user',['id' => $users->id])}}" method="POST">
+                            <form role="form" action="{{route('edited_customer',['id' => $customers->id])}}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">نام</label>
-                                        <input name="name" type="text" class="form-control" value="{{$users->name}}" placeholder="  نام را وارد کنید">
+                                        <input name="name" type="text" class="form-control" value="{{$customers->name}}" placeholder="  نام را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">نام خانوادگی</label>
-                                        <input name="fname" type="text" class="form-control" value="{{$users->fname}}" placeholder="نام خانوادگی را وارد کنید">
+                                        <input name="fname" type="text" class="form-control" value="{{$customers->fname}}" placeholder="نام خانوادگی را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">نام پدر</label>
-                                        <input name="dadname" type="text" class="form-control" value="{{$users->dadname}}" placeholder="نام پدر را وارد کنید">
+                                        <input name="dadname" type="text" class="form-control" value="{{$customers->dadname}}" placeholder="نام پدر را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">آدرس ایمیل</label>
-                                        <input name="email" type="email" class="form-control" value="{{$users->email}}" placeholder="ایمیل را وارد کنید">
+                                        <input name="email" type="email" class="form-control" value="{{$customers->email}}" placeholder="ایمیل را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">شماره تماس</label>
-                                        <input name="phonenumber" type="number" class="form-control" value="{{$users->phonenumber}}" placeholder="شماره تماس را وارد کنید">
+                                        <input name="phonenumber" type="number" class="form-control" value="{{$customers->phonenumber}}" placeholder="شماره تماس را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">کشور</label>
-                                        <input name="country" type="text" class="form-control" value="{{$users->country}}" placeholder="کشور را وارد کنید">
+                                        <input name="country" type="text" class="form-control" value="{{$customers->country}}" placeholder="کشور را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">شهر</label>
-                                        <input name="City" type="text" class="form-control" value="{{$users->City}}" placeholder="شهر را وارد کنید">
+                                        <input name="City" type="text" class="form-control" value="{{$customers->City}}" placeholder="شهر را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label>آدرس</label>
-                                        <textarea name="Address" class="form-control" rows="3" placeholder="آدرس را کامل وارد کنید">{{$users->Address}}</textarea>
+                                        <textarea name="Address" class="form-control" rows="3" placeholder="آدرس را کامل وارد کنید">{{$customers->Address}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>جنسیت</label>
                                         <select name="gender" class="form-control">
-                                            <option {{$users->gender == 'مرد'?'selected':''}}>مرد</option>
-                                            <option {{$users->gender == 'زن'?'selected':''}}>زن</option>
+                                            <option {{$customers->gender == 'مرد'?'selected':''}}>مرد</option>
+                                            <option {{$customers->gender == 'زن'?'selected':''}}>زن</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">کد ملی</label>
-                                        <input name="nationalcode"  type="number" class="form-control" value="{{$users->nationalcode}}" placeholder="کد ملی را وارد کنید">
+                                        <input name="nationalcode"  type="number" class="form-control" value="{{$customers->nationalcode}}" placeholder="کد ملی را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">شغل</label>
-                                        <input name="job" type="text" class="form-control" value="{{$users->job}}" placeholder=" شغل را وارد کنید">
+                                        <input name="job" type="text" class="form-control" value="{{$customers->job}}" placeholder=" شغل را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="imageUpload">آپلود عکس</label>
-                                        <input name="image" type="text" class="form-control" value="{{$users->image}}" placeholder="لینک عکس مورد نظر را وارد کنید">
+                                        <input name="image" type="text" class="form-control" value="{{$customers->image}}" placeholder="لینک عکس مورد نظر را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label>تحصیلات</label>
                                         <select name="education" class="form-control">
-                                            <option {{$users->education == 'زیر دیپلم'?'selected':''}}>زیر دیپلم</option>
-                                            <option {{$users->education == 'دیپلم'?'selected':''}}>دیپلم</option>
-                                            <option {{$users->education == 'کارشناسی'?'selected':''}}>کارشناسی</option>
-                                            <option {{$users->education == 'کارشناسی ارشد'?'selected':''}}>کارشناسی ارشد</option>
-                                            <option {{$users->education == 'دکترا'?'selected':''}}>دکترا</option>
+                                            <option {{$customers->education == 'زیر دیپلم'?'selected':''}}>زیر دیپلم</option>
+                                            <option {{$customers->education == 'دیپلم'?'selected':''}}>دیپلم</option>
+                                            <option {{$customers->education == 'کارشناسی'?'selected':''}}>کارشناسی</option>
+                                            <option {{$customers->education == 'کارشناسی ارشد'?'selected':''}}>کارشناسی ارشد</option>
+                                            <option {{$customers->education == 'دکترا'?'selected':''}}>دکترا</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">شهر محل تحصیل</label>
-                                        <input name="cityofeducation" type="text" class="form-control" value="{{$users->cityofeducation}}" placeholder="شهر محل تحصیل را وارد کنید">
+                                        <input name="cityofeducation" type="text" class="form-control" value="{{$customers->cityofeducation}}" placeholder="شهر محل تحصیل را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">رمز عبور</label>
-                                        <input name="password" type="password" class="form-control" value="{{$users->password}}" placeholder="رمز را وارد کنید">
+                                        <input name="password" type="password" class="form-control" value="{{$customers->password}}" placeholder="رمز را وارد کنید">
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">

@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function add_order(){
 
         $valid = request()->validate([
-            'product_id'=>'required' ,
             'price'=>'required' ,
             'description'=>'required' ,
-            'user_id'=>'required' ,
+            'customer_id'=>'required' ,
 
         ]);
 
         $insert = new Order();
-        $insert->product_id = request('product_id');
         $insert->price = request('price');
         $insert->description = request('description');
-        $insert->user_id = request('user_id');
+        $insert->customer_id = request('customer_id');
         $insert->save();
 
 
@@ -39,9 +35,9 @@ class OrderController extends Controller
 
     public function Neworder()
     {
-        $users = User::select('id','name','fname')->get();
+        $customers = Customer::select('id','name','fname')->get();
         $Products = Product::select('id','product_name')->get();
-        return view('layout.Neworder',compact('users', 'Products'));
+        return view('layout.Neworder',compact('customers', 'Products'));
     }
 
     public function show_edit_order($id){
@@ -53,18 +49,16 @@ class OrderController extends Controller
     public  function  edit($id) {
 
         $valid = request()->validate([
-            'product_id'=>'required' ,
             'price'=>'required' ,
             'description'=>'required' ,
-            'user_id'=>'required' ,
+            'customer_id'=>'required' ,
         ]);
 
         $order = Order::findOrFail($id);
         $order->update([
-            $order->product_id = request('product_id'),
             $order->price = request('price'),
             $order->description = request('description'),
-            $order->user_id = request('user_id'),
+            $order->customer_id = request('customer_id'),
             $order->save()
         ]);
 

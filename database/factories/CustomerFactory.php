@@ -7,10 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Ybazli\Faker\Facades\Faker;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
-class UserFactory extends Factory
+class CustomerFactory extends Factory
 {
     /**
      * Define the model's default state.

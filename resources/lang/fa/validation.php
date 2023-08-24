@@ -178,7 +178,6 @@ return [
         'price'                 => 'قیمت' ,
         'user_id'                 => 'خریدار' ,
         'status'                =>'وضعیت' ,
-        'product_id'            =>'شماره محصول' ,
         'category'              =>'دسته بندی' ,
         'color'                 => 'رنگ',
         'number'                =>'تعداد',

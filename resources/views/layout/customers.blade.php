@@ -53,7 +53,7 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="d-flex flex-wrap justify-content-center">
-                            <form action="{{ route('users') }}" class="d-flex flex-wrap col-md-8 mt-100 mb-200 m-auto" method="GET">
+                            <form action="{{ route('customers') }}" class="d-flex flex-wrap col-md-8 mt-100 mb-200 m-auto" method="GET">
                                 <div class="form-group col-md-3">
                                     <label for="name">نام</label>
                                     <input name="name" type="text" class="form-control" placeholder="نام">
@@ -98,23 +98,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $index => $user)
+                            @foreach($customers as $index => $customer)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->fname }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phonenumber }}</td>
+                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->fname }}</td>
+                                    <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->phonenumber }}</td>
                                     <td>
-                                        <a href="{{ route('deleteduser', ['id' => $user->id]) }}" class="btn btn-danger" onclick="confirm('مطمئن هستید؟')">حذف</a>
-                                        <a href="{{ route('edituser', ['id' => $user->id]) }}" class="btn btn-primary">ویرایش</a>
+                                        <a href="{{ route('deletedcustomer', ['id' => $customer->id]) }}" class="btn btn-danger" onclick="confirm('مطمئن هستید؟')">حذف</a>
+                                        <a href="{{ route('editcustomer', ['id' => $customer->id]) }}" class="btn btn-primary">ویرایش</a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                         <div class="pagination-container d-flex justify-content-center mt-4">
-                            {{ $users->links() }}
+                            {{ $customers->links() }}
                         </div>
                     </div>
                 </div>

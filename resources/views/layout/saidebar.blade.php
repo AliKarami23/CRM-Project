@@ -1,5 +1,3 @@
-
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-dark-info" style="min-height: 689.2px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link bg-success">
@@ -15,7 +13,11 @@
 
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">حسام موسوی</a>
+                    <a href="#" class="d-block">
+                        @if(auth()->check())
+                            <p>{{ auth()->user()->fullname }}</p>
+                        @endif
+                    </a>
                 </div>
             </div>
 
@@ -26,21 +28,21 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-pie-chart"></i>
                             <p>
-                                کاربران
+                                مشتریان
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('adduser') }}" class="nav-link">
+                                <a href="{{ route('addcustomer') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>کاربر جدید </p>
+                                    <p>مشتری جدید </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('users')  }}" class="nav-link">
+                                <a href="{{ route('customers')  }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>لیست کاربران </p>
+                                    <p>لیست مشتریان </p>
                                 </a>
                             </li>
                         </ul>

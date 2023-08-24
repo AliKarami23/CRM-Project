@@ -128,19 +128,26 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-dark-info" style="min-height: 689.2px;">
         <!-- Brand Logo -->
-        <a href="#" class="brand-link">
+        <a href="#" class="brand-link bg-success">
+
             <span class="brand-text font-weight-light">پنل مدیریت</span>
         </a>
 
-        <!-- Sidebar -->
         <div class="sidebar" style="direction: ltr">
             <div style="direction: rtl">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+
+                    </div>
                     <div class="info">
-                        <a href="#" class="d-block">حسام موسوی</a>
+                        <a href="#" class="d-block">
+                            @if(auth()->check())
+                                <p>{{ auth()->user()->fullname }}</p>
+                            @endif
+                        </a>
                     </div>
                 </div>
 
@@ -151,21 +158,21 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-pie-chart"></i>
                                 <p>
-                                    کاربران
+                                    مشتریان
                                     <i class="right fa fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="panel/adduser" class="nav-link">
+                                    <a href="{{ route('addcustomer') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>کاربر جدید </p>
+                                        <p>مشتری جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="panel/users" class="nav-link">
+                                    <a href="{{ route('customers')  }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>لیست کاربران </p>
+                                        <p>لیست مشتریان </p>
                                     </a>
                                 </li>
                             </ul>
@@ -180,13 +187,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="panel/Newproduct" class="nav-link">
+                                    <a href="{{ route('Newproduct') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>محصول جدید</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="panel/productsList" class="nav-link">
+                                    <a href="{{ route('productsList') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست محصولات</p>
                                     </a>
@@ -203,13 +210,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="panel/Neworder" class="nav-link">
+                                    <a href="{{ route('Neworder') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>سفارش جدید </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="panel/Listoforders" class="nav-link">
+                                    <a href="{{ route('listorders') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست سفارشات</p>
                                     </a>
@@ -303,7 +310,6 @@
                 <!-- /.sidebar-menu -->
             </div>
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -356,14 +362,14 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>{{$users}}</h3>
+                                <h3>{{$customers}}</h3>
 
                                 <p>کاربران ثبت شده</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="panel/users" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

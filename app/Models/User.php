@@ -7,36 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'created_at',
-        'updated_at',
-        'name',
-        'fname',
-        'dadname',
+        'fullname',
         'email',
         'phonenumber',
-        'country',
-        'City',
-        'Address',
-        'gender',
-        'nationalcode',
-        'job',
-        'image',
-        'education',
-        'cityofeducation',
-        'password',
+        'password'
     ];
 
-    public function orders(): HasMany
+    public function Customers(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Customer::class);
     }
-
 
 }

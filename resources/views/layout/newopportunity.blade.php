@@ -65,7 +65,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="user_id" type="text" class="form-control" placeholder="ای دی خریدار را وارد کنید">
+                                        <input name="customer_id" type="text" class="form-control" placeholder="ای دی خریدار را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">دسته بندی</label>

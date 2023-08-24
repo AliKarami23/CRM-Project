@@ -81,7 +81,7 @@
                                         <td><div style="margin-right: 15px">{{$order->id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->product_id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->price}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$order->user_id}}</div></td>
+                                        <td><div style="margin-bottom: 15px">{{$order->customer_id}}</div></td>
                                         <td><div style="margin-bottom: 15px">{{$order->description}}</div></td>
                                         <td>
                                             <form action="/panel/delete/{{$order->id}}" method="post">

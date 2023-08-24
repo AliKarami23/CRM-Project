@@ -2,15 +2,15 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <b>ثبت نام</b>
+        <b>ورود به پنل</b>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">فرم را کامل کنید و بر روی ثبت نام کلیک کنید</p>
-            <form action="{{ route('singin') }}" method="post">
+            <p class="login-box-msg">فرم را کامل کنید و بر روی ورود کلیک کنید</p>
+            <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" name="fullname" class="form-control" placeholder="نام و نام خانوادگی">
+                    <input type="text" name="fullname" class="form-control" placeholder="نام">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                     </div>
@@ -24,21 +24,7 @@
                 </div>
                 <br>
                 <div class="input-group mb-3">
-                    <input type="text" name="phonenumber" class="form-control" placeholder="شماره موبایل">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                    </div>
-                </div>
-                <br>
-                <div class="input-group mb-3">
                     <input type="password" name="password" class="form-control" placeholder="رمز عبور">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    </div>
-                </div>
-                <br>
-                <div class="input-group mb-3">
-                    <input type="password" name="confirm" class="form-control" placeholder="تکرار رمز عبور">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fa fa-lock"></i></span>
                     </div>
@@ -46,11 +32,12 @@
                 <br>
                 <div class="row">
                     <div class="mt-3 col-6">
-                        <button type="submit" class="btn btn-primary btn-block">ثبت نام</button>
+                        <button type="submit" class="btn btn-primary btn-block">ورود</button>
+
                     </div>
                     <div class="col-6">
                         <p class="mt-3 text-center">
-                            <a href="{{ route('login') }}" class="btn btn-success btn-block">حساب کاربری دارم</a>
+                            <a href="{{ route('singin') }}" class="btn btn-success btn-block">ثبت نام نکرده ام</a>
                         </p>
                     </div>
                 </div>
@@ -81,8 +68,8 @@
     $(function () {
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
-            radioClass   : 'iradio_square-blue',
-            increaseArea : '20%' // optional
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
         })
     })
 </script>

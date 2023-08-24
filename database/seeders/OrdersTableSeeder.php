@@ -13,6 +13,7 @@ class OrdersTableSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
+
     {
         $faker = \Faker\Factory::create();
         foreach (range(1,50) as $item){
@@ -29,3 +30,4 @@ class OrdersTableSeeder extends Seeder
 
     }
 }
+

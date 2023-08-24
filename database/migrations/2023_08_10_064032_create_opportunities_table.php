@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('opportunities', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->string('customer_id');
             $table->string('category');
             $table->text('product_id');
             $table->string('number');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_opportunities');
+        Schema::dropIfExists('opportunities');
     }
 };

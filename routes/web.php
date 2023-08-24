@@ -4,6 +4,8 @@ use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,65 +19,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UsersController::class, 'home'] )->name('home');
-
-Route::get('/header', [UsersController::class, 'header'] )->name('header');
-
-Route::get('/footer', [UsersController::class, 'footer'] )->name('footer');
-
-Route::get('/singin', [UsersController::class, 'singin'] )->name('singin');
+Route::get('/', [LoginController::class, 'home'] )->name('home');
+Route::get('/singin', [LoginController::class, 'showsingin'] )->name('showsingin');
+Route::get('/login', [LoginController::class, 'showlogin'] )->name('showlogin');
+Route::post('/singin', [UsersController::class, 'singin'] )->name('singin');
+Route::post('/login', [LoginController::class, 'login'] )->name('login');
 
 
-//USERS
+
+
 Route::prefix('/panel')->group(function () {
-
-    Route::get('', [UsersController::class, 'panel'] )->name('panel');
-
-    Route::get('/adduser', [UsersController::class, 'adduser'] )->name('adduser');
-
-    Route::get('/users', [UsersController::class, 'users'] )->name('users');
-
-    Route::get('/edituser/{id}', [UsersController::class, 'edituser'])->name('edituser');
-
-    Route::get('/deleteduser/{id}', [UsersController::class, 'deleteduser'])->name('deleteduser');
-
-    Route::get('/deleteduser/{id}/panel', [UsersController::class, 'deleteduser'] )->name('deleteduser');
-
-    Route::post('/users/edituser/{id}', [UsersController::class, 'edited_user'] )->name('edited_user');
+    //CUSTOMERS
+    Route::get('', [CustomerController::class, 'panel'] )->name('panel');
+    Route::get('/addcustomer', [CustomerController::class, 'addcustomer'] )->name('addcustomer');
+    Route::get('/customers', [CustomerController::class, 'customers'] )->name('customers');
+    Route::get('/editcustomer/{id}', [CustomerController::class, 'editcustomer'])->name('editcustomer');
+    Route::get('/deletedcustomer/{id}', [CustomerController::class, 'deletedcustomer'])->name('deletedcustomer');
+    Route::get('/deletedcustomer/{id}/panel', [CustomerController::class, 'deletedcustomer'] )->name('deletedcustomer');
+    Route::post('/customers/editcustomer/{id}', [CustomerController::class, 'edited_customer'] )->name('edited_customer');
+    Route::post('/layout/customers', [CustomerController::class, 'store'])->name('store');
 
 
 
 
 
-});
-
-Route::post('/layout/users', [UsersController::class, 'store'])->name('store');
-
-//ORDERS
-Route::prefix('/panel')->group(function () {
-
-  Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('Neworder');
-  Route::post('Neworder', [OrderController::class, 'add_order'])->name('add_order');
-  Route::get('/Listoforders' , [OrderController::class , 'listorders'])->name('listorders');
-  Route::get('/edit/{id}' , [OrderController::class , 'show_edit_order'])->name('show_edit_order');
-  Route::put('/edit/{id}' , [OrderController::class , 'edit'])->name('edit');
-  Route::delete('/delete/{id}' , [OrderController::class , 'delete'])->name('delete');
+    //ORDERS
+    Route::get('/Neworder', [OrderController::class, 'Neworder'])->name('Neworder');
+    Route::post('Neworder', [OrderController::class, 'add_order'])->name('add_order');
+    Route::get('/Listoforders' , [OrderController::class , 'listorders'])->name('listorders');
+    Route::get('/edit/{id}' , [OrderController::class , 'show_edit_order'])->name('show_edit_order');
+    Route::put('/edit/{id}' , [OrderController::class , 'edit'])->name('edit');
+    Route::delete('/delete/{id}' , [OrderController::class , 'delete'])->name('delete');
 
 
 
 
-});
 
-//PRODUCTS
-Route::prefix('/panel')->group(function(){
-
+    //PRODUCTS
     Route::get('/Newproduct' , [ProductController::class , 'Newproduct'])->name('Newproduct');
     Route::post('Newproduct' ,[ProductController::class , 'add_product'])->name('add_product');
     Route::get('/productsList' , [ProductController::class , 'productsList'])->name('productsList');
 
-});
 
-Route::prefix('/panel')->group(function (){
+
+
 
     Route::get('/newopportunity' , [OpportunityController::class , 'Newopportunity']);
     Route::post('Newopportunity' ,[OpportunityController::class , 'add_opportunity'])->name('add_opportunity');
@@ -83,5 +70,8 @@ Route::prefix('/panel')->group(function (){
     Route::get('/edit/oppo/{id}' , [OpportunityController::class , 'show_edit_oppo'])->name('show_edit_oppo');
     Route::put('/edit/oppo/{id}' , [OpportunityController::class , 'edit_oppo'])->name('edit_oppo');
     Route::delete('/delete/oppo/{id}' , [OpportunityController::class , 'delete'])->name('delete_oppo');
-});
+})->middleware(['auth']);
+
+
+
 

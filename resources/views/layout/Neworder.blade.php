@@ -65,15 +65,15 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>سفارش دهنده</label>
-                                        <select name="user_id" class="form-control">
-                                            @foreach($users as $user)
-                                                <option value="{{$user->id}}">{{'['.$user->id.'] '.$user->name . ' ' . $user->fname}}</option>
+                                        <select name="customer_id" class="form-control">
+                                            @foreach($customers as $customer)
+                                                <option value="{{$customer->id}}">{{'['.$customer->id.'] '.$customer->name . ' ' . $customer->fname}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>محصول</label>
-                                        <select name="user_id" class="form-control">
+                                        <select name="customer_id" class="form-control">
                                             @foreach($Products as $Product)
                                                 <option value="{{$Product->id}}">{{'['.$Product->id.'] '.$Product->product_name}}</option>
                                             @endforeach
