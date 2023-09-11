@@ -43,7 +43,9 @@ class OrderController extends Controller
     public function show_edit_order($id){
 
         $order = Order::findOrFail($id);
-        return view('layout.Editorder', ['order'=>$order]);
+        $customer = Customer::all();
+        $product = Product::all();
+        return view('layout.Editorder', compact('order','customer','product'));
     }
 
     public  function  edit($id) {

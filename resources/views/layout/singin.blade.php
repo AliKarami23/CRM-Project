@@ -37,13 +37,6 @@
                     </div>
                 </div>
                 <br>
-                <div class="input-group mb-3">
-                    <input type="password" name="confirm" class="form-control" placeholder="تکرار رمز عبور">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    </div>
-                </div>
-                <br>
                 <div class="row">
                     <div class="mt-3 col-6">
                         <button type="submit" class="btn btn-primary btn-block">ثبت نام</button>

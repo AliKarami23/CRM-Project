@@ -19,18 +19,16 @@ class UsersController extends Controller
 
 
         $credentials = $request->validate([
-            'fullname' => ['required'],
-            'email' => ['required', 'email'],
             'phonenumber' => ['required'],
             'password' => ['required'],
         ]);
 
+        $user = User::create($request->merge([
+            "password"=>Hash::make($request->password)
+        ])->except('_token'));
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            User::create($request->merge([
-                "password"=>Hash::make($request->password)
-            ])->except('_token'));
             return redirect()->intended('panel');
         }
         else{
@@ -38,6 +36,13 @@ class UsersController extends Controller
                 'email' => 'اطلاعات اشتباه می باشد'
             ]);
         }
+
+    }
+
+    public function logout(){
+
+        auth()->logout();
+        return redirect()->route('home');
 
     }
 

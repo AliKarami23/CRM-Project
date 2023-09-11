@@ -28,11 +28,12 @@ Route::post('/login', [LoginController::class, 'login'] )->name('login');
 
 
 
-Route::prefix('/panel')->group(function () {
+Route::group(['prefix'=>'panel','middleware'=>['auth']],function () {
     //CUSTOMERS
     Route::get('', [CustomerController::class, 'panel'] )->name('panel');
     Route::get('/addcustomer', [CustomerController::class, 'addcustomer'] )->name('addcustomer');
     Route::get('/customers', [CustomerController::class, 'customers'] )->name('customers');
+    Route::get('/logout', [UsersController::class, 'logout'] )->name('logout');
     Route::get('/editcustomer/{id}', [CustomerController::class, 'editcustomer'])->name('editcustomer');
     Route::get('/deletedcustomer/{id}', [CustomerController::class, 'deletedcustomer'])->name('deletedcustomer');
     Route::get('/deletedcustomer/{id}/panel', [CustomerController::class, 'deletedcustomer'] )->name('deletedcustomer');
@@ -70,7 +71,9 @@ Route::prefix('/panel')->group(function () {
     Route::get('/edit/oppo/{id}' , [OpportunityController::class , 'show_edit_oppo'])->name('show_edit_oppo');
     Route::put('/edit/oppo/{id}' , [OpportunityController::class , 'edit_oppo'])->name('edit_oppo');
     Route::delete('/delete/oppo/{id}' , [OpportunityController::class , 'delete'])->name('delete_oppo');
-})->middleware(['auth']);
+
+
+});
 
 
 
