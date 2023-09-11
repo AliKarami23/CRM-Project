@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
@@ -33,14 +33,15 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fa fa-th-large"></i></a>
             </li>
         </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
     <br>
     <br>
     <!-- Content Wrapper. Contains page content -->
@@ -64,20 +65,23 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">شماره محصول</label>
-                                        <input name="product_id" type="text" class="form-control" value="{{$order->product_id}}">
+                                        <input name="product_id" type="text" class="form-control"
+                                               value="{{$order->product_id}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">  قیمت </label>
+                                        <label for="exampleInputPassword1"> قیمت </label>
                                         <input name="price" type="text" class="form-control" value="{{$order->price}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> توضیحات</label>
-                                        <input name="description" type="text" class="form-control" value="{{$order->description}}">
+                                        <input name="description" type="text" class="form-control"
+                                               value="{{$order->description}}">
 
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="user_id" type="text" class="form-control" value="{{$order->user_id}}">
+                                        <input name="user_id" type="text" class="form-control"
+                                               value="{{$order->user_id}}">
                                     </div>
 
                                 </div>
@@ -90,8 +94,8 @@
                         </div>
 
 
-
-                    </div> <div class=" aler alert-danger">
+                    </div>
+                    <div class=" aler alert-danger">
                         @if($errors->any())
                             <ui>
                                 @foreach($errors->all() as $error)
@@ -107,8 +111,6 @@
 </section>
 
 
-
-
 <footer class="main-footer">
     <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
 </footer>
@@ -119,8 +121,7 @@
     </div>
 
 
-
-    @include('layout.js');
+    @include('layout.CssAndJs.js');
 
 </body>
 </html>

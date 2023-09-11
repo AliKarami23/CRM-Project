@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
@@ -56,7 +56,7 @@
 </div>
 
 <!-- /.register-box -->
-@include('layout.js');
+@include('layout.CssAndJs.js');
 
 <!-- jQuery -->
 <script src="{{asset('css/plugins/jquery/jquery.min.js')}}"></script>

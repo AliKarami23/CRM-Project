@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
@@ -62,7 +62,7 @@
 </div>
 
 <!-- /.register-box -->
-@include('layout.js');
+@include('layout.CssAndJs.js');
 
 <!-- jQuery -->
 <script src="{{asset('css/plugins/jquery/jquery.min.js')}}"></script>
@@ -74,8 +74,8 @@
     $(function () {
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
-            radioClass   : 'iradio_square-blue',
-            increaseArea : '20%' // optional
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
         })
     })
 </script>

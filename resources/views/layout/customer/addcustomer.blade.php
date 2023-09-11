@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
@@ -41,7 +41,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
     <br>
     <br>
     <!-- Content Wrapper. Contains page content -->
@@ -54,11 +54,7 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card shadow">
-
                                 <div class="card-header bg-primary text-white">{{ __('اضافه کردن کاربر جدید') }}</div>
-
-                                <!-- /.card-header -->
-                                <!-- form start -->
                                 <form role="form" action="{{ route('store') }}" method="POST">
                                     @csrf
                                     <div class="card-body">
@@ -187,7 +183,7 @@
 </div>
 
 
-@include('layout.js');
+@include('layout.CssAndJs.js');
 
 </body>
 </html>

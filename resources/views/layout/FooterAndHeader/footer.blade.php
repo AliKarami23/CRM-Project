@@ -1,7 +1,6 @@
-
-@include('layout.css');
+@include('layout.CssAndJs.css');
 <footer class="main-footer">
     <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
 </footer>
-@include('layout.js');
+@include('layout.CssAndJs.js');
 

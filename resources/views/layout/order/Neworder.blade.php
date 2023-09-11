@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
@@ -33,17 +33,15 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fa fa-th-large"></i></a>
             </li>
         </ul>
     </nav>
-</div>
-
-
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
     <br>
     <br>
     <!-- Content Wrapper. Contains page content -->
@@ -57,58 +55,63 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"> کاربران</h3>
+                                <h3 class="card-title"> سفارش جدید</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="{{ route('add_product')}}" method="POST">
+
+
+                            <form role="form" action="{{ route('add_order') }}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">عنوان محصول</label>
-                                        <input name="product_name" type="text" class="form-control" id="productname" placeholder="عنوان محصول را وارد کنید">
+                                        <label>سفارش دهنده</label>
+                                        <select name="customer_id" class="form-control">
+                                            @foreach($customers as $customer)
+                                                <option
+                                                    value="{{$customer->id}}">{{'['.$customer->id.'] '.$customer->name . ' ' . $customer->fname}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>توضیحات</label>
-                                        <textarea name="Description" class="form-control" rows="3" placeholder="توضیحات محصول را وارد کنید"></textarea>
+                                        <label>محصول</label>
+                                        <select name="customer_id" class="form-control">
+                                            @foreach($Products as $Product)
+                                                <option
+                                                    value="{{$Product->id}}">{{'['.$Product->id.'] '.$Product->product_name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">دسته بندی</label>
-                                        <input name="Category" type="text" class="form-control" id="Category" placeholder="دسته بندی را وارد کنید">
+                                        <label for="exampleInputPassword1"> قیمت </label>
+                                        <input name="price" type="text" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">قیمت</label>
-                                        <input name="Price" type="text" class="form-control" id="Price" placeholder="قیمت را وارد کنید">
+                                        <label for="exampleInputPassword1"> توضیحات</label>
+                                        <input name="description" type="text" class="form-control"
+                                               id="exampleInputPassword1">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">موجودی</label>
-                                        <input name="inventory" type="number" class="form-control" id="inventory" placeholder="تعداد محصول را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">رنگ</label>
-                                        <input name="color" type="text" class="form-control" id="color" placeholder="رنگ محصول را وارد کنید">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="imageUpload">تصویر محصول</label>
-                                        <input name="image" type="text" class="form-control" id="imageUpload" placeholder="لینک تصویر مورد نظر را وارد کنید">
-                                    </div>
-
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">ثبت محصول</button>
                                 </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">ثبت</button>
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card -->
-
-                        <!-- Form Element sizes -->
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
-</section>
-
-
+        </section>
+    </div>
+</div>
 
 
 <footer class="main-footer">
@@ -116,9 +119,8 @@
 </footer>
 
 <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark"></aside>
+
+<aside class="control-sidebar control-sidebar-dark"></aside>
 
 
-
-
-    @include('layout.js');
+@include('layout.CssAndJs.js');

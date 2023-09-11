@@ -14,8 +14,6 @@ use App\Http\Controllers\LoginController;
 Route::group(['prefix'=>'panel','middleware'=>['auth']],function () {
     Route::get('/addcustomer', [CustomerController::class, 'addcustomer'] )->name('addcustomer');
     Route::get('/editcustomer/{id}', [CustomerController::class, 'editcustomer'])->name('editcustomer');
-    Route::post('/customers/editcustomer/{id}', [CustomerController::class, 'edited_customer'] )->name('edited_customer');
-
 });
 
 Route::post('/singin', [UsersController::class, 'singin'] )->name('singin');

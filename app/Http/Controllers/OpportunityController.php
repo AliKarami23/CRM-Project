@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class OpportunityController extends Controller
 {
     public function Newopportunity(){
-        return view('layout.newopportunity');
+        return view('layout.opportunity.newopportunity');
     }
 
     public function add_opportunity(){
@@ -40,13 +40,13 @@ class OpportunityController extends Controller
     }
 
     public function listoppo(){
-          return view('layout.listopportunity' , ['oppos'=>Opportunity::all()]);
+          return view('layout.opportunity.listopportunity' , ['oppos'=>Opportunity::all()]);
     }
 
     public function show_edit_oppo($id){
 
         $oppo = Opportunity::findOrFail($id);
-        return view('layout.Editopportunity', ['oppos'=>$oppo]);
+        return view('layout.opportunity.Editopportunity', ['oppos'=>$oppo]);
     }
 
     public function edit_oppo($id){

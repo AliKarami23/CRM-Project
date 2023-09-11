@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
@@ -33,14 +33,15 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fa fa-th-large"></i></a>
             </li>
         </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
@@ -64,36 +65,60 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"> فرصت ها</h3>
+                                <h3 class="card-title"> سفارشات</h3>
                             </div>
                             <table style="width:100%">
                                 <tr>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">آی دی فرصت</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px"> آی دی خریدار</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px"> آی دی محصول</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">تعداد</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت کل</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">وضعیت</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-right: 15px;margin-top: 15px">آی دی
+                                            سفارش
+                                        </div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px"> آی دی محصول</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">قیمت</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">خریدار</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">توضیحات</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">حذف</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div>
+                                    </th>
                                 </tr>
-                                @foreach($oppos as $oppo)
+                                @foreach($orders as $order)
                                     <tr>
-                                        <td><div style="margin-right: 15px">{{$oppo->id}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$oppo->customer_id}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$oppo->product_id}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$oppo->number}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$oppo->total_price}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$oppo->status}}</div></td>
                                         <td>
-                                            <form action="/panel/delete/oppo/{{$oppo->id}}" method="post">
+                                            <div style="margin-right: 15px">{{$order->id}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$order->product_id}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$order->price}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$order->customer_id}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$order->description}}</div>
+                                        </td>
+                                        <td>
+                                            <form action="/panel/delete/{{$order->id}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-outline-warning">حذف</button>
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="/panel/edit/oppo/{{$oppo->id}}" method="get">
+                                            <form action="/panel/edit/{{$order->id}}" method="get">
                                                 <button class="btn btn-outline-success">ویرایش</button>
                                             </form>
                                         </td>
@@ -110,20 +135,17 @@
 </section>
 
 
-
-
 <footer class="main-footer">
     <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
+<aside class="control-sidebar control-sidebar-dark"></aside>
 
-    </div>
+</div>
 
 
-
-    @include('layout.js');
+@include('layout.CssAndJs.js');
 
 </body>
 </html>

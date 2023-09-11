@@ -30,14 +30,14 @@ class OrderController extends Controller
 
     public function listorders()
     {
-        return view('layout.Listoforders' , ['orders'=>Order::all()]);
+        return view('layout.order.Listoforders' , ['orders'=>Order::all()]);
     }
 
     public function Neworder()
     {
         $customers = Customer::select('id','name','fname')->get();
         $Products = Product::select('id','product_name')->get();
-        return view('layout.Neworder',compact('customers', 'Products'));
+        return view('layout.order.Neworder',compact('customers', 'Products'));
     }
 
     public function show_edit_order($id){
@@ -45,7 +45,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $customer = Customer::all();
         $product = Product::all();
-        return view('layout.Editorder', compact('order','customer','product'));
+        return view('layout.order.Editorder', compact('order','customer','product'));
     }
 
     public  function  edit($id) {

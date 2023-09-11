@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
@@ -33,14 +33,15 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fa fa-th-large"></i></a>
             </li>
         </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
@@ -68,21 +69,45 @@
                             </div>
                             <table style="width:100%">
                                 <tr>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">شناسه محصول</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">نام محصول</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">دسته بندی</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">تعداد</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">قیمت</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">حذف</div></th>
-                                    <th style="color: red"><div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div></th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">شناسه محصول</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">نام محصول</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">دسته بندی</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">تعداد</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">قیمت</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">حذف</div>
+                                    </th>
+                                    <th style="color: red">
+                                        <div style="margin-bottom: 20px;margin-top: 15px">ویرایش</div>
+                                    </th>
                                 </tr>
                                 @foreach($products as $product)
                                     <tr>
-                                        <td><div style="margin-right: 15px">{{$product->id}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$product->product_name}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$product->Category}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$product->inventory}}</div></td>
-                                        <td><div style="margin-bottom: 15px">{{$product->Price}}</div></td>
+                                        <td>
+                                            <div style="margin-right: 15px">{{$product->id}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$product->product_name}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$product->Category}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$product->inventory}}</div>
+                                        </td>
+                                        <td>
+                                            <div style="margin-bottom: 15px">{{$product->Price}}</div>
+                                        </td>
                                         <td>
                                             <form action="/panel/delete/product/{{$product->id}}" method="post">
                                                 @csrf
@@ -108,20 +133,18 @@
 </section>
 
 
-
-
 <footer class="main-footer">
     <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
 </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark"></aside>>
+<aside class="control-sidebar control-sidebar-dark"></aside>
+>
 
-    </div>
+</div>
 
 
-
-    @include('layout.js');
+@include('layout.CssAndJs.js');
 
 </body>
 </html>

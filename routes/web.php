@@ -35,6 +35,7 @@ Route::group(['prefix'=>'panel','middleware'=>['auth']],function () {
     Route::get('/customers', [CustomerController::class, 'customers'] )->name('customers');
     Route::get('/logout', [UsersController::class, 'logout'] )->name('logout');
     Route::get('/editcustomer/{id}', [CustomerController::class, 'editcustomer'])->name('editcustomer');
+    Route::post('/customers/editcustomer/{id}', [CustomerController::class, 'edited_customer'] )->name('edited_customer');
     Route::get('/deletedcustomer/{id}', [CustomerController::class, 'deletedcustomer'])->name('deletedcustomer');
     Route::get('/deletedcustomer/{id}/panel', [CustomerController::class, 'deletedcustomer'] )->name('deletedcustomer');
     Route::post('/customers/editcustomer/{id}', [CustomerController::class, 'edited_customer'] )->name('edited_customer');

@@ -1,4 +1,4 @@
-@include('layout.css')
+@include('layout.CssAndJs.css')
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
 <div class="wrapper">
@@ -32,14 +32,15 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fa fa-th-large"></i></a>
             </li>
         </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper" style="min-height: 689.2px;">
@@ -53,7 +54,8 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="d-flex flex-wrap justify-content-center">
-                            <form action="{{ route('customers') }}" class="d-flex flex-wrap col-md-8 mt-100 mb-200 m-auto" method="GET">
+                            <form action="{{ route('customers') }}"
+                                  class="d-flex flex-wrap col-md-8 mt-100 mb-200 m-auto" method="GET">
                                 <div class="form-group col-md-3">
                                     <label for="name">نام</label>
                                     <input name="name" type="text" class="form-control" placeholder="نام">
@@ -106,8 +108,10 @@
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->phonenumber }}</td>
                                     <td>
-                                        <a href="{{ route('deletedcustomer', ['id' => $customer->id]) }}" class="btn btn-danger" onclick="confirm('مطمئن هستید؟')">حذف</a>
-                                        <a href="{{ route('editcustomer', ['id' => $customer->id]) }}" class="btn btn-primary">ویرایش</a>
+                                        <a href="{{ route('deletedcustomer', ['id' => $customer->id]) }}"
+                                           class="btn btn-danger" onclick="confirm('مطمئن هستید؟')">حذف</a>
+                                        <a href="{{ route('editcustomer', ['id' => $customer->id]) }}"
+                                           class="btn btn-primary">ویرایش</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -129,7 +133,7 @@
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark"></aside>
 
-@include('layout.js')
+@include('layout.CssAndJs.js')
 
 
 

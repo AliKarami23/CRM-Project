@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @include('layout.css');
+    @include('layout.CssAndJs.css');
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -153,7 +153,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-pie-chart"></i>
@@ -339,7 +340,8 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="/panel/Listoforders" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="/panel/Listoforders" class="small-box-footer">اطلاعات بیشتر <i
+                                    class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -354,7 +356,8 @@
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="/panel/productsList" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="/panel/productsList" class="small-box-footer">اطلاعات بیشتر <i
+                                    class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -369,7 +372,8 @@
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i
+                                    class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -384,7 +388,8 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                            <a href="#" class="small-box-footer">اطلاعات بیشتر <i
+                                    class="fa fa-arrow-circle-left"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -407,6 +412,6 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-@include('layout.js');
+@include('layout.CssAndJs.js');
 </body>
 </html>

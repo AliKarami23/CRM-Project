@@ -12,17 +12,17 @@ class LoginController extends Controller
 {
     public function showsingin()
     {
-        return view('layout.singin');
+        return view('layout.LoginAndSingin.singin');
     }
 
     public function showlogin()
     {
-        return view('layout.login');
+        return view('layout.LoginAndSingin.login');
     }
 
     public function home()
     {
-        return view('welcome');
+        return view('layout.welcome');
     }
 
     public function login(Request $request): RedirectResponse

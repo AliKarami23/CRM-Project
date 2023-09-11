@@ -35,7 +35,7 @@ class CustomerController extends Controller
 
     public function addcustomer()
     {
-        return view('layout.addcustomer');
+        return view('layout.customer.addcustomer');
     }
 
     public function customers(Request $request)
@@ -62,7 +62,7 @@ class CustomerController extends Controller
 
         $customers = $query->with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->paginate(10);
 
-        return view('layout.customers', compact('customers'));
+        return view('layout.customer.customers', compact('customers'));
     }
 
 
@@ -70,7 +70,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
 
-        return view('layout.editcustomer', ['customers' => $customer]);
+        return view('layout.customer.editcustomer', ['customers' => $customer]);
     }
 
 

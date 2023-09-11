@@ -1,4 +1,4 @@
-@include('layout.css');
+@include('layout.CssAndJs.css');
 
 
 <body class="sidebar-mini sidebar-open" style="height: auto;">
@@ -33,14 +33,15 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i class="fa fa-th-large"></i></a>
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fa fa-th-large"></i></a>
             </li>
         </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @include('layout.saidebar')
+    @include('layout.FooterAndHeader.saidebar')
     <br>
     <br>
     <!-- Content Wrapper. Contains page content -->
@@ -60,58 +61,74 @@
                             <!-- form start -->
 
 
-                            <form role="form" action="{{route('add_opportunity')}}" method="POST">
+                            <form role="form" action="/panel/edit/oppo/{{$oppos->id}}" method="POST">
                                 @csrf
+                                @method('put')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">خریدار </label>
-                                        <input name="customer_id" type="text" class="form-control" placeholder="ای دی خریدار را وارد کنید">
+                                        <input name="user_id" type="text" class="form-control"
+                                               placeholder="ای دی خریدار را وارد کنید"
+                                               value="{{$oppos->user_id}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">دسته بندی</label>
-                                        <input name="category" type="text" class="form-control" id="Category" placeholder="دسته بندی را وارد کنید">
+                                        <input name="category" type="text" class="form-control" id="Category"
+                                               placeholder="دسته بندی را وارد کنید"
+                                               value="{{$oppos->category}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1"> محصول</label>
-                                        <input name="product_id" type="text" class="form-control" placeholder="ای دی محصول را وارد کنید">
+                                        <input name="product_id" type="text" class="form-control"
+                                               placeholder="ای دی محصول را وارد کنید"
+                                               value="{{$oppos->product_id}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">  تعداد </label>
-                                        <input name="number" type="number" class="form-control" placeholder="تعداد را وارد کنید">
+                                        <label for="exampleInputPassword1"> تعداد </label>
+                                        <input name="number" type="number" class="form-control"
+                                               placeholder="تعداد را وارد کنید"
+                                               value="{{$oppos->number}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">رنگ</label>
                                         <select name="color" class="form-control">
-                                            <option>مشکی </option>
-                                            <option> آبی  </option>
-                                            <option> قرمز</option>
-                                            <option> سبز</option>
-                                            <option> زرد</option>
-                                            <option> صورتی</option>
-                                            <option> بنفش</option>
-                                            <option> نارنجی</option>
-                                            <option> طوسی</option>
+                                            <option {{$oppos->color == 'مشکی'? 'selected':''}}>مشکی</option>
+                                            <option {{$oppos->color == 'آبی'? 'selected':''}}> آبی</option>
+                                            <option {{$oppos->color == 'قرمز'? 'selected':''}}> قرمز</option>
+                                            <option {{$oppos->color == 'سبز'? 'selected':''}}> سبز</option>
+                                            <option {{$oppos->color == 'زرد'? 'selected':''}}> زرد</option>
+                                            <option {{$oppos->color == 'صورتی'? 'selected':''}}> صورتی</option>
+                                            <option {{$oppos->color == 'بنفش'? 'selected':''}}> بنفش</option>
+                                            <option {{$oppos->color == 'نارنجی'? 'selected':''}}> نارنجی</option>
+                                            <option {{$oppos->color == 'طوسی'? 'selected':''}}> طوسی</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">  قیمت واحد</label>
-                                        <input name="price" type="text" class="form-control" placeholder="">
+                                        <label for="exampleInputPassword1"> قیمت واحد</label>
+                                        <input name="price" type="text" class="form-control" placeholder=""
+                                               value="{{$oppos->price}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">  قیمت کل</label>
-                                        <input name="total_price" type="text" class="form-control" placeholder="">
+                                        <label for="exampleInputPassword1"> قیمت کل</label>
+                                        <input name="total_price" type="text" class="form-control" placeholder=""
+                                               value="{{$oppos->total_price}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> توضیحات</label>
-                                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                                        <textarea name="description" id="description" cols="30" rows="10"
+                                                  class="form-control">{{$oppos->description}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1"> وضعیت</label>
                                         <select name="status" class="form-control">
-                                            <option>در حال پیگیری </option>
-                                            <option>در انتظار پرداخت</option>
-                                            <option>پرداخت شده</option>
-                                            <option>لغو شده</option>
+                                            <option {{$oppos->status == 'در حال پیگیری'? 'selected':''}}>در حال پیگیری
+                                            </option>
+                                            <option {{$oppos->status == 'در انتظار پرداخت'? 'selected':''}}>در انتظار
+                                                پرداخت
+                                            </option>
+                                            <option {{$oppos->status == 'پرداخت شده'? 'selected':''}}>پرداخت شده
+                                            </option>
+                                            <option {{$oppos->status == 'لغو شده'? 'selected':''}}>لغو شده</option>
                                         </select>
                                     </div>
 
@@ -125,15 +142,15 @@
                         </div>
 
 
-                            @if($errors->any())
-                                <div class="alert alert-danger">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
                                 <ui>
                                     @foreach($errors->all() as $error)
                                         <li>{{$error}}</li>
                                     @endforeach
                                 </ui>
-                                </div>
-                            @endif
+                            </div>
+                        @endif
 
                     </div>
                 </div>
@@ -141,21 +158,17 @@
         </section>
 
 
+        <footer class="main-footer">
+            <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
+        </footer>
 
-
-<footer class="main-footer">
-    <strong>CopyLeft © ۲۰۱۸ <a href="http://github.com/hesammousavi/">حسام موسوی</a>.</strong>
-</footer>
-
-<!-- Control Sidebar -->
+        <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark"></aside>
     </div>
 </div>
 
 
-
-
-    @include('layout.js');
+@include('layout.CssAndJs.js');
 
 </body>
 </html>
