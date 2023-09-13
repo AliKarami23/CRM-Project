@@ -4,85 +4,80 @@ namespace App\Http\Controllers;
 
 use App\Models\Opportunity;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class OpportunityController extends Controller
 {
-    public function Newopportunity(){
-        return view('layout.opportunity.newopportunity');
-    }
 
-    public function add_opportunity(){
+    public function AddOpportunity(){
 
         $valid = request()->validate([
             'user_id'=>'required' ,
-            'category'=>'required' ,
+            'Category'=>'required' ,
             'product_id'=>'required' ,
-            'number'=>'required' ,
-            'price'=>'required' ,
-            'total_price'=>'required' ,
-            'description'=>'required' ,
+            'Number'=>'required' ,
+            'Price'=>'required' ,
+            'TotalPrice'=>'required' ,
+            'Description'=>'required' ,
         ]);
 
         $insert = new Opportunity();
-        $insert->user_id = request('user_id');
-        $insert->category= request('category');
-        $insert->product_id = request('product_id');
-        $insert->number = request('number');
-        $insert->color = request('color');
-        $insert->price = request('price');
-        $insert->total_price = request('total_price');
-        $insert->description = request('description');
-        $insert->status = request('status');
+        $insert->User_id = request('user_id');
+        $insert->Category= request('Category');
+        $insert->Product_id = request('Product_id');
+        $insert->Number = request('Number');
+        $insert->Color = request('Color');
+        $insert->Price = request('Price');
+        $insert->TotalPrice = request('TotalPrice');
+        $insert->Description = request('Description');
+        $insert->Status = request('Status');
         $insert->save();
 
 
-        return redirect('/panel/listopportunity');
+        return response()->json(['Opportunity is Add']);
     }
 
-    public function listoppo(){
-          return view('layout.opportunity.listopportunity' , ['oppos'=>Opportunity::all()]);
+    public function listOpportunity(){
+
+        $Opportunitys = Opportunity::all();
+          return response()->json($Opportunitys);
     }
 
-    public function show_edit_oppo($id){
 
-        $oppo = Opportunity::findOrFail($id);
-        return view('layout.opportunity.Editopportunity', ['oppos'=>$oppo]);
-    }
-
-    public function edit_oppo($id){
+    public function EditOpportunity($id){
         $valid = request()->validate([
             'customer_id'=>'required' ,
-            'category'=>'required' ,
+            'Category'=>'required' ,
             'product_id'=>'required' ,
-            'number'=>'required' ,
-            'price'=>'required' ,
-            'total_price'=>'required' ,
-            'description'=>'required' ,
+            'Number'=>'required' ,
+            'Price'=>'required' ,
+            'TotalPrice'=>'required' ,
+            'Description'=>'required' ,
         ]);
 
         $insert = Opportunity::findOrFail($id);
         $insert->update([
         $insert->customer_id = request('customer_id'),
-        $insert->category= request('category'),
+        $insert->category= request('Category'),
         $insert->product_id = request('product_id'),
-        $insert->number = request('number'),
-        $insert->color = request('color'),
-        $insert->price = request('price'),
-        $insert->total_price = request('total_price'),
-        $insert->description = request('description'),
-        $insert->status = request('status'),
+        $insert->number = request('Number'),
+        $insert->color = request('Color'),
+        $insert->price = request('Price'),
+        $insert->total_price = request('TotalPrice'),
+        $insert->description = request('Description'),
+        $insert->status = request('Status'),
         $insert->save()
      ]);
 
-        return redirect('/panel');
+        return response()->json(['Opportunity is Update']);
     }
 
-    public function delete($id){
+    public function DeleteOpportunity($id){
 
         $order = Opportunity::findOrFail($id);
         $order->delete();
 
-        return back();
+        return response()->json(['Opportunity is Deleted']);
     }
 
 

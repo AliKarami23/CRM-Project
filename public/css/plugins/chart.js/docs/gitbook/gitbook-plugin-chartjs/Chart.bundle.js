@@ -1440,11 +1440,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1472,12 +1472,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -9066,7 +9066,7 @@ module.exports = function(Chart) {
 			var dataset = me.getDataset();
 			var data = dataset.data || (dataset.data = []);
 
-			// In order to correctly handle data addition/deletion animation (an thus simulate
+			// In Order to correctly handle data addition/deletion animation (an thus simulate
 			// real-time charts), we need to monitor these data modifications and synchronize
 			// the internal meta data accordingly.
 			if (me._data !== data) {
@@ -11082,7 +11082,7 @@ module.exports = function(Chart) {
 		initialize: function(config) {
 			helpers.extend(this, config);
 
-			// Contains hit boxes for each dataset (in dataset order)
+			// Contains hit boxes for each dataset (in dataset Order)
 			this.legendHitBoxes = [];
 
 			// Are we in doughnut mode which has a different data type
@@ -12902,7 +12902,7 @@ module.exports = function(Chart) {
 			var me = this;
 			helpers.extend(me, config);
 
-			// Contains hit boxes for each dataset (in dataset order)
+			// Contains hit boxes for each dataset (in dataset Order)
 			me.legendHitBoxes = [];
 		},
 

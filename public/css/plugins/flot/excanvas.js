@@ -939,11 +939,11 @@ if (!document.createElement('canvas').getContext) {
                          mr(p.xEnd), ',', mr(p.yEnd));
             break;
         }
-  
-  
+
+
         // TODO: Following is broken for curves due to
         //       move to proper paths.
-  
+
         // Figure out dimensions so we can do gradient fills
         // properly
         if (p) {
@@ -962,15 +962,15 @@ if (!document.createElement('canvas').getContext) {
         }
       }
       lineStr.push(' ">');
-  
+
       if (!aFill) {
         appendStroke(this, lineStr);
       } else {
         appendFill(this, lineStr, min, max);
       }
-  
+
       lineStr.push('</g_vml_:shape>');
-  
+
       this.element_.insertAdjacentHTML('beforeEnd', lineStr.join(''));
     }
   };
@@ -1049,7 +1049,7 @@ if (!document.createElement('canvas').getContext) {
         expansion = 2 * fillStyle.r1_ / dimension - shift;
       }
 
-      // We need to sort the color stops in ascending order by offset,
+      // We need to sort the color stops in ascending Order by offset,
       // otherwise IE won't interpret it correctly.
       var stops = fillStyle.colors_;
       stops.sort(function(cs1, cs2) {

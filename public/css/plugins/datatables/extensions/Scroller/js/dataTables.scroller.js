@@ -58,7 +58,7 @@ var factory = function( $, DataTable ) {
  *  @constructor
  *  @global
  *  @param {object} oDT DataTables settings object
- *  @param {object} [oOpts={}] Configuration object for FixedColumns. Options 
+ *  @param {object} [oOpts={}] Configuration object for FixedColumns. Options
  *    are defined by {@link Scroller.defaults}
  *
  *  @requires jQuery 1.7+
@@ -150,7 +150,7 @@ var Scroller = function ( oDTSettings, oOpts ) {
 
 		/**
 		 * setTimeout reference for state saving, used when state saving is enabled in the DataTable
-		 * and when the user scrolls the viewport in order to stop the cookie set taking too much
+		 * and when the user scrolls the viewport in Order to stop the cookie set taking too much
 		 * CPU!
 		 *  @type     int
 		 *  @default  0
@@ -159,7 +159,7 @@ var Scroller = function ( oDTSettings, oOpts ) {
 
 		/**
 		 * setTimeout reference for the redraw, used when server-side processing is enabled in the
-		 * DataTables in order to prevent DoSing the server
+		 * DataTables in Order to prevent DoSing the server
 		 *  @type     int
 		 *  @default  null
 		 */
@@ -318,7 +318,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 	 *          o.oScroller.fnScrollToRow( 1000 );
 	 *        }
 	 *      } );
-	 *     
+	 *
 	 *      // Sometime later on use the following to scroll to row 500...
 	 *          var oSettings = $('#example').dataTable().fnSettings();
 	 *      oSettings.oScroller.fnScrollToRow( 500 );
@@ -388,7 +388,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 	 *          o.oScroller.fnScrollToRow( 1000 );
 	 *        }
 	 *      } );
-	 *     
+	 *
 	 *      setTimeout( function () {
 	 *        // Make the example container visible and recalculate the scroller sizes
 	 *        document.getElementById('container').style.display = "block";
@@ -670,7 +670,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 	 * had scrolling containers of infinite height (i.e. the absolute value)
 	 *
 	 *  @param {string} dir Domain transform direction, `virtualToPhysical` or
-	 *    `physicalToVirtual` 
+	 *    `physicalToVirtual`
 	 *  @returns {number} Calculated transform
 	 *  @private
 	 */
@@ -818,7 +818,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 					$(that.dom.scroller).scrollTop( that.s.dt.oLoadedState.iScroller );
 					that.s.redrawTop = that.s.dt.oLoadedState.iScroller - (heights.viewport/2);
 
-					// In order to prevent layout thrashing we need another
+					// In Order to prevent layout thrashing we need another
 					// small delay
 					setTimeout( function () {
 						that.s.ingnoreScroll = false;
@@ -830,7 +830,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 			that.s.ingnoreScroll = false;
 		}
 
-		// Because of the order of the DT callbacks, the info update will
+		// Because of the Order of the DT callbacks, the info update will
 		// take precedence over the one we want here. So a 'thread' break is
 		// needed
 		setTimeout( function () {
@@ -1101,7 +1101,7 @@ Scroller.defaults = /** @lends Scroller.defaults */{
 
 	/**
 	 * Scroller uses the boundary scaling factor to decide when to redraw the table - which it
-	 * typically does before you reach the end of the currently loaded data set (in order to
+	 * typically does before you reach the end of the currently loaded data set (in Order to
 	 * allow the data to look continuous to a user scrolling through the data). If given as 0
 	 * then the table will be redrawn whenever the viewport is scrolled, while 1 would not
 	 * redraw the table until the currently loaded data has all been shown. You will want

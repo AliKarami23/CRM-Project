@@ -1442,11 +1442,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1474,12 +1474,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -9246,7 +9246,7 @@ module.exports = function(Chart) {
 			var dataset = me.getDataset();
 			var data = dataset.data || (dataset.data = []);
 
-			// In order to correctly handle data addition/deletion animation (an thus simulate
+			// In Order to correctly handle data addition/deletion animation (an thus simulate
 			// real-time charts), we need to monitor these data modifications and synchronize
 			// the internal meta data accordingly.
 			if (me._data !== data) {
@@ -11234,7 +11234,7 @@ module.exports = function(Chart) {
 	/**
 	 * @method IPlugin#beforeDatasetDraw
  	 * @desc Called before drawing the `chart` dataset at the given `args.index` (datasets
-	 * are drawn in the reverse order). If any plugin returns `false`, the datasets drawing
+	 * are drawn in the reverse Order). If any plugin returns `false`, the datasets drawing
 	 * is cancelled until another `render` is triggered.
 	 * @param {Chart} chart - The chart instance.
 	 * @param {Object} args - The call arguments.
@@ -11247,7 +11247,7 @@ module.exports = function(Chart) {
 	/**
 	 * @method IPlugin#afterDatasetDraw
  	 * @desc Called after the `chart` datasets at the given `args.index` have been drawn
-	 * (datasets are drawn in the reverse order). Note that this hook will not be called
+	 * (datasets are drawn in the reverse Order). Note that this hook will not be called
 	 * if the datasets drawing has been previously cancelled.
 	 * @param {Chart} chart - The chart instance.
 	 * @param {Object} args - The call arguments.
@@ -13145,7 +13145,7 @@ module.exports = function(Chart) {
 					y1 = ptY + height;
 					y2 = y1 + caretSize;
 					y3 = y1;
-					// invert drawing order
+					// invert drawing Order
 					var tmp = x3;
 					x3 = x1;
 					x1 = tmp;
@@ -15895,7 +15895,7 @@ module.exports = function(Chart) {
 		initialize: function(config) {
 			helpers.extend(this, config);
 
-			// Contains hit boxes for each dataset (in dataset order)
+			// Contains hit boxes for each dataset (in dataset Order)
 			this.legendHitBoxes = [];
 
 			// Are we in doughnut mode which has a different data type
@@ -16390,7 +16390,7 @@ module.exports = function(Chart) {
 			var me = this;
 			helpers.extend(me, config);
 
-			// Contains hit boxes for each dataset (in dataset order)
+			// Contains hit boxes for each dataset (in dataset Order)
 			me.legendHitBoxes = [];
 		},
 

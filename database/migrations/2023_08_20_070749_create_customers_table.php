@@ -15,20 +15,20 @@ return new class extends Migration {
             $table->timestamps();
             $table->string('user_id');
             $table->string('name');
-            $table->string('fname');
-            $table->string('dadname');
-            $table->string('email');
-            $table->string('phonenumber');
-            $table->string('country');
+            $table->string('Lastname');
+            $table->string('FatherName');
+            $table->string('Email');
+            $table->string('PhoneNumber');
+            $table->string('Country');
             $table->string('City');
             $table->string('Address');
-            $table->string('gender');
-            $table->integer('nationalcode');
-            $table->string('job');
-            $table->string('image');
-            $table->string('education');
-            $table->string('cityofeducation');
-            $table->string('password');
+            $table->string('Gender');
+            $table->integer('Nationalcode');
+            $table->string('Job');
+            $table->string('Image');
+            $table->string('Education');
+            $table->string('CityEducation');
+            $table->string('Password');
         });
     }
 

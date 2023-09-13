@@ -160,7 +160,7 @@
 *       thesholdValue - Values less than this value will be drawn using thresholdColor instead of lineColor
 *       thresholdColor
 *
-*   bullet - Values for bullet graphs msut be in the order: target, performance, range1, range2, range3, ...
+*   bullet - Values for bullet graphs msut be in the Order: target, performance, range1, range2, range3, ...
 *       options:
 *       targetColor - The color of the vertical target marker
 *       targetWidth - The width of the target marker in pixels

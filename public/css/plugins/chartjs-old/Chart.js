@@ -93,7 +93,7 @@
 			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
 			scaleIntegersOnly: true,
 
-			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			// Boolean - Whether the scale should start at zero, or an Order of magnitude down from the lowest value
 			scaleBeginAtZero: false,
 
 			// String - Scale label font declaration for the scale label
@@ -2029,7 +2029,7 @@
 
 
 	var defaultConfig = {
-		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		//Boolean - Whether the scale should start at zero, or an Order of magnitude down from the lowest value
 		scaleBeginAtZero : true,
 
 		//Boolean - Whether grid lines are shown across the chart
@@ -3079,7 +3079,7 @@
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},

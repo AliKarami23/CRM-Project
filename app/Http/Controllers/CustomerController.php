@@ -9,89 +9,65 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
 
 
-    public function panel()
-    {
-        $orders = Order::count();
-        $customers = Customer::count();
-        $products = Product::count();
-        $factors = Factor::count();
 
 
-        return view('layout.panel', [
-            'customers' => $customers,
-            'products' => $products,
-            'orders' => $orders,
-            'factors' => $factors,
-        ]);
 
-    }
-
-
-    public function addcustomer()
-    {
-        return view('layout.customer.addcustomer');
-    }
-
-    public function customers(Request $request)
+    public function ListCustomers(Request $request)
     {
         $query = Customer::query();
 
-        if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->input('name') . '%');
+        if ($request->has('Name')) {
+            $query->where('Name', 'like', '%' . $request->input('Name') . '%');
         }
 
-        if ($request->has('fname')) {
-            $query->where('fname', 'like', '%' . $request->input('fname') . '%');
+        if ($request->has('LastName')) {
+            $query->where('LastName', 'like', '%' . $request->input('LastName') . '%');
         }
 
-        if ($request->has('orders')) {
-            $ordersFilter = $request->input('orders');
+        if ($request->has('Orders')) {
+            $ordersFilter = $request->input('Orders');
 
             if ($ordersFilter == 'has') {
-                $query->has('orders');
+                $query->has('Orders');
             } elseif ($ordersFilter == 'does_not_have') {
-                $query->doesntHave('orders');
+                $query->doesntHave('Orders');
             }
         }
 
-        $customers = $query->with('orders')->select('id', 'name', 'fname', 'email', 'phonenumber')->paginate(10);
+        $customers = $query->with('Orders')->select('id', 'name', 'LastName', 'email', 'PhoneNumber')->paginate(10);
 
-        return view('layout.customer.customers', compact('customers'));
+
+        return response()->json($customers);
     }
 
 
-    public function editcustomer($id)
-    {
-        $customer = Customer::find($id);
-
-        return view('layout.customer.editcustomer', ['customers' => $customer]);
-    }
 
 
-    public function edited_customer(InsertCustomerRequest $request, $id)
+    public function EditedCustomer(InsertCustomerRequest $request, $id)
     {
         Customer::where('id', $id)->update($request->merge([
             "password" => Hash::make($request->password)
         ])->except('_token'));
 
-        return redirect()->route('customers');
+        return response()->json(['Customer is Edit']);
     }
 
-    public function deletedcustomer($id)
+    public function DeletedCustomer($id)
     {
         Customer::destroy($id);
 
-        return redirect()->route('customers');
+        return response()->json(['Customer is Deleted']);
     }
 
 
-    public function store(Request $request)
+    public function AddCustomer(Request $request)
     {
         $user_id = auth()->user()->id;
         $request->request->user_id = $user_id;
@@ -101,6 +77,6 @@ class CustomerController extends Controller
         ])->except('_token'));
 
 
-        return redirect()->route('customers');
+        return response()->json(['Customer is Add']);
     }
 }

@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('opportunities', function (Blueprint $table) {
             $table->id();
             $table->string('customer_id');
-            $table->string('category');
+            $table->string('Category');
             $table->text('product_id');
-            $table->string('number');
-            $table->string('color');
-            $table->string('price');
-            $table->string('total_price');
-            $table->string('description');
-            $table->string('status');
+            $table->string('Number');
+            $table->string('Color');
+            $table->string('Price');
+            $table->string('TotalPrice');
+            $table->string('Description');
+            $table->string('Status');
             $table->timestamps();
         });
     }

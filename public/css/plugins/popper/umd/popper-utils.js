@@ -905,7 +905,7 @@ function isModifierRequired(modifiers, requestingName, requestedName) {
   if (!isRequired) {
     var _requesting = '`' + requestingName + '`';
     var requested = '`' + requestedName + '`';
-    console.warn(requested + ' modifier is required by ' + _requesting + ' modifier in order to work, be sure to include it before ' + _requesting + '!');
+    console.warn(requested + ' modifier is required by ' + _requesting + ' modifier in Order to work, be sure to include it before ' + _requesting + '!');
   }
   return isRequired;
 }
@@ -955,7 +955,7 @@ function removeEventListeners(reference, state) {
 }
 
 /**
- * Loop trough the list of modifiers and run them in order,
+ * Loop trough the list of modifiers and run them in Order,
  * each of them will then edit the data object.
  * @method
  * @memberof Popper.Utils

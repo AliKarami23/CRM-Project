@@ -1853,7 +1853,7 @@ var accordion = $.widget( "ui.accordion", {
 				})
 				.hide();
 
-		// make sure at least one header is in the tab order
+		// make sure at least one header is in the tab Order
 		if ( !this.active.length ) {
 			this.headers.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
@@ -2024,9 +2024,9 @@ var accordion = $.widget( "ui.accordion", {
 			"aria-selected": "false",
 			"aria-expanded": "false"
 		});
-		// if we're switching panels, remove the old header from the tab order
-		// if we're opening from collapsed state, remove the previous header from the tab order
-		// if we're collapsing, then keep the collapsing header in the tab order
+		// if we're switching panels, remove the old header from the tab Order
+		// if we're opening from collapsed state, remove the previous header from the tab Order
+		// if we're collapsing, then keep the collapsing header in the tab Order
 		if ( toShow.length && toHide.length ) {
 			toHide.prev().attr({
 				"tabIndex": -1,
@@ -8899,7 +8899,7 @@ var dialog = $.widget( "ui.dialog", {
 
 			// Prevent use of anchors and inputs
 			// Using _on() for an event handler shared across many instances is
-			// safe because the dialogs stack and must be closed in reverse order
+			// safe because the dialogs stack and must be closed in reverse Order
 			this._on( this.document, {
 				focusin: function( event ) {
 					if ( isOpening ) {
@@ -15624,7 +15624,7 @@ var tabs = $.widget( "ui.tabs", {
 				"aria-hidden": "true"
 			});
 
-		// Make sure one tab is in the tab order
+		// Make sure one tab is in the tab Order
 		if ( !this.active.length ) {
 			this.tabs.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
@@ -15923,9 +15923,9 @@ var tabs = $.widget( "ui.tabs", {
 			"aria-selected": "false",
 			"aria-expanded": "false"
 		});
-		// If we're switching tabs, remove the old tab from the tab order.
-		// If we're opening from collapsed state, remove the previous tab from the tab order.
-		// If we're collapsing, then keep the collapsing tab in the tab order.
+		// If we're switching tabs, remove the old tab from the tab Order.
+		// If we're opening from collapsed state, remove the previous tab from the tab Order.
+		// If we're collapsing, then keep the collapsing tab in the tab Order.
 		if ( toShow.length && toHide.length ) {
 			eventData.oldTab.attr( "tabIndex", -1 );
 		} else if ( toShow.length ) {
