@@ -19,7 +19,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'price' => fake()->numberBetween(100000,999999),
+            'Price' => fake()->numberBetween(100000,999999),
             'Description' => fake()->realText(250),
             'user_id' => User::factory(),
         ];

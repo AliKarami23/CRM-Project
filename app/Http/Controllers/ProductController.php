@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
@@ -37,6 +39,21 @@ class ProductController extends Controller
 
         $products = Product::all();
         return response()->json($products);
+    }
+
+
+    public function EditProduct($id){
+
+        Product::where('id', $id)->update();
+        return response()->json('Product is Update');
+    }
+
+
+    public function DeleteProduct($id){
+
+        Product::destroy($id);
+        return response()->json(['Product is Deleted']);
+
     }
 
 }

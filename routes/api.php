@@ -14,17 +14,14 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 
 //customer
     Route::get('/AddCustomer', [CustomerController::class, 'AddCustomer'] )->name('AddCustomer');
-    Route::get('/EditCustomer/{id}', [CustomerController::class, 'EditCustomer'])->name('EditCustomer');
-    Route::get('/AddCustomer', [CustomerController::class, 'AddCustomer'] )->name('AddCustomer');
     Route::get('/ListCustomers', [CustomerController::class, 'ListCustomers'] )->name('ListCustomers');
     Route::post('/EditCustomer/{id}', [CustomerController::class, 'EditedCustomer'] )->name('EditedCustomer');
     Route::get('/DeletedCustomer/{id}', [CustomerController::class, 'DeletedCustomer'])->name('DeletedCustomer');
 
 
 
-
 //order
-    Route::post('AddOrder', [OrderController::class, 'AddOrder'])->name('AddOrder');
+    Route::post('/AddOrder', [OrderController::class, 'AddOrder'])->name('AddOrder');
     Route::get('/ListOrders' , [OrderController::class , 'ListOrders'])->name('ListOrders');
     Route::put('/EditOrder/{id}' , [OrderController::class , 'EditOrder'])->name('EditOrder');
     Route::delete('/DeleteOrder/{id}' , [OrderController::class , 'DeleteOrder'])->name('DeleteOrder');
@@ -32,18 +29,18 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 
 
 //product
-
-    Route::post('AddProduct' ,[ProductController::class , 'AddProduct'])->name('AddProduct');
+    Route::post('/AddProduct' ,[ProductController::class , 'AddProduct'])->name('AddProduct');
     Route::get('/ProductsList' , [ProductController::class , 'ProductsList'])->name('ProductsList');
+    Route::get('/EditProduct/{id}' , [ProductController::class , 'EditProduct'])->name('EditProduct');
+    Route::get('/DeleteProduct/{id}' , [ProductController::class , 'DeleteProduct'])->name('DeleteProduct');
 
 
 
 //opportunity
-    Route::post('AddOpportunity' ,[OpportunityController::class , 'AddOpportunity'])->name('AddOpportunity');
+    Route::post('/AddOpportunity' ,[OpportunityController::class , 'AddOpportunity'])->name('AddOpportunity');
     Route::get('/listOpportunity' , [OpportunityController::class , 'listOpportunity'])->name('listOpportunity');
     Route::put('/EditOpportunity/{id}' , [OpportunityController::class , 'EditOpportunity'])->name('EditOpportunity');
     Route::delete('/DeleteOpportunity/{id}' , [OpportunityController::class , 'DeleteOpportunity'])->name('DeleteOpportunity');
-
 
 
 

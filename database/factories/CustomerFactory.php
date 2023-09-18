@@ -17,21 +17,21 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => Faker::firstName(),
-            'fname' => Faker::lastName(),
-            'dadname' => Faker::fullName(),
-            'email' => fake()->email(),
-            'phonenumber' => Faker::mobile(),
-            'country' => fake()->country(),
+            'Name' => Faker::firstName(),
+            'LastName' => Faker::lastName(),
+            'FatherName' => Faker::fullName(),
+            'Email' => fake()->email(),
+            'PhoneNumber' => Faker::mobile(),
+            'Country' => fake()->country(),
             'City' => Faker::city(),
             'Address' => Faker::address(),
-            'gender' => 'female',
-            'nationalcode' => '1234567890',
-            'job' => Faker::jobTitle(),
-            'image' => '-',
-            'education' => fake()->country(),
-            'cityofeducation' => Faker::city(),
-            'password' => Hash::make('12345'),
+            'Gender' => 'female',
+            'NationalCode' => '1234567890',
+            'Job' => Faker::jobTitle(),
+            'Image' => '-',
+            'Education' => fake()->country(),
+            'CityEducation' => Faker::city(),
+            'Password' => Hash::make('12345'),
 
         ];
     }

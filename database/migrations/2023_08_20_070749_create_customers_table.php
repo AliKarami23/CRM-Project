@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('City');
             $table->string('Address');
             $table->string('Gender');
-            $table->integer('Nationalcode');
+            $table->integer('NationalCode');
             $table->string('Job');
             $table->string('Image');
             $table->string('Education');

@@ -24,21 +24,21 @@ class InsertCustomerRequest extends FormRequest
 
         return [
 
-            'name' => 'required|min:2|max:50',
-            'fname' => 'required|min:2|max:50',
-            'dadname' => 'required|min:2|max:50',
-            'email' => 'required|email',
-            'phonenumber' => 'required|numeric',
-            'country' => 'required',
+            'Name' => 'required|min:2|max:50',
+            'LastName' => 'required|min:2|max:50',
+            'FatherName' => 'required|min:2|max:50',
+            'Email' => 'required|email',
+            'PhoneNumber' => 'required|numeric',
+            'Country' => 'required',
             'City' => 'required',
             'Address' => 'required',
-            'gender' => 'required',
-            'nationalcode' => 'required',
-            'job' => 'required',
-            'image' => 'required',
-            'education' => 'required',
-            'cityofeducation' => 'required',
-            'password' => 'required|min:8',
+            'Gender' => 'required',
+            'NationalCode' => 'required',
+            'Job' => 'required',
+            'Image' => 'required',
+            'Education' => 'required',
+            'CityEducation' => 'required',
+            'Password' => 'required|min:8',
         ];
     }
 }

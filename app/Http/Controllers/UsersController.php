@@ -17,11 +17,12 @@ use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
 {
-    public function SingIn(InsertUserRequest $request)
+    public function SingIn(Request $request)
     {
 
 
-        $credentials = $request->validate([
+        $request->validate([
+            'FullName' => ['required'],
             'PhoneNumber' => ['required'],
             'Password' => ['required'],
         ]);
@@ -30,15 +31,9 @@ class UsersController extends Controller
             "Password"=>Hash::make($request->password)
         ])->except('_token'));
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return response()->json(['You are registered']);
-        }
-        else{
-            return Redirect::back()->withErrors([
-                'Email' => 'The information is not correct'
-            ]);
-        }
+        $_token = $user->createToken('UserToken')->plainTextToken;
+        return response()->json(['token' => $_token]);
+
 
     }
 
