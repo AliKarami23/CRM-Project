@@ -57,13 +57,13 @@ class UsersController extends Controller
             'Password' => ['required'],
         ]);
 
-        $user = User::where('Email', $request->email)->first();
+        $user = User::where('Email', $request->Email)->first();
         if (!$user){
             throw ValidationException::withMessages(
                 ['Email' => 'user is not found']
             );
         }
-        if (!Hash::check($request->password,$user->password)){
+        if (!Hash::check($request->password,$user->Password)){
             throw ValidationException::withMessages(
                 ['Email' => 'password is not true']
             );

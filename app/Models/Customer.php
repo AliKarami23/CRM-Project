@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Traits\HasRoles;
 
 class Customer extends Model
 {
@@ -13,23 +14,21 @@ class Customer extends Model
 
     protected $fillable = [
         'id',
-        'created_at',
-        'updated_at',
-        'name',
-        'fname',
-        'dadname',
-        'email',
-        'phonenumber',
-        'country',
+        'Name',
+        'Lastname',
+        'FatherName',
+        'Email',
+        'PhoneNumber',
+        'Country',
         'City',
         'Address',
-        'gender',
-        'nationalcode',
-        'job',
-        'image',
-        'education',
-        'cityofeducation',
-        'password',
+        'Gender',
+        'NationalCode',
+        'Job',
+        'Image',
+        'Education',
+        'CityEducation',
+        'Password',
         'user_id'
     ];
 
@@ -38,7 +37,7 @@ class Customer extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function user(): BelongsTo
+    public function users(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
