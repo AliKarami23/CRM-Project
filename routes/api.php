@@ -13,9 +13,9 @@ use App\Http\Controllers\OpportunityController;
 Route::group(['middleware'=>['auth:sanctum']],function () {
 
 //customer
-    Route::get('/AddCustomer', [CustomerController::class, 'AddCustomer'] )->name('AddCustomer');
+    Route::post('/AddCustomer', [CustomerController::class, 'AddCustomer'] )->name('AddCustomer');
     Route::get('/ListCustomers', [CustomerController::class, 'ListCustomers'] )->name('ListCustomers');
-    Route::post('/EditCustomer/{id}', [CustomerController::class, 'EditedCustomer'] )->name('EditedCustomer');
+    Route::put('/EditCustomer/{id}', [CustomerController::class, 'EditedCustomer'] )->name('EditedCustomer');
     Route::get('/DeletedCustomer/{id}', [CustomerController::class, 'DeletedCustomer'])->name('DeletedCustomer');
 
 
@@ -38,7 +38,7 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 
 //opportunity
     Route::post('/AddOpportunity' ,[OpportunityController::class , 'AddOpportunity'])->name('AddOpportunity');
-    Route::get('/listOpportunity' , [OpportunityController::class , 'listOpportunity'])->name('listOpportunity');
+    Route::get('/ListOpportunity' , [OpportunityController::class , 'ListOpportunity'])->name('ListOpportunity');
     Route::put('/EditOpportunity/{id}' , [OpportunityController::class , 'EditOpportunity'])->name('EditOpportunity');
     Route::delete('/DeleteOpportunity/{id}' , [OpportunityController::class , 'DeleteOpportunity'])->name('DeleteOpportunity');
 
@@ -46,5 +46,5 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 
     Route::post('/Logout', [UsersController::class, 'Logout'] )->name('Logout');
 });
-Route::post('/SingIn', [UsersController::class, 'SingIn'] )->name('SingIn');
+Route::post('/SingUp', [UsersController::class, 'SingUp'] )->name('SingUp');
 Route::post('/Login', [UsersController::class, 'Login'] )->name('Login');

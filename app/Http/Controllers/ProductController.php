@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function AddProduct(){
         $valid = request()->validate([
-            'product_name'=>'required' ,
+            'Product_name'=>'required' ,
             'Description'=>'required' ,
             'Category'=>'required' ,
             'Price'=>'required' ,

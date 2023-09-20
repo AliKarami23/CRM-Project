@@ -17,7 +17,7 @@ use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
 {
-    public function SingIn(Request $request)
+    public function SingUp(Request $request)
     {
 
 

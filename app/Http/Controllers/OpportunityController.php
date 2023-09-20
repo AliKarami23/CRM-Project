@@ -37,7 +37,7 @@ class OpportunityController extends Controller
         return response()->json(['Opportunity is Add']);
     }
 
-    public function listOpportunity(){
+    public function ListOpportunity(){
 
         $Opportunitys = Opportunity::all();
           return response()->json($Opportunitys);
