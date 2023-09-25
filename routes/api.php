@@ -31,7 +31,7 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
 //product
     Route::post('/AddProduct' ,[ProductController::class , 'AddProduct'])->name('AddProduct');
     Route::get('/ProductsList' , [ProductController::class , 'ProductsList'])->name('ProductsList');
-    Route::get('/EditProduct/{id}' , [ProductController::class , 'EditProduct'])->name('EditProduct');
+    Route::post('/EditProduct/{id}' , [ProductController::class , 'EditProduct'])->name('EditProduct');
     Route::get('/DeleteProduct/{id}' , [ProductController::class , 'DeleteProduct'])->name('DeleteProduct');
 
 

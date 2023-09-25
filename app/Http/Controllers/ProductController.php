@@ -31,7 +31,12 @@ class ProductController extends Controller
         $insert->image = request('Image');
         $insert->save();
 
-        return response()->json('Product is Add');
+        $product = request()->all();
+
+        return response()->json([
+            'json'=>'Product is Add',
+            'product'=>$product]
+        );
     }
 
 
@@ -45,7 +50,11 @@ class ProductController extends Controller
     public function EditProduct($id){
 
         Product::where('id', $id)->update();
-        return response()->json('Product is Update');
+        $product = request()->all();
+        return response()->json([
+                'json'=>'Product is Add',
+                'product'=>$product]
+        );
     }
 
 

@@ -33,8 +33,12 @@ class OpportunityController extends Controller
         $insert->Status = request('Status');
         $insert->save();
 
+        $Opportunity = request()->all();
 
-        return response()->json(['Opportunity is Add']);
+        return response()->json([
+            'json'=>'Opportunity is Add',
+            'Opportunity'=>$Opportunity
+        ]);
     }
 
     public function ListOpportunity(){
@@ -69,7 +73,12 @@ class OpportunityController extends Controller
         $insert->save()
      ]);
 
-        return response()->json(['Opportunity is Update']);
+        $Opportunity = request()->all();
+
+        return response()->json([
+            'json'=>'Opportunity is Update',
+            'Opportunity'=>$Opportunity
+        ]);
     }
 
     public function DeleteOpportunity($id){

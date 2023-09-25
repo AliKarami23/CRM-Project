@@ -52,24 +52,30 @@ class CustomerController extends Controller
 
     public function EditedCustomer(InsertCustomerRequest $request, $id)
     {
+        $customer = $request->all();
         Customer::where('id', $id)->update($request->merge([
             "password" => Hash::make($request->password)
         ])->except('_token'));
 
-        return response()->json(['Customer is Edit']);
+        return response()->json([
+            'json'=>'Customer is Edit',
+            'customer'=>$customer
+        ]);
     }
 
     public function DeletedCustomer($id)
     {
         Customer::destroy($id);
 
-        return response()->json(['Customer is Deleted']);
+        return response()->json([
+            'json'=>'Customer is Deleted']);
     }
 
 
     public function AddCustomer(Request $request)
     {
         $user_id = auth()->user()->id;
+        $customer = $request->all();
         $request->request->user_id = $user_id;
         Customer::create($request->merge([
             "password" => Hash::make($request->password),
@@ -77,6 +83,9 @@ class CustomerController extends Controller
         ])->except('_token'));
 
 
-        return response()->json(['Customer is Add']);
+        return response()->json([
+            'json'=>'Customer is Add',
+            'customer'=>$customer
+        ]);
     }
 }

@@ -32,7 +32,10 @@ class UsersController extends Controller
         ])->except('_token'));
 
         $_token = $user->createToken('UserToken')->plainTextToken;
-        return response()->json(['token' => $_token]);
+        return response()->json([
+            'token' => $_token,
+            'user' => $user
+        ]);
 
 
     }
@@ -43,7 +46,9 @@ class UsersController extends Controller
 
     public function Logout(Request $request){
         $request->user()->tokens()->delete();
-        return response()->json(['Logout' => 'good bye']);
+        return response()->json([
+            'Logout' => 'Goodbye'
+        ]);
     }
 
 
@@ -69,7 +74,10 @@ class UsersController extends Controller
             );
         }
         $_token = $user->createToken('UserToken')->plainTextToken;
-        return response()->json(['token' => $_token]);
+        return response()->json([
+            'token' => $_token,
+            'user' => $user
+        ]);
 
     }
 

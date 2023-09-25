@@ -24,9 +24,12 @@ class OrderController extends Controller
         $insert->customer_id = request('customer_id');
         $insert->save();
 
+        $order = request()->all();
 
-
-        return response()->json(['Order is Add']);
+        return response()->json([
+            'json'=>'Order is Add',
+            'order'=>$order
+        ]);
     }
 
     public function ListOrders()
@@ -53,7 +56,12 @@ class OrderController extends Controller
             $order->save()
         ]);
 
-        return response()->json(['Order is Edit']);
+        $order = request()->all();
+
+        return response()->json([
+            'json'=>'Order is Edit',
+            'order'=>$order
+        ]);
     }
 
     public function DeleteOrder($id){
