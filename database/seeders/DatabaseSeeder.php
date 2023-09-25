@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
             ->has(Order::factory()->count(5)
                 ->hasAttached($product->skip(0)->take(3)))
             ->create();
+
+        $this->call(RolesTableSeeder::class);
     }
 }

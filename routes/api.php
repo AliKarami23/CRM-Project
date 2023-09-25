@@ -10,41 +10,42 @@ use App\Http\Controllers\OpportunityController;
 
 
 
-Route::group(['middleware'=>['auth:sanctum']],function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
 
 //customer
-    Route::post('/AddCustomer', [CustomerController::class, 'AddCustomer'] )->name('AddCustomer');
-    Route::get('/ListCustomers', [CustomerController::class, 'ListCustomers'] )->name('ListCustomers');
-    Route::put('/EditCustomer/{id}', [CustomerController::class, 'EditedCustomer'] )->name('EditedCustomer');
-    Route::get('/DeletedCustomer/{id}', [CustomerController::class, 'DeletedCustomer'])->name('DeletedCustomer');
 
+    Route::post('/AddCustomer', [CustomerController::class, 'AddCustomer'])->name('AddCustomer')->middleware('can:SuperAdmin|Admin');
+    Route::get('/ListCustomers', [CustomerController::class, 'ListCustomers'])->name('ListCustomers')->middleware('can:SuperAdmin|Admin');
+    Route::put('/EditCustomer/{id}', [CustomerController::class, 'EditCustomer'])->name('EditCustomer')->middleware('can:SuperAdmin|Admin');
+    Route::delete('/DeletedCustomer/{id}', [CustomerController::class, 'DeletedCustomer'])->name('DeletedCustomer')->middleware('can:SuperAdmin|Admin');
 
 
 //order
-    Route::post('/AddOrder', [OrderController::class, 'AddOrder'])->name('AddOrder');
-    Route::get('/ListOrders' , [OrderController::class , 'ListOrders'])->name('ListOrders');
-    Route::put('/EditOrder/{id}' , [OrderController::class , 'EditOrder'])->name('EditOrder');
-    Route::delete('/DeleteOrder/{id}' , [OrderController::class , 'DeleteOrder'])->name('DeleteOrder');
 
+    Route::post('/AddOrder', [OrderController::class, 'AddOrder'])->name('AddOrder')->middleware('can:SuperAdmin|Admin|Customer');
+    Route::get('/ListOrders', [OrderController::class, 'ListOrders'])->name('ListOrders')->middleware('can:SuperAdmin|Admin');
+    Route::put('/EditOrder/{id}', [OrderController::class, 'EditOrder'])->name('EditOrder')->middleware('can:SuperAdmin|Admin|Customer');
+    Route::delete('/DeleteOrder/{id}', [OrderController::class, 'DeleteOrder'])->name('DeleteOrder')->middleware('can:SuperAdmin|Admin|Customer');
 
 
 //product
-    Route::post('/AddProduct' ,[ProductController::class , 'AddProduct'])->name('AddProduct');
-    Route::get('/ProductsList' , [ProductController::class , 'ProductsList'])->name('ProductsList');
-    Route::post('/EditProduct/{id}' , [ProductController::class , 'EditProduct'])->name('EditProduct');
-    Route::get('/DeleteProduct/{id}' , [ProductController::class , 'DeleteProduct'])->name('DeleteProduct');
 
+    Route::post('/AddProduct', [ProductController::class, 'AddProduct'])->name('AddProduct')->middleware('can:SuperAdmin|Admin');
+    Route::get('/ProductsList', [ProductController::class, 'ProductsList'])->name('ProductsList')->middleware('can:SuperAdmin|Admin');
+    Route::post('/EditProduct/{id}', [ProductController::class, 'EditProduct'])->name('EditProduct')->middleware('can:SuperAdmin|Admin');
+    Route::delete('/DeleteProduct/{id}', [ProductController::class, 'DeleteProduct'])->name('DeleteProduct')->middleware('can:SuperAdmin|Admin');
 
 
 //opportunity
-    Route::post('/AddOpportunity' ,[OpportunityController::class , 'AddOpportunity'])->name('AddOpportunity');
-    Route::get('/ListOpportunity' , [OpportunityController::class , 'ListOpportunity'])->name('ListOpportunity');
-    Route::put('/EditOpportunity/{id}' , [OpportunityController::class , 'EditOpportunity'])->name('EditOpportunity');
-    Route::delete('/DeleteOpportunity/{id}' , [OpportunityController::class , 'DeleteOpportunity'])->name('DeleteOpportunity');
+
+//    Route::post('/AddOpportunity' ,[OpportunityController::class , 'AddOpportunity'])->name('AddOpportunity');
+//    Route::get('/ListOpportunity' , [OpportunityController::class , 'ListOpportunity'])->name('ListOpportunity');
+//    Route::put('/EditOpportunity/{id}' , [OpportunityController::class , 'EditOpportunity'])->name('EditOpportunity');
+//    Route::delete('/DeleteOpportunity/{id}' , [OpportunityController::class , 'DeleteOpportunity'])->name('DeleteOpportunity');
 
 
+    Route::post('/Logout', [UsersController::class, 'Logout'])->name('Logout')->middleware('can:SuperAdmin|Admin');
 
-    Route::post('/Logout', [UsersController::class, 'Logout'] )->name('Logout');
 });
-Route::post('/SingUp', [UsersController::class, 'SingUp'] )->name('SingUp');
-Route::post('/Login', [UsersController::class, 'Login'] )->name('Login');
+Route::post('/SingUp', [UsersController::class, 'SingUp'])->name('SingUp');
+Route::post('/Login', [UsersController::class, 'Login'])->name('Login');

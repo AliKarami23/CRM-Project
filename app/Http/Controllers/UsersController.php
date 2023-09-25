@@ -23,6 +23,10 @@ class UsersController extends Controller
 
         $request->validate([
             'FullName' => ['required'],
+            'CompanyName'=>['required'],
+            'CompanyAddress'=>['required'],
+            'NumberOfCustomers'=>['required'],
+            'Email' => ['required'],
             'PhoneNumber' => ['required'],
             'Password' => ['required'],
         ]);
