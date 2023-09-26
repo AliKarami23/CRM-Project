@@ -15,18 +15,18 @@ class OrdersTableSeeder extends Seeder
     public function run(): void
 
     {
-        $faker = \Faker\Factory::create();
-        foreach (range(1,50) as $item){
-            DB::table('orders')->insert([
-                'product_id'=>$faker->numberBetween(1 , 100),
-                'price'=>$faker->numberBetween(5000 , 5000000),
-                'description'=>$faker->text(50),
-                'user_id'=>$faker->numberBetween(1 , 100),
-                'created_at'=>now(),
-                'updated_at'=>now()
-            ]);
-
-        }
+//        $faker = \Faker\Factory::create();
+//        foreach (range(1,50) as $item){
+//            DB::table('orders')->insert([
+//                'product_id'=>$faker->numberBetween(1 , 100),
+//                'price'=>$faker->numberBetween(5000 , 5000000),
+//                'description'=>$faker->text(50),
+//                'user_id'=>$faker->numberBetween(1 , 100),
+//                'created_at'=>now(),
+//                'updated_at'=>now()
+//            ]);
+//
+//        }
 
     }
 }

@@ -15,52 +15,64 @@ class RolesTableSeeder extends Seeder
     public function run(): void
     {
 
-        $SuperAdmin = Role::create(['name' => 'SuperAdmin',]);
-        $Admin = Role::create(['name' => 'Admin']);
-        $Customer = Role::create(['name' => 'Customer']);
+        $SuperAdmin = Role::create(['name' => 'SuperAdmin','guard_name' => 'api']);
+        $Admin = Role::create(['name' => 'Admin','guard_name' => 'api']);
+        $Customer = Role::create(['name' => 'Customer','guard_name' => 'api']);
         $SuperAdminPermissions = [
-            ['name'=>'Login', 'guard_name' => 'web'],
-            ['name'=>'Logout', 'guard_name' => 'web'],
-            ['name'=>'SingUp', 'guard_name' => 'web'],
-            ['name'=>'ListUser', 'guard_name' => 'web'],
-            ['name'=>'AddCustomer', 'guard_name' => 'web'],
-            ['name'=>'EditCustomer', 'guard_name' => 'web'],
-            ['name'=>'DeleteCustomer', 'guard_name' => 'web'],
-            ['name'=>'ListCustomer', 'guard_name' => 'web'],
-            ['name'=>'AddOrder', 'guard_name' => 'web'],
-            ['name'=>'EditOrder', 'guard_name' => 'web'],
-            ['name'=>'DeleteOrder', 'guard_name' => 'web'],
-            ['name'=>'ListOrder', 'guard_name' => 'web'],
-            ['name'=>'AddProduct', 'guard_name' => 'web'],
-            ['name'=>'EditProduct', 'guard_name' => 'web'],
-            ['name'=>'DeleteProduct', 'guard_name' => 'web'],
-            ['name'=>'ListProduct', 'guard_name' => 'web'],
-            ['name'=>'AddFactor', 'guard_name' => 'web'],
-            ['name'=>'EditFactor', 'guard_name' => 'web'],
-            ['name'=>'DeleteFactor', 'guard_name' => 'web'],
-            ['name'=>'ListFactor', 'guard_name' => 'web'],
-            ['name'=>'AddOpportunities', 'guard_name' => 'web'],
-            ['name'=>'EditOpportunities', 'guard_name' => 'web'],
-            ['name'=>'DeleteOpportunities', 'guard_name' => 'web'],
-            ['name'=>'ListOpportunities', 'guard_name' => 'web'],
+            ['name'=>'ListUser', 'guard_name' => 'api'],
+            ['name'=>'AddCustomer', 'guard_name' => 'api'],
+            ['name'=>'EditCustomer', 'guard_name' => 'api'],
+            ['name'=>'DeleteCustomer', 'guard_name' => 'api'],
+            ['name'=>'ListCustomer', 'guard_name' => 'api'],
+            ['name'=>'AddOrder', 'guard_name' => 'api'],
+            ['name'=>'EditOrder', 'guard_name' => 'api'],
+            ['name'=>'DeleteOrder', 'guard_name' => 'api'],
+            ['name'=>'ListOrder', 'guard_name' => 'api'],
+            ['name'=>'AddProduct', 'guard_name' => 'api'],
+            ['name'=>'EditProduct', 'guard_name' => 'api'],
+            ['name'=>'DeleteProduct', 'guard_name' => 'api'],
+            ['name'=>'ListProduct', 'guard_name' => 'api'],
+            ['name'=>'AddFactor', 'guard_name' => 'api'],
+            ['name'=>'EditFactor', 'guard_name' => 'api'],
+            ['name'=>'DeleteFactor', 'guard_name' => 'api'],
+            ['name'=>'ListFactor', 'guard_name' => 'api'],
+            ['name'=>'AddOpportunities', 'guard_name' => 'api'],
+            ['name'=>'EditOpportunities', 'guard_name' => 'api'],
+            ['name'=>'DeleteOpportunities', 'guard_name' => 'api'],
+            ['name'=>'ListOpportunities', 'guard_name' => 'api'],
         ];
 
         $AdminPermissions = [
-            'Login',
-            'Login',
-            'Login',
-            'Login',
-            'Login',
-            'Login',
+            'AddCustomer',
+            'EditCustomer',
+            'DeleteCustomer',
+            'ListCustomer',
+            'AddOrder',
+            'EditOrder',
+            'DeleteOrder',
+            'ListOrder',
+            'AddProduct',
+            'EditProduct',
+            'DeleteProduct',
+            'ListProduct',
+            'AddFactor',
+            'EditFactor',
+            'DeleteFactor',
+            'ListFactor',
+            'AddOpportunities',
+            'EditOpportunities',
+            'DeleteOpportunities',
+            'ListOpportunities',
         ];
 
         $CustomerPermissions = [
-            'Login',
-            'Login',
-            'Login',
-            'Login',
-            'Login',
-            'Login',
+            'AddOrder',
+            'EditOrder',
+            'DeleteOrder',
+            'AddFactor',
+            'EditFactor',
+            'DeleteFactor',
+            'ListOpportunities',
         ];
 
         Permission::insert($SuperAdminPermissions);

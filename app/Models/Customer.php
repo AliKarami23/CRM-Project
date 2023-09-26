@@ -10,12 +10,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Customer extends Model
 {
-    use HasFactory;
+    use HasFactory ,  HasRoles;
+
 
     protected $fillable = [
         'id',
-        'Name',
-        'LastName',
+        'FullName',
         'FatherName',
         'Email',
         'PhoneNumber',

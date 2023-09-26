@@ -21,9 +21,9 @@ class ProductController extends Controller
             'Image'=>'required' ,
         ]);
 
-        $insert = new Product();
-        $insert->product_name = request('Product_name');
-        $insert->Description = request('Description');
+            $insert = new Product();
+            $insert->product_name = request('Product_name');
+            $insert->Description = request('Description');
         $insert->Category = request('Category');
         $insert->Price = request('Price');
         $insert->inventory = request('Inventory');

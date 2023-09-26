@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $product = Product::factory()->count(12)->create();
-        Customer::factory()->count(10)
-            ->has(Order::factory()->count(5)
-                ->hasAttached($product->skip(0)->take(3)))
-            ->create();
-
+//        $product = Product::factory()->count(12)->create();
+//        Customer::factory()->count(10)
+//            ->has(Order::factory()->count(5)
+//                ->hasAttached($product->skip(0)->take(3)))
+//            ->create();
+//
         $this->call(RolesTableSeeder::class);
     }
 }

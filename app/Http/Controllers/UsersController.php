@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InsertCustomerRequest;
 use App\Http\Requests\InsertUserRequest;
 use App\Models\Customer;
+use App\Models\Json;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -21,34 +23,92 @@ class UsersController extends Controller
     {
 
 
-        $request->validate([
-            'FullName' => ['required'],
-            'CompanyName'=>['required'],
-            'CompanyAddress'=>['required'],
-            'NumberOfCustomers'=>['required'],
-            'Email' => ['required'],
-            'PhoneNumber' => ['required'],
-            'Password' => ['required'],
-        ]);
+        if ($request->Role == 'Admin') {
 
-        $user = User::create($request->merge([
-            "Password"=>Hash::make($request->password)
-        ])->except('_token'));
+            $request->validate([
 
-        $_token = $user->createToken('UserToken')->plainTextToken;
-        return response()->json([
-            'token' => $_token,
-            'user' => $user
-        ]);
+                'FullName' => ['required'],
+                'CompanyName' => ['required'],
+                'CompanyAddress' => ['required'],
+                'NumberOfCustomers' => ['required'],
+                'Email' => ['required'],
+                'PhoneNumber' => ['required'],
+                'Password' => ['required'],
+            ]);
+
+            $hashedPassword = Hash::make($request->password);
+
+            $user = User::create([
+                'Role' => $request->Role,
+                'Email' => $request->Email,
+                'PhoneNumber'=> $request->PhoneNumber,
+                'Password'=> $hashedPassword
+            ]);
+
+            $insert = new Json();
+            $insert->user_id = $user->id;
+            $insert->Json = json_encode($request->all());
+            $insert->save();
+
+
+            $_token = $user->createToken('UserToken')->plainTextToken;
+            return response()->json([
+                'token' => $_token,
+                'user' => $user
+            ]);
+
+
+        }
+
+
+        if ($request->Role == 'Customer') {
+
+            $request->validate([
+                'FullName' => ['required'],
+                'FatherName' => ['required'],
+                'Email' => ['required'],
+                'PhoneNumber' => ['required'],
+                'Country' => ['required'],
+                'City' => ['required'],
+                'Address' => ['required'],
+                'Gender' => ['required'],
+                'NationalCode' => ['required'],
+                'Job' => ['required'],
+                'Image' => ['required'],
+                'Education' => ['required'],
+                'CityEducation' => ['required'],
+                'Password' => ['required'],
+            ]);
+
+            $hashedPassword = Hash::make($request->password);
+
+            $user = User::create([
+            'Role' => $request->Role,
+            'Email' => $request->Email,
+            'PhoneNumber'=> $request->PhoneNumber,
+            'Password'=> $hashedPassword
+            ]);
+
+            $insert = new Json();
+            $insert->user_id = $user->id;
+            $insert->Json = json_encode($request->all());
+            $insert->save();
+
+
+            $_token = $user->createToken('UserToken')->plainTextToken;
+            return response()->json([
+                'data' => 'user create successfully',
+                'token' => $_token
+            ]);
+
+        }
 
 
     }
 
 
-
-
-
-    public function Logout(Request $request){
+    public function Logout(Request $request)
+    {
         $request->user()->tokens()->delete();
         return response()->json([
             'Logout' => 'Goodbye'
@@ -56,23 +116,21 @@ class UsersController extends Controller
     }
 
 
-
-
     public function Login(Request $request)
     {
         $request->validate([
-            'FullName' => ['required'],
+            'PhoneNumber' => ['required'],
             'Email' => ['required', 'email'],
             'Password' => ['required'],
         ]);
 
         $user = User::where('Email', $request->Email)->first();
-        if (!$user){
+        if (!$user) {
             throw ValidationException::withMessages(
                 ['Email' => 'user is not found']
             );
         }
-        if (!Hash::check($request->password,$user->Password)){
+        if (!Hash::check($request->password, $user->Password)) {
             throw ValidationException::withMessages(
                 ['Email' => 'password is not true']
             );
