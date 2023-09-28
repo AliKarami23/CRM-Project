@@ -15,9 +15,9 @@ class RolesTableSeeder extends Seeder
     public function run(): void
     {
 
-        $SuperAdmin = Role::create(['name' => 'SuperAdmin','guard_name' => 'api']);
-        $Admin = Role::create(['name' => 'Admin','guard_name' => 'api']);
-        $Customer = Role::create(['name' => 'Customer','guard_name' => 'api']);
+        $SuperAdmin = Role::create(['name' => 'SuperAdmin']);
+        $Admin = Role::create(['name' => 'Admin']);
+        $Customer = Role::create(['name' => 'Customer']);
         $SuperAdminPermissions = [
             ['name'=>'ListUser', 'guard_name' => 'api'],
             ['name'=>'AddCustomer', 'guard_name' => 'api'],

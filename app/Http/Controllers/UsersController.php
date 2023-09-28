@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
 
 
 class UsersController extends Controller
@@ -50,6 +51,7 @@ class UsersController extends Controller
             $insert->Json = json_encode($request->all());
             $insert->save();
 
+            $user->assignRole('Admin');
 
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
@@ -95,6 +97,8 @@ class UsersController extends Controller
             $insert->save();
 
             $user_data = $request->all();
+
+            $user->assignRole('Customer');
 
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
