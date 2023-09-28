@@ -94,10 +94,11 @@ class UsersController extends Controller
             $insert->Json = json_encode($request->all());
             $insert->save();
 
+            $user_data = $request->all();
 
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
-                'data' => 'user create successfully',
+                'data' => $user_data,
                 'token' => $_token
             ]);
 
