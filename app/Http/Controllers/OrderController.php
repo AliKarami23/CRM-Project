@@ -21,7 +21,7 @@ class OrderController extends Controller
         $insert = new Order();
         $insert->price = request('Price');
         $insert->description = request('Description');
-        $insert->customer_id = request('customer_id');
+        $insert->customer_id = request('user_id');
         $insert->save();
 
         $order = request()->all();

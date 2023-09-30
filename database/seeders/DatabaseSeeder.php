@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
 //                ->hasAttached($product->skip(0)->take(3)))
 //            ->create();
 //
-        $this->call(RolesTableSeeder::class);
+        $this->call([
+            RolesTableSeeder::class,
+            SuperAdminSeeder::class
+            ]);
     }
 }

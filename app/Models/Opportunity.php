@@ -9,5 +9,14 @@ use Spatie\Permission\Traits\HasRoles;
 class Opportunity extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id' , 'Category' , 'Product_id' , 'Number' , 'Color' , 'Price' , 'TotalPrice' , 'Description' , 'Status'];
+    protected $fillable = [
+        'user_id' ,
+        'Category' ,
+        'Product_id' ,
+        'Number' ,
+        'Color' ,
+        'Price' ,
+        'TotalPrice' ,
+        'Description' ,
+        'Status'];
 }

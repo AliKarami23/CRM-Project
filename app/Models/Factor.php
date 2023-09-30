@@ -11,6 +11,17 @@ use Spatie\Permission\Traits\HasRoles;
 class Factor extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'factor_name',
+        'Description',
+        'factor_date',
+        'user_id',
+        'factor_cost',
+        'factor_number',
+        'order_id'
+    ];
+
+
 
     public function products(): HasMany
     {

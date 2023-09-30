@@ -25,9 +25,14 @@ class User extends Authenticatable
         'Password'
     ];
 
-    public function Customer(): HasMany
+    public function customer(): HasMany
     {
         return $this->hasMany(Customer::class);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 
 }

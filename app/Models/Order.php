@@ -12,7 +12,11 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'product_id', 'Price', 'Description', 'customer_id',];
+    protected $fillable = ['id',
+        'product_id',
+        'Price',
+        'Description',
+        'user_id',];
 
     public function factor(): HasMany
     {
@@ -22,6 +26,11 @@ class Order extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function products()

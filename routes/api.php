@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FactorController;
 use App\Http\Controllers\OpportunityController;
 
 
@@ -13,7 +14,6 @@ use App\Http\Controllers\OpportunityController;
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
 //customer
-
     Route::post('/AddCustomer', [CustomerController::class, 'AddCustomer'])->name('AddCustomer')->middleware('role:Admin');
     Route::get('/ListCustomers', [CustomerController::class, 'ListCustomers'])->name('ListCustomers')->middleware('role:SuperAdmin|Admin');
     Route::put('/EditCustomer/{id}', [CustomerController::class, 'EditCustomer'])->name('EditCustomer')->middleware('role:SuperAdmin|Admin');
@@ -21,7 +21,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 //order
-
     Route::post('/AddOrder', [OrderController::class, 'AddOrder'])->name('AddOrder')->middleware('role:SuperAdmin|Admin|Customer');
     Route::get('/ListOrders', [OrderController::class, 'ListOrders'])->name('ListOrders')->middleware('role:SuperAdmin|Admin');
     Route::put('/EditOrder/{id}', [OrderController::class, 'EditOrder'])->name('EditOrder')->middleware('role:SuperAdmin|Admin|Customer');
@@ -29,19 +28,24 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 //product
-
     Route::post('/AddProduct', [ProductController::class, 'AddProduct'])->name('AddProduct')->middleware('role:SuperAdmin|Admin');
     Route::get('/ProductsList', [ProductController::class, 'ProductsList'])->name('ProductsList')->middleware('role:SuperAdmin|Admin');
     Route::post('/EditProduct/{id}', [ProductController::class, 'EditProduct'])->name('EditProduct')->middleware('role:SuperAdmin|Admin');
     Route::delete('/DeleteProduct/{id}', [ProductController::class, 'DeleteProduct'])->name('DeleteProduct')->middleware('role:SuperAdmin|Admin');
 
 
-//opportunity
+// factor
+    Route::post('/AddFactor', [FactorController::class, 'AddFactor'])->name('AddFactor')->middleware('role:SuperAdmin|Admin');
+    Route::get('/ListFactor', [FactorController::class, 'ListFactor'])->name('ListFactor')->middleware('role:SuperAdmin|Admin');
+    Route::put('/EditFactor/{id}', [FactorController::class, 'EditFactor'])->name('EditFactor')->middleware('role:SuperAdmin|Admin');
+    Route::delete('/DeleteFactor/{id}', [FactorController::class, 'DeleteFactor'])->name('DeleteFactor')->middleware('role:SuperAdmin|Admin');
 
-//    Route::post('/AddOpportunity' ,[OpportunityController::class , 'AddOpportunity'])->name('AddOpportunity');
-//    Route::get('/ListOpportunity' , [OpportunityController::class , 'ListOpportunity'])->name('ListOpportunity');
-//    Route::put('/EditOpportunity/{id}' , [OpportunityController::class , 'EditOpportunity'])->name('EditOpportunity');
-//    Route::delete('/DeleteOpportunity/{id}' , [OpportunityController::class , 'DeleteOpportunity'])->name('DeleteOpportunity');
+
+//opportunity
+    Route::post('/AddOpportunities' ,[OpportunityController::class , 'AddOpportunities'])->name('AddOpportunities');
+    Route::get('/ListOpportunities' , [OpportunityController::class , 'ListOpportunities'])->name('ListOpportunities');
+    Route::put('/EditOpportunities/{id}' , [OpportunityController::class , 'EditOpportunities'])->name('EditOpportunities');
+    Route::delete('/DeleteOpportunities/{id}' , [OpportunityController::class , 'DeleteOpportunities'])->name('DeleteOpportunities');
 
 
     Route::post('/Logout', [UsersController::class, 'Logout'])->name('Logout')->middleware('role:SuperAdmin|Admin');

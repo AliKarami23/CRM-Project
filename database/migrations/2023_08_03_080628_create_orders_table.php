@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('Price');
             $table->text('Description');
-            $table->string('customer_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

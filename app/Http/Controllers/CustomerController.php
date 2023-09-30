@@ -63,10 +63,6 @@ class CustomerController extends Controller
             $query->where('Name', 'like', '%' . $request->input('Name') . '%');
         }
 
-        if ($request->has('LastName')) {
-            $query->where('LastName', 'like', '%' . $request->input('LastName') . '%');
-        }
-
         if ($request->has('Orders')) {
             $ordersFilter = $request->input('Orders');
 
@@ -77,7 +73,7 @@ class CustomerController extends Controller
             }
         }
 
-        $customers = $query->with('Orders')->select('id', 'name', 'LastName', 'email', 'PhoneNumber')->paginate(10);
+        $customers = $query->with('Orders')->select('id', 'Email', 'PhoneNumber')->paginate(10);
 
 
         return response()->json($customers);
@@ -86,7 +82,7 @@ class CustomerController extends Controller
 
 
 
-    public function EditCustomer(CustomerRequest $request, $id)
+    public function EditCustomer(Request $request, $id)
     {
 
         $request->validate([

@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 class OpportunityController extends Controller
 {
 
-    public function AddOpportunity(){
+    public function AddOpportunities(){
 
         $valid = request()->validate([
             'user_id'=>'required' ,
@@ -41,14 +41,14 @@ class OpportunityController extends Controller
         ]);
     }
 
-    public function ListOpportunity(){
+    public function ListOpportunities(){
 
         $Opportunitys = Opportunity::all();
           return response()->json($Opportunitys);
     }
 
 
-    public function EditOpportunity($id){
+    public function EditOpportunities($id){
         $valid = request()->validate([
             'customer_id'=>'required' ,
             'Category'=>'required' ,
@@ -81,7 +81,7 @@ class OpportunityController extends Controller
         ]);
     }
 
-    public function DeleteOpportunity($id){
+    public function DeleteOpportunities($id){
 
         $order = Opportunity::findOrFail($id);
         $order->delete();

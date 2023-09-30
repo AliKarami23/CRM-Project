@@ -48,11 +48,11 @@ class ProductController extends Controller
 
 
     public function EditProduct($id){
-
-        Product::where('id', $id)->update();
+        $data = request()->all();
+        Product::where('id', $id)->update($data);
         $product = request()->all();
         return response()->json([
-                'json'=>'Product is Add',
+                'json'=>'Product is Edit',
                 'product'=>$product]
         );
     }
