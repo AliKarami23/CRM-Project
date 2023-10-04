@@ -40,7 +40,7 @@ class ProductController extends Controller
     }
 
 
-    public function ProductsList(){
+    public function ListProduct(){
 
         $products = Product::all();
         return response()->json($products);

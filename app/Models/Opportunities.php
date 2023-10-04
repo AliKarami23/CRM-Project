@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class Opportunity extends Model
+class Opportunities extends Model
 {
     use HasFactory;
     protected $fillable = [

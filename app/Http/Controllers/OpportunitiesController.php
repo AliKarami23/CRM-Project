@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Opportunity;
+use App\Models\Opportunities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class OpportunityController extends Controller
+class OpportunitiesController extends Controller
 {
 
     public function AddOpportunities(){
@@ -21,10 +21,10 @@ class OpportunityController extends Controller
             'Description'=>'required' ,
         ]);
 
-        $insert = new Opportunity();
+        $insert = new Opportunities();
         $insert->User_id = request('user_id');
         $insert->Category= request('Category');
-        $insert->Product_id = request('Product_id');
+        $insert->Product_id = request('product_id');
         $insert->Number = request('Number');
         $insert->Color = request('Color');
         $insert->Price = request('Price');
@@ -33,24 +33,24 @@ class OpportunityController extends Controller
         $insert->Status = request('Status');
         $insert->save();
 
-        $Opportunity = request()->all();
+        $Opportunities = request()->all();
 
         return response()->json([
-            'json'=>'Opportunity is Add',
-            'Opportunity'=>$Opportunity
+            'json'=>'Opportunities is Add',
+            'Opportunities'=>$Opportunities
         ]);
     }
 
     public function ListOpportunities(){
 
-        $Opportunitys = Opportunity::all();
-          return response()->json($Opportunitys);
+        $Opportunities = Opportunities::all();
+          return response()->json(['Opportunities'=> $Opportunities]);
     }
 
 
     public function EditOpportunities($id){
         $valid = request()->validate([
-            'customer_id'=>'required' ,
+            'user_id'=>'required' ,
             'Category'=>'required' ,
             'product_id'=>'required' ,
             'Number'=>'required' ,
@@ -59,34 +59,35 @@ class OpportunityController extends Controller
             'Description'=>'required' ,
         ]);
 
-        $insert = Opportunity::findOrFail($id);
+
+        $insert = Opportunities::findOrFail($id);
         $insert->update([
-        $insert->customer_id = request('customer_id'),
+        $insert->user_id = request('user_id'),
         $insert->category= request('Category'),
         $insert->product_id = request('product_id'),
         $insert->number = request('Number'),
         $insert->color = request('Color'),
         $insert->price = request('Price'),
-        $insert->total_price = request('TotalPrice'),
+        $insert->TotalPrice = request('TotalPrice'),
         $insert->description = request('Description'),
         $insert->status = request('Status'),
         $insert->save()
      ]);
 
-        $Opportunity = request()->all();
+        $Opportunities = request()->all();
 
         return response()->json([
-            'json'=>'Opportunity is Update',
-            'Opportunity'=>$Opportunity
+            'json'=>'opportunities is Update',
+            'opportunities'=>$Opportunities
         ]);
     }
 
     public function DeleteOpportunities($id){
 
-        $order = Opportunity::findOrFail($id);
+        $order = Opportunities::findOrFail($id);
         $order->delete();
 
-        return response()->json(['Opportunity is Deleted']);
+        return response()->json(['opportunities is Deleted']);
     }
 
 

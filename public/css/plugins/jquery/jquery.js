@@ -3895,7 +3895,7 @@ function completed() {
 if ( document.readyState === "complete" ||
 	( document.readyState !== "loading" && !document.documentElement.doScroll ) ) {
 
-	// Handle it asynchronously to allow scripts the Opportunity to delay ready
+	// Handle it asynchronously to allow scripts the Opportunities to delay ready
 	window.setTimeout( jQuery.ready );
 
 } else {

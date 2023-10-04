@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\OpportunityController;
+use App\Http\Controllers\OpportunitiesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;

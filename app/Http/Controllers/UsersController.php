@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InsertCustomerRequest;
 use App\Http\Requests\InsertUserRequest;
+use App\Jobs\ProcessPodcast;
 use App\Models\Customer;
+use App\Models\Podcast;
 use App\Models\Json;
 use App\Models\Product;
 use App\Models\User;
@@ -37,7 +39,7 @@ class UsersController extends Controller
                 'Password' => ['required'],
             ]);
 
-            $hashedPassword = Hash::make($request->password);
+            $hashedPassword = Hash::make($request->Password);
 
             $user = User::create([
                 'Role' => $request->Role,
@@ -82,7 +84,7 @@ class UsersController extends Controller
                 'Password' => ['required'],
             ]);
 
-            $hashedPassword = Hash::make($request->password);
+            $hashedPassword = Hash::make($request->Password);
 
             $user = User::create([
             'Role' => $request->Role,
@@ -114,6 +116,7 @@ class UsersController extends Controller
 
     public function Logout(Request $request)
     {
+        ProcessPodcast::dispatch();
         $request->user()->tokens()->delete();
         return response()->json([
             'Logout' => 'Goodbye'
@@ -135,19 +138,23 @@ class UsersController extends Controller
                 ['Email' => 'user is not found']
             );
         }
-        if (!Hash::check($request->password, $user->Password)) {
+
+        if (!Hash::check($request->Password, $user->Password)) {
             throw ValidationException::withMessages(
-                ['Email' => 'password is not true']
+                ['Email' => 'Password is not true']
             );
         }
+
         $_token = $user->createToken('UserToken')->plainTextToken;
         return response()->json([
             'token' => $_token,
             'user' => $user
         ]);
-
     }
 
+    public function Users(){
+
+    }
 
 }
 

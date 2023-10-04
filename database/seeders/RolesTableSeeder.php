@@ -40,6 +40,10 @@ class RolesTableSeeder extends Seeder
             ['name'=>'EditOpportunities', 'guard_name' => 'api'],
             ['name'=>'DeleteOpportunities', 'guard_name' => 'api'],
             ['name'=>'ListOpportunities', 'guard_name' => 'api'],
+            ['name'=>'AddRole', 'guard_name' => 'api'],
+            ['name'=>'EditRole', 'guard_name' => 'api'],
+            ['name'=>'DeleteRole', 'guard_name' => 'api'],
+            ['name'=>'ListRole', 'guard_name' => 'api'],
         ];
 
         $AdminPermissions = [
