@@ -48,7 +48,8 @@ class OpportunitiesController extends Controller
     }
 
 
-    public function EditOpportunities($id){
+    public function EditOpportunities(Request $request, $id){
+
         $valid = request()->validate([
             'user_id'=>'required' ,
             'Category'=>'required' ,
@@ -59,20 +60,14 @@ class OpportunitiesController extends Controller
             'Description'=>'required' ,
         ]);
 
+        $Opportunities = Opportunities::findOrFail($id);
 
-        $insert = Opportunities::findOrFail($id);
-        $insert->update([
-        $insert->user_id = request('user_id'),
-        $insert->category= request('Category'),
-        $insert->product_id = request('product_id'),
-        $insert->number = request('Number'),
-        $insert->color = request('Color'),
-        $insert->price = request('Price'),
-        $insert->TotalPrice = request('TotalPrice'),
-        $insert->description = request('Description'),
-        $insert->status = request('Status'),
-        $insert->save()
-     ]);
+        if (!$Opportunities) {
+            return response()->json(['error' => 'Opportunities not found'], 404);
+        }
+
+        $Opportunities->update($request->all());
+
 
         $Opportunities = request()->all();
 

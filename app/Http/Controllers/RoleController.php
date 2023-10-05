@@ -32,14 +32,13 @@ class RoleController extends Controller
     public function EditRole(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:255' . $id,
-            'permissions' => 'required'
+            'name' => 'required|max:255'
         ]);
 
         $role = Role::findOrFail($id);
 
         $role->update([
-            'name' => $request->input('name'),
+            'name' => $request->name,
             'guard_name' => 'api'
         ]);
 
