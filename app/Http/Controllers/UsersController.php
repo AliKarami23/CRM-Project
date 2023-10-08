@@ -78,7 +78,7 @@ class UsersController extends Controller
                 'Gender' => ['required'],
                 'NationalCode' => ['required'],
                 'Job' => ['required'],
-                'Image' => ['required'],
+                'Image' => ['required|image|mimes:jpeg,png,jpg,gif'],
                 'Education' => ['required'],
                 'CityEducation' => ['required'],
                 'Password' => ['required'],
@@ -92,6 +92,14 @@ class UsersController extends Controller
             'PhoneNumber'=> $request->PhoneNumber,
             'Password'=> $hashedPassword
             ]);
+
+            if ($request->hasFile('Image')) {
+                $imagePath = $request->file('Image')->store('images');
+            } else {
+                $imagePath = null;
+            }
+
+            $hashedPassword = Hash::make($request->Password);
 
             $insert = new Json();
             $insert->user_id = $user->id;

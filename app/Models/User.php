@@ -18,17 +18,15 @@ class User extends Authenticatable
     protected $guard_name  = 'api';
 
     protected $fillable = [
-        'id',
         'Role',
         'Email',
         'PhoneNumber',
         'Password'
     ];
 
-    public function customer(): HasMany
-    {
-        return $this->hasMany(Customer::class);
-    }
+    protected $hidden = [
+        'password',
+    ];
 
     public function orders(): HasMany
     {

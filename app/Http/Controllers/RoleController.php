@@ -39,7 +39,6 @@ class RoleController extends Controller
 
         $role->update([
             'name' => $request->name,
-            'guard_name' => 'api'
         ]);
 
         $permissions = $request->permissions;
