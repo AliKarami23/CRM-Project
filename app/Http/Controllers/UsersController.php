@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InsertCustomerRequest;
 use App\Http\Requests\InsertUserRequest;
 use App\Jobs\ProcessPodcast;
+use App\Jobs\SingUpEmailJob;
+use App\Mail\WelcomeEmail;
 use App\Models\Customer;
 use App\Models\Podcast;
 use App\Models\Json;
@@ -15,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
@@ -55,10 +58,16 @@ class UsersController extends Controller
 
             $user->assignRole('Admin');
 
+            $content = "Dear user, welcome to our platform. We're glad to have you on board.";
+            $email = $request->email;
+            SingUpEmailJob::dispatch($email, $content);
+
+
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
                 'token' => $_token,
-                'user' => $user
+                'user' => $user,
+                'message' => 'Welcome email sent successfully'
             ]);
 
 
@@ -110,10 +119,15 @@ class UsersController extends Controller
 
             $user->assignRole('Customer');
 
+            $content = "Dear user, welcome to our platform. We're glad to have you on board.";
+            $email = $request->email;
+            SingUpEmailJob::dispatch($email, $content);
+
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
                 'data' => $user_data,
-                'token' => $_token
+                'token' => $_token,
+                'message' => 'Welcome email sent successfully'
             ]);
 
         }
