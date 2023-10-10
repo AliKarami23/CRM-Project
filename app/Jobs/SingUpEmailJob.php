@@ -15,26 +15,29 @@ class SingUpEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $email;
+    protected $Email;
     protected $content;
+    protected $PhoneNumber;
+    protected $FullName;
 
     /**
      * Create a new job instance.
      *
-     * @param string $email
+     * @param string $Email
      * @param string $content
      */
-    public function __construct($email, $content)
+    public function __construct($PhoneNumber,$FullName)
     {
-        $this->email = $email;
-        $this->content = $content;
+        $this->PhoneNumber = $PhoneNumber;
+        $this->FullName = $FullName;
+
     }
 
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle()
     {
-        Mail::to($this->email)->send(new WelcomeEmail());
+        Mail::to('ali@gmail.com')->send(new WelcomeEmail($this->PhoneNumber, $this->FullName));
     }
 }

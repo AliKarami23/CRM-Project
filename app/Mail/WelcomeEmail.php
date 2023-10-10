@@ -14,45 +14,32 @@ class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $Email;
+    protected $PhoneNumber;
+    protected $FullName;
+
     /**
      * Create a new message instance.
      */
-    public function __construct($Email,$PhoneNumber,$FullName)
+    public function __construct($PhoneNumber, $FullName)
     {
-        $this->Email = $Email;
         $this->PhoneNumber = $PhoneNumber;
         $this->FullName = $FullName;
-
     }
 
     /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            from: new Address('info@ali.com','ali.com support'),
-            subject: 'Order Placed',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'welcomeEmail',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
+     * Build the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return $this
      */
-    public function attachments(): array
+    public function build()
     {
-        return [];
+        return $this->from(new Address('info@ali.com', 'ali.com support'))
+            ->subject('Email Welcome')
+            ->view('welcomeEmail')
+            ->with([
+                'PhoneNumber' => $this->PhoneNumber,
+                'FullName' => $this->FullName
+            ]);
     }
 }

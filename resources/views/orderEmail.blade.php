@@ -37,8 +37,8 @@
 <div class="card">
     <h2>Welcome to Our CRM</h2>
     <p>
-        Dear {{$FullName}}, welcome to our platform. We're glad to have you on board.
-        your PhoneNumber is {{$PhoneNumber}}.
+        Dear , welcome to our platform. We're glad to have you on board.
+        your order is add
     </p>
 </div>
 </body>

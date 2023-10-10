@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -16,9 +17,9 @@ class ProductEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($Product_name)
     {
-        //
+        $this->Product_name = $Product_name;
     }
 
     /**
@@ -27,7 +28,8 @@ class ProductEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Product Email',
+            from: new Address('info@gmail.com','ali@gmail.com support'),
+            subject: 'product add',
         );
     }
 
@@ -37,7 +39,8 @@ class ProductEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'productEmail',
+            with: ['product_Name' => $this->Product_name]
         );
     }
 

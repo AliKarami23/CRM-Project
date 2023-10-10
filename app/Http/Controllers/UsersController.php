@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InsertCustomerRequest;
 use App\Http\Requests\InsertUserRequest;
-use App\Jobs\ProcessPodcast;
 use App\Jobs\SingUpEmailJob;
 use App\Mail\WelcomeEmail;
-use App\Models\Customer;
-use App\Models\Podcast;
 use App\Models\Json;
 use App\Models\Product;
 use App\Models\User;
@@ -58,9 +55,7 @@ class UsersController extends Controller
 
             $user->assignRole('Admin');
 
-            $content = "Dear user, welcome to our platform. We're glad to have you on board.";
-            $email = $request->email;
-            SingUpEmailJob::dispatch($email, $content);
+            SingUpEmailJob::dispatch($request->PhoneNumber,$request->FullName);
 
 
             $_token = $user->createToken('UserToken')->plainTextToken;
@@ -120,8 +115,8 @@ class UsersController extends Controller
             $user->assignRole('Customer');
 
             $content = "Dear user, welcome to our platform. We're glad to have you on board.";
-            $email = $request->email;
-            SingUpEmailJob::dispatch($email, $content);
+            $Email = 'ali@gmail.com';
+            SingUpEmailJob::dispatch($Email, $content);
 
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([

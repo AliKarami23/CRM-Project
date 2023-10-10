@@ -58,4 +58,6 @@ Route::post('/Login', [UsersController::class, 'Login'])->name('Login');
 
 Route::get('/test', function () {
     \App\Jobs\SingUpEmailJob::dispatch('ali@gmail.com',2);
+    \App\Jobs\AddOrderJob::dispatch('ali@gmail.com',2);
+    \App\Jobs\AddProductJob::dispatch('ali@gmail.com',2);
 })->name('TestForJob');

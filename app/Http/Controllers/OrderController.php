@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Mail\OrderEmail;
 use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Routing\Controller;
 
 class OrderController extends Controller
@@ -26,13 +25,18 @@ class OrderController extends Controller
 
         $order = request()->all();
 
+        $content = "your order is add.";
+        OrderEmail::dispatch($content);
+
         return response()->json([
             'json'=>'Order is Add',
-            'order'=>$order
+            'order'=>$order,
+            'message' => 'order email sent successfully'
+
         ]);
     }
 
-    public function ListOrders()
+    public function ListOrder()
     {
         $orders = Order::all();
         return response()->json([$orders]);

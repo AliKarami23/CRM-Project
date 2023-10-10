@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Mail\ProductEmail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
-    public function AddProduct(){
+    public function AddProduct(Request $request){
         $valid = request()->validate([
             'Product_name'=>'required' ,
             'Description'=>'required' ,
@@ -21,9 +21,9 @@ class ProductController extends Controller
             'Image'=>'required' ,
         ]);
 
-            $insert = new Product();
-            $insert->product_name = request('Product_name');
-            $insert->Description = request('Description');
+        $insert = new Product();
+        $insert->product_name = request('Product_name');
+        $insert->Description = request('Description');
         $insert->Category = request('Category');
         $insert->Price = request('Price');
         $insert->inventory = request('Inventory');
@@ -33,9 +33,16 @@ class ProductController extends Controller
 
         $product = request()->all();
 
+        $Product_name = $request->Product_name;
+        ProductEmail::dispatch($Product_name);
+
+
         return response()->json([
             'json'=>'Product is Add',
-            'product'=>$product]
+            'product'=>$product,
+            'message' => 'product email sent successfully'
+
+            ]
         );
     }
 
