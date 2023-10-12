@@ -1,10 +1,6 @@
 <?php
 
-use App\Http\Controllers\OpportunitiesController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\CustomerController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //
-
+Route::get('/', function () {
+    return view('home');
+});
