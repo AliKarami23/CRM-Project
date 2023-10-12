@@ -7,7 +7,7 @@ use App\Models\Factor;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+
 
 class FactorController extends Controller
 {

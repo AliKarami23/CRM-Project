@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Opportunities;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class OpportunitiesController extends Controller
 {

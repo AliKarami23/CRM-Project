@@ -11,7 +11,6 @@ use App\Models\Json;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -19,7 +18,15 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
 
-
+/**
+ * @OA\Post(
+ * path="/login",
+ * summary="Sign in",
+ * description="Login by email, password",
+ * @OA\Response(response="200", description="Success"),
+ * @OA\Response(response="401", description="Unauthorized"),
+ * )
+ */
 class UsersController extends Controller
 {
     public function SingUp(Request $request)

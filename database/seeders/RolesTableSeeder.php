@@ -48,7 +48,7 @@ class RolesTableSeeder extends Seeder
             ['name'=>'Role.List', 'guard_name' => 'api'],
         ];
 
-        $this->t = [
+        $AdminPermissions = [
             'Customer.Add',
             'Customer.Edit',
             'Customer.Delete',
@@ -70,7 +70,6 @@ class RolesTableSeeder extends Seeder
             'Opportunities.Delete',
             'Opportunities.List',
         ];
-        $AdminPermissions = $this->t;
 
         $CustomerPermissions = [
             'Order.Add',

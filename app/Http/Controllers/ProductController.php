@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Mail\ProductEmail;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller

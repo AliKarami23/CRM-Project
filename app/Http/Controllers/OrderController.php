@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderEmail;
 use App\Models\Order;
-use Illuminate\Routing\Controller;
 
 class OrderController extends Controller
 {
