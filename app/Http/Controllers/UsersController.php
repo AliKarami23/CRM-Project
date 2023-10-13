@@ -140,7 +140,7 @@ class UsersController extends Controller
 
     public function Logout(Request $request)
     {
-        ProcessPodcast::dispatch();
+
         $request->user()->tokens()->delete();
         return response()->json([
             'Logout' => 'Goodbye'
@@ -176,8 +176,11 @@ class UsersController extends Controller
         ]);
     }
 
-    public function Users(){
-
+    public function ListUser(){
+        $users = User::all();
+        return response()->json([
+            'users' => $users
+        ]);
     }
 
 }

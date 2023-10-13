@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
     Route::post('/Logout', [UsersController::class, 'Logout'])->name('Logout');
+    Route::get('/ListUser', [UsersController::class, 'ListUser'])->name('ListUser')->middleware('permission:User.List');
+
 
 });
 Route::post('/SingUp', [UsersController::class, 'SingUp'])->name('SingUp');

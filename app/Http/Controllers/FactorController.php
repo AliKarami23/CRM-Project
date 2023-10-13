@@ -55,10 +55,9 @@ class FactorController extends Controller
 
     public function ListFactor()
     {
-        $users = User::all();
+
         $Factor = Factor::all();
        return response()->json([
-           'users' => $users,
         'Factor' => $Factor
        ]);
     }
