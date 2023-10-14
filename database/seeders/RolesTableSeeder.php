@@ -22,6 +22,9 @@ class RolesTableSeeder extends Seeder
         $Customer = Role::create(['name' => 'Customer']);
         $SuperAdminPermissions = [
             ['name'=>'User.List', 'guard_name' => 'api'],
+            ['name'=>'Admin.List', 'guard_name' => 'api'],
+            ['name'=>'Admin.Edit', 'guard_name' => 'api'],
+            ['name'=>'Admin.Delete', 'guard_name' => 'api'],
             ['name'=>'Customer.Add', 'guard_name' => 'api'],
             ['name'=>'Customer.Edit', 'guard_name' => 'api'],
             ['name'=>'Customer.Delete', 'guard_name' => 'api'],

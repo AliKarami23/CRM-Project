@@ -89,7 +89,7 @@ class UsersController extends Controller
                 'Gender' => ['required'],
                 'NationalCode' => ['required'],
                 'Job' => ['required'],
-                'Image' => ['required|image|mimes:jpeg,png,jpg,gif'],
+                'Image' => ['required'],
                 'Education' => ['required'],
                 'CityEducation' => ['required'],
                 'Password' => ['required'],
@@ -182,6 +182,136 @@ class UsersController extends Controller
             'users' => $users
         ]);
     }
+
+    public function ListCustomer()
+    {
+        $Customer = User::where('Role', 'Customer')->get();
+        return response()->json([
+            'Customer' => $Customer
+        ]);
+    }
+
+    public function DeleteCustomer($id)
+    {
+        $user = User::where('Role', 'Customer')->find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
+        $user->delete();
+
+        return response()->json(['message' => 'Customer deleted successfully']);
+    }
+
+    public function EditCustomer(Request $request, $id)
+    {
+        $user = User::where('Role', 'Customer')->find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Customer not found'], 404);
+        }
+
+        $request->validate([
+            'FullName' => ['required'],
+            'FatherName' => ['required'],
+            'Email' => ['required'],
+            'PhoneNumber' => ['required'],
+            'Country' => ['required'],
+            'City' => ['required'],
+            'Address' => ['required'],
+            'Gender' => ['required'],
+            'NationalCode' => ['required'],
+            'Job' => ['required'],
+            'Image' => ['required'],
+            'Education' => ['required'],
+            'CityEducation' => ['required'],
+            'Password' => ['required'],
+        ]);
+
+        $hashedPassword = Hash::make($request->Password);
+
+        $user->update([
+            'Role' => $request->Role,
+            'FullName' => $request->FullName,
+            'FatherName' => $request->FatherName,
+            'Email' => $request->Email,
+            'PhoneNumber'=> $request->PhoneNumber,
+            'Country' => $request->Country,
+            'City' => $request->City,
+            'Address' => $request->Address,
+            'Gender' => $request->Gender,
+            'NationalCode' => $request->NationalCode,
+            'Job' => $request->Job,
+            'Image' => $request->Image,
+            'Education' => $request->Education,
+            'CityEducation' => $request->CityEducation,
+            'Password' => $hashedPassword,
+
+        ]);
+
+        return response()->json(['message' => 'Customer information updated successfully']);
+    }
+
+
+    public function ListAdmin(){
+
+        $Admin = User::where('Role', 'Admin')->get();
+        return response()->json([
+            'Admin' => $Admin
+        ]);
+    }
+
+
+    public function DeleteAdmin($id)
+    {
+        $admin = User::where('Role', 'Admin')->find($id);
+
+        if (!$admin) {
+            return response()->json(['message' => 'Admin not found'], 404);
+        }
+
+        $admin->delete();
+
+        return response()->json(['message' => 'Admin deleted successfully'], 200);
+    }
+
+
+
+    public function EditAdmin(Request $request, $id)
+    {
+        $admin = User::where('Role', 'Admin')->find($id);
+
+        if (!$admin) {
+            return response()->json(['message' => 'Admin not found'], 404);
+        }
+
+        $request->validate([
+            'FullName' => ['required'],
+            'CompanyName' => ['required'],
+            'CompanyAddress' => ['required'],
+            'NumberOfCustomers' => ['required'],
+            'Email' => ['required'],
+            'PhoneNumber' => ['required'],
+            'Password' => ['required'],
+        ]);
+
+
+        $admin->update([
+            'FullName' => $request->FullName,
+            'CompanyName' => $request->CompanyName,
+            'CompanyAddress' => $request->CompanyAddress,
+            'NumberOfCustomers' => $request->NumberOfCustomers,
+            'Email' => $request->Email,
+            'PhoneNumber' => $request->PhoneNumber,
+            'Password' => Hash::make($request->Password)
+        ]);
+
+        return response()->json(['message' => 'Admin updated successfully'], 200);
+    }
+
+
+
 
 }
 

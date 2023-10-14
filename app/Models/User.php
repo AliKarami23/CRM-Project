@@ -25,7 +25,7 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'password',
+        'Password',
     ];
 
     public function orders(): HasMany
