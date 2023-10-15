@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\EditAdminRequest;
+use App\Http\Requests\EditCustomerRequest;
 use App\Http\Requests\InsertCustomerRequest;
 use App\Http\Requests\InsertUserRequest;
+use App\Http\Requests\LoginRequest;
 use App\Jobs\SingUpEmailJob;
 use App\Mail\WelcomeEmail;
 use App\Models\Json;
@@ -55,10 +58,6 @@ class UsersController extends Controller
                 'Password'=> $hashedPassword
             ]);
 
-            $insert = new Json();
-            $insert->user_id = $user->id;
-            $insert->Json = json_encode($request->all());
-            $insert->save();
 
             $user->assignRole('Admin');
 
@@ -110,13 +109,6 @@ class UsersController extends Controller
                 $imagePath = null;
             }
 
-            $hashedPassword = Hash::make($request->Password);
-
-            $insert = new Json();
-            $insert->user_id = $user->id;
-            $insert->Json = json_encode($request->all());
-            $insert->save();
-
             $user_data = $request->all();
 
             $user->assignRole('Customer');
@@ -148,12 +140,10 @@ class UsersController extends Controller
     }
 
 
-    public function Login(Request $request)
+    public function Login(LoginRequest $request)
     {
         $request->validate([
-            'PhoneNumber' => ['required'],
-            'Email' => ['required', 'email'],
-            'Password' => ['required'],
+
         ]);
 
         $user = User::where('Email', $request->Email)->first();
@@ -204,7 +194,7 @@ class UsersController extends Controller
         return response()->json(['message' => 'Customer deleted successfully']);
     }
 
-    public function EditCustomer(Request $request, $id)
+    public function EditCustomer(EditCustomerRequest $request, $id)
     {
         $user = User::where('Role', 'Customer')->find($id);
 
@@ -212,43 +202,9 @@ class UsersController extends Controller
             return response()->json(['message' => 'Customer not found'], 404);
         }
 
-        $request->validate([
-            'FullName' => ['required'],
-            'FatherName' => ['required'],
-            'Email' => ['required'],
-            'PhoneNumber' => ['required'],
-            'Country' => ['required'],
-            'City' => ['required'],
-            'Address' => ['required'],
-            'Gender' => ['required'],
-            'NationalCode' => ['required'],
-            'Job' => ['required'],
-            'Image' => ['required'],
-            'Education' => ['required'],
-            'CityEducation' => ['required'],
-            'Password' => ['required'],
-        ]);
 
-        $hashedPassword = Hash::make($request->Password);
+        $user->update(array_merge($request->only(['Role', 'FullName', 'FatherName', 'Email', 'PhoneNumber', 'Country', 'City', 'Address', 'Gender', 'NationalCode', 'Job', 'Image', 'Education', 'CityEducation']), ['Password' => Hash::make($request->Password)]));
 
-        $user->update([
-            'Role' => $request->Role,
-            'FullName' => $request->FullName,
-            'FatherName' => $request->FatherName,
-            'Email' => $request->Email,
-            'PhoneNumber'=> $request->PhoneNumber,
-            'Country' => $request->Country,
-            'City' => $request->City,
-            'Address' => $request->Address,
-            'Gender' => $request->Gender,
-            'NationalCode' => $request->NationalCode,
-            'Job' => $request->Job,
-            'Image' => $request->Image,
-            'Education' => $request->Education,
-            'CityEducation' => $request->CityEducation,
-            'Password' => $hashedPassword,
-
-        ]);
 
         return response()->json(['message' => 'Customer information updated successfully']);
     }
@@ -278,7 +234,7 @@ class UsersController extends Controller
 
 
 
-    public function EditAdmin(Request $request, $id)
+    public function EditAdmin(EditAdminRequest $request, $id)
     {
         $admin = User::where('Role', 'Admin')->find($id);
 
@@ -287,13 +243,7 @@ class UsersController extends Controller
         }
 
         $request->validate([
-            'FullName' => ['required'],
-            'CompanyName' => ['required'],
-            'CompanyAddress' => ['required'],
-            'NumberOfCustomers' => ['required'],
-            'Email' => ['required'],
-            'PhoneNumber' => ['required'],
-            'Password' => ['required'],
+
         ]);
 
 

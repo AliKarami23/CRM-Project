@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddOrderRequest;
 use App\Mail\OrderEmail;
 use App\Models\Order;
 
 class OrderController extends Controller
 {
-    public function AddOrder(){
+    public function AddOrder(AddOrderRequest $request){
 
         $valid = request()->validate([
             'Price'=>'required' ,
             'Description'=>'required' ,
-            'customer_id'=>'required' ,
+            'user_id'=>'required' ,
 
         ]);
 
         $insert = new Order();
         $insert->price = request('Price');
         $insert->description = request('Description');
-        $insert->customer_id = request('user_id');
+        $insert->user_id = request('user_id');
         $insert->save();
 
         $order = request()->all();
@@ -43,19 +44,19 @@ class OrderController extends Controller
 
 
 
-    public  function  EditOrder($id) {
+    public  function  EditOrder(AddOrderRequest $request,$id) {
 
         $valid = request()->validate([
             'Price'=>'required' ,
             'Description'=>'required' ,
-            'customer_id'=>'required' ,
+            'user_id'=>'required' ,
         ]);
 
         $order = Order::findOrFail($id);
         $order->update([
             $order->price = request('Price'),
             $order->description = request('Description'),
-            $order->customer_id = request('customer_id'),
+            $order->user_id = request('user_id'),
             $order->save()
         ]);
 

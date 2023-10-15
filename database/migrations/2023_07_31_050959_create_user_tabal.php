@@ -16,11 +16,24 @@ return new class extends Migration
             $table->string('Role');
             $table->string('Email')->unique();
             $table->string('PhoneNumber')->unique();
+            $table->string('FullName')->nullable();
+            $table->string('CompanyName')->nullable();
+            $table->string('CompanyAddress')->nullable();
+            $table->integer('NumberOfCustomers')->nullable();
+            $table->string('FatherName')->nullable();
+            $table->string('Country')->nullable();
+            $table->string('City')->nullable();
+            $table->string('Address')->nullable();
+            $table->string('Gender')->nullable();
+            $table->integer('NationalCode')->nullable();
+            $table->string('Job')->nullable();
+            $table->string('Image')->nullable();
+            $table->string('Education')->nullable();
+            $table->string('CityEducation')->nullable();
             $table->string('Password');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

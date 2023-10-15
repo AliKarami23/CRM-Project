@@ -2,35 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddOopRequest;
 use App\Models\Opportunities;
 use Illuminate\Http\Request;
 
 class OpportunitiesController extends Controller
 {
 
-    public function AddOpportunities(){
+    public function AddOpportunities(AddOopRequest $request){
 
-        $valid = request()->validate([
-            'user_id'=>'required' ,
-            'Category'=>'required' ,
-            'product_id'=>'required' ,
-            'Number'=>'required' ,
-            'Price'=>'required' ,
-            'TotalPrice'=>'required' ,
-            'Description'=>'required' ,
-        ]);
 
-        $insert = new Opportunities();
-        $insert->User_id = request('user_id');
-        $insert->Category= request('Category');
-        $insert->Product_id = request('product_id');
-        $insert->Number = request('Number');
-        $insert->Color = request('Color');
-        $insert->Price = request('Price');
-        $insert->TotalPrice = request('TotalPrice');
-        $insert->Description = request('Description');
-        $insert->Status = request('Status');
-        $insert->save();
+
+        Opportunities::create(request()->all());
 
         $Opportunities = request()->all();
 
@@ -47,17 +30,8 @@ class OpportunitiesController extends Controller
     }
 
 
-    public function EditOpportunities(Request $request, $id){
+    public function EditOpportunities(AddOopRequest $request,$id){
 
-        $valid = request()->validate([
-            'user_id'=>'required' ,
-            'Category'=>'required' ,
-            'product_id'=>'required' ,
-            'Number'=>'required' ,
-            'Price'=>'required' ,
-            'TotalPrice'=>'required' ,
-            'Description'=>'required' ,
-        ]);
 
         $Opportunities = Opportunities::findOrFail($id);
 

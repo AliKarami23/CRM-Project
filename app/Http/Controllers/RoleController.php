@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddRoleRequest;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -9,12 +10,9 @@ use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
 
-    public function AddRole(Request $request){
+    public function AddRole(AddRoleRequest $request){
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'permission' => 'required'
-        ]);
+
 
         $role = Role::create([
             'name' => $request->name,
@@ -28,12 +26,8 @@ class RoleController extends Controller
             ['message' => 'Role is Add', 'role' => $role]);
 
     }
-    public function EditRole(Request $request, $id)
+    public function EditRole(AddRoleRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:255'
-        ]);
-
         $role = Role::findOrFail($id);
 
         $role->update([
