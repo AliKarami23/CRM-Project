@@ -142,9 +142,6 @@ class UsersController extends Controller
 
     public function Login(LoginRequest $request)
     {
-        $request->validate([
-
-        ]);
 
         $user = User::where('Email', $request->Email)->first();
         if (!$user) {
