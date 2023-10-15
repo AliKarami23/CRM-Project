@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 });
+
 Route::post('/SingUp', [UsersController::class, 'SingUp'])->name('SingUp');
 Route::post('/Login', [UsersController::class, 'Login'])->name('Login');
 

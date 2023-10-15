@@ -140,8 +140,14 @@ class UsersController extends Controller
     }
 
 
-    public function Login(LoginRequest $request)
+    public function Login(Request $request)
     {
+
+        $this->validate($request, [
+            'PhoneNumber' => ['required'],
+            'Email' => ['required', 'email'],
+            'Password' => ['required'],
+        ]);
 
         $user = User::where('Email', $request->Email)->first();
         if (!$user) {
