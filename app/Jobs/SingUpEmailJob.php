@@ -16,7 +16,6 @@ class SingUpEmailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $Email;
-    protected $content;
     protected $PhoneNumber;
     protected $FullName;
 

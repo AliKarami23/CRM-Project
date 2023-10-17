@@ -5,21 +5,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditAdminRequest;
 use App\Http\Requests\EditCustomerRequest;
-use App\Http\Requests\InsertCustomerRequest;
-use App\Http\Requests\InsertUserRequest;
-use App\Http\Requests\LoginRequest;
 use App\Jobs\SingUpEmailJob;
-use App\Mail\WelcomeEmail;
-use App\Models\Json;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
-use Spatie\Permission\Models\Role;
 
 /**
  * @OA\Post(
@@ -51,13 +41,7 @@ class UsersController extends Controller
 
             $hashedPassword = Hash::make($request->Password);
 
-            $user = User::create([
-                'Role' => $request->Role,
-                'Email' => $request->Email,
-                'PhoneNumber'=> $request->PhoneNumber,
-                'Password'=> $hashedPassword
-            ]);
-
+            $user = User::create(request()->all());
 
             $user->assignRole('Admin');
 
@@ -96,12 +80,7 @@ class UsersController extends Controller
 
             $hashedPassword = Hash::make($request->Password);
 
-            $user = User::create([
-            'Role' => $request->Role,
-            'Email' => $request->Email,
-            'PhoneNumber'=> $request->PhoneNumber,
-            'Password'=> $hashedPassword
-            ]);
+            $user = User::create(request()->all());
 
             if ($request->hasFile('Image')) {
                 $imagePath = $request->file('Image')->store('images');
@@ -142,8 +121,7 @@ class UsersController extends Controller
 
     public function Login(Request $request)
     {
-
-        $this->validate($request, [
+        $request->validate([
             'PhoneNumber' => ['required'],
             'Email' => ['required', 'email'],
             'Password' => ['required'],

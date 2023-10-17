@@ -1,0 +1,11 @@
+{
+    "name": "Factor",
+    "alias": "factor",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Factor\\Providers\\FactorServiceProvider"
+    ],
+    "files": []
+}

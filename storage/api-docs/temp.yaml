@@ -136,6 +136,31 @@ paths:
               - available
               - pending
               - sold
+        - name: status2
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: available
+            enum:
+              - available
+              - pending
+              - sold
+
+        - name: status3
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: available
+            enum:
+              - available
+              - pending
+              - sold
       responses:
         '200':
           description: successful operation
