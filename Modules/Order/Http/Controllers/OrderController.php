@@ -2,78 +2,78 @@
 
 namespace Modules\Order\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use App\Http\Requests\AddOrderRequest;
+use App\Mail\OrderEmail;
+use App\Models\Order;
 use Illuminate\Routing\Controller;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    public function create(AddOrderRequest $request){
+
+        $valid = request()->validate([
+            'Price'=>'required' ,
+            'Description'=>'required' ,
+            'user_id'=>'required' ,
+
+        ]);
+
+        $insert = new Order();
+        $insert->price = request('Price');
+        $insert->description = request('Description');
+        $insert->user_id = request('user_id');
+        $insert->save();
+
+        $order = request()->all();
+
+        $content = "your order is add.";
+        OrderEmail::dispatch($content);
+
+        return response()->json([
+            'json'=>'Order is Add',
+            'order'=>$order,
+            'message' => 'order email sent successfully'
+
+        ]);
+    }
+
     public function index()
     {
-        return view('order::index');
+        $orders = Order::all();
+        return response()->json([$orders]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('order::create');
+
+
+    public  function  edit(AddOrderRequest $request,$id) {
+
+        $valid = request()->validate([
+            'Price'=>'required' ,
+            'Description'=>'required' ,
+            'user_id'=>'required' ,
+        ]);
+
+        $order = Order::findOrFail($id);
+        $order->update([
+            $order->price = request('Price'),
+            $order->description = request('Description'),
+            $order->user_id = request('user_id'),
+            $order->save()
+        ]);
+
+        $order = request()->all();
+
+        return response()->json([
+            'json'=>'Order is Edit',
+            'order'=>$order
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function destroy($id){
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('order::show');
-    }
+        $order = Order::findOrFail($id);
+        $order->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('order::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json(['Order is Deleted']);
     }
 }

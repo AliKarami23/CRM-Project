@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
+use \Modules\Order\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +14,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/order', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::post('/AddOrder', [OrderController::class, 'create'])->name('AddOrder')->middleware('permission:Order.Add');
+    Route::get('/ListOrder', [OrderController::class, 'index'])->name('ListOrder')->middleware('permission:Order.List');
+    Route::put('/EditOrder/{id}', [OrderController::class, 'edit'])->name('EditOrder')->middleware('permission:Order.Edit');
+    Route::delete('/DeleteOrder/{id}', [OrderController::class, 'destroy'])->name('DeleteOrder')->middleware('permission:Order.Delete');
+
 });

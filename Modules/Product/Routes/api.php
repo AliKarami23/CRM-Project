@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
+use \Modules\Product\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/product', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/AddProduct', [ProductController::class, 'create'])->name('AddProduct')->middleware('permission:Product.Add');
+    Route::get('/ListProduct', [ProductController::class, 'index'])->name('ListProduct')->middleware('permission:Product.List');
+    Route::post('/EditProduct/{id}', [ProductController::class, 'edit'])->name('EditProduct')->middleware('permission:Product.Edit');
+    Route::delete('/DeleteProduct/{id}', [ProductController::class, 'destroy'])->name('DeleteProduct')->middleware('permission:Product.Delete');
 });

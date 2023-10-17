@@ -2,78 +2,60 @@
 
 namespace Modules\Factor\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\Models\Factor;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class FactorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
+
+
+    public function create(Request $request)
     {
-        return view('factor::index');
+
+        Factor::create($request->all());
+
+        $Factor = $request->all();
+
+        return response()->json([
+            'json'=>'Factor is Add',
+            'Factor'=>$Factor
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+
+
+    public function edit(Request $request, $id)
     {
-        return view('factor::create');
+        $factor = Factor::find($id);
+
+        if (!$factor) {
+            return response()->json(['error' => 'Factor not found'], 404);
+        }
+
+        $factor->update($request->all());
+
+        return response()->json([
+            'message' => 'Factor is Edit',
+            'factor' => $factor
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('factor::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('factor::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
     public function destroy($id)
     {
-        //
+        Factor::destroy($id);
+
+        return response()->json([
+            'json'=>'Factor is Deleted']);
+    }
+
+
+    public function index()
+    {
+
+        $Factor = Factor::all();
+        return response()->json([
+            'Factor' => $Factor
+        ]);
     }
 }

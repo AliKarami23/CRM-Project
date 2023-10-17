@@ -2,78 +2,63 @@
 
 namespace Modules\Opportunities\Http\Controllers;
 
+use App\Http\Requests\AddOopRequest;
+use App\Models\Opportunities;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class OpportunitiesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
-    {
-        return view('opportunities::index');
+
+    public function create(AddOopRequest $request){
+
+
+
+        Opportunities::create(request()->all());
+
+        $Opportunities = request()->all();
+
+        return response()->json([
+            'json'=>'Opportunities is Add',
+            'Opportunities'=>$Opportunities
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('opportunities::create');
+    public function index(){
+
+        $Opportunities = Opportunities::all();
+        return response()->json(['Opportunities'=> $Opportunities]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function edit(AddOopRequest $request,$id){
+
+
+        $Opportunities = Opportunities::findOrFail($id);
+
+        if (!$Opportunities) {
+            return response()->json(['error' => 'Opportunities not found'], 404);
+        }
+
+        $Opportunities->update($request->all());
+
+
+        $Opportunities = request()->all();
+
+        return response()->json([
+            'json'=>'opportunities is Update',
+            'opportunities'=>$Opportunities
+        ]);
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('opportunities::show');
+    public function destroy($id){
+
+        $order = Opportunities::findOrFail($id);
+        $order->delete();
+
+        return response()->json(['opportunities is Deleted']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('opportunities::edit');
-    }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

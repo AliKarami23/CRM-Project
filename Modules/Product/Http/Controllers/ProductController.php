@@ -2,78 +2,57 @@
 
 namespace Modules\Product\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use App\Http\Requests\AddProductRequest;
+use App\Mail\ProductEmail;
+use App\Models\Product;
 use Illuminate\Routing\Controller;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
-    {
-        return view('product::index');
+    public function create(AddProductRequest $request){
+
+
+        Product::create(request()->all());
+
+        $product = request()->all();
+
+        $Product_name = $request->Product_name;
+        ProductEmail::dispatch($Product_name);
+
+
+        return response()->json([
+                'json'=>'Product is Add',
+                'product'=>$product,
+                'message' => 'product email sent successfully'
+
+            ]
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('product::create');
+
+    public function index(){
+
+        $products = Product::all();
+        return response()->json($products);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function edit(AddProductRequest $request,$id){
+        $data = request()->all();
+        Product::where('id', $id)->update($data);
+        $product = request()->all();
+        return response()->json([
+                'json'=>'Product is Edit',
+                'product'=>$product]
+        );
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('product::show');
+
+    public function destroy($id){
+
+        Product::destroy($id);
+        return response()->json(['Product is Deleted']);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('product::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

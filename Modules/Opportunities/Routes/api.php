@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
+use \Modules\Opportunities\Http\Controllers\OpportunitiesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/opportunities', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::post('/AddFactor', [OpportunitiesController::class, 'create'])->name('AddFactor')->middleware('permission:Factor.Add');
+    Route::get('/ListFactor', [OpportunitiesController::class, 'index'])->name('ListFactor')->middleware('permission:Factor.List');
+    Route::put('/EditFactor/{id}', [OpportunitiesController::class, 'edit'])->name('EditFactor')->middleware('permission:Factor.Edit');
+    Route::delete('/DeleteFactor/{id}', [OpportunitiesController::class, 'destroy'])->name('DeleteFactor')->middleware('permission:Factor.Delete');
+
+
 });

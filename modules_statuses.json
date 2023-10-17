@@ -3,5 +3,6 @@
     "Factor": true,
     "Order": true,
     "Opportunities": true,
-    "Product": true
+    "Product": true,
+    "Role": true
 }

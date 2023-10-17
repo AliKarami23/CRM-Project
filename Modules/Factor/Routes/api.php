@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use \Modules\Factor\Http\Controllers\FactorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,11 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['middleware' => ['auth:sanctum']], function () {
 
-Route::middleware('auth:api')->get('/factor', function (Request $request) {
-    return $request->user();
+    Route::post('/AddFactor', [FactorController::class, 'create'])->name('AddFactor')->middleware('permission:Factor.Add');
+    Route::get('/ListFactor', [FactorController::class, 'index'])->name('ListFactor')->middleware('permission:Factor.List');
+    Route::put('/EditFactor/{id}', [FactorController::class, 'edit'])->name('EditFactor')->middleware('permission:Factor.Edit');
+    Route::delete('/DeleteFactor/{id}', [FactorController::class, 'destroy'])->name('DeleteFactor')->middleware('permission:Factor.Delete');
+
 });
