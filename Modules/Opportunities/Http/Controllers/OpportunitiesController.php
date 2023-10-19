@@ -14,7 +14,6 @@ class OpportunitiesController extends Controller
     public function create(AddOopRequest $request){
 
 
-
         Opportunities::create(request()->all());
 
         $Opportunities = request()->all();

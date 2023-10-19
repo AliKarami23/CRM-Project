@@ -16,10 +16,10 @@ use \Modules\Opportunities\Http\Controllers\OpportunitiesController;
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::post('/AddFactor', [OpportunitiesController::class, 'create'])->name('AddFactor')->middleware('permission:Factor.Add');
-    Route::get('/ListFactor', [OpportunitiesController::class, 'index'])->name('ListFactor')->middleware('permission:Factor.List');
-    Route::put('/EditFactor/{id}', [OpportunitiesController::class, 'edit'])->name('EditFactor')->middleware('permission:Factor.Edit');
-    Route::delete('/DeleteFactor/{id}', [OpportunitiesController::class, 'destroy'])->name('DeleteFactor')->middleware('permission:Factor.Delete');
+    Route::post('/AddOpportunities', [OpportunitiesController::class, 'create'])->name('AddOpportunities')->middleware('permission:Opportunities.Add');
+    Route::get('/ListOpportunities', [OpportunitiesController::class, 'index'])->name('ListOpportunities')->middleware('permission:Opportunities.List');
+    Route::put('/EditOpportunities/{id}', [OpportunitiesController::class, 'edit'])->name('EditOpportunities')->middleware('permission:Opportunities.Edit');
+    Route::delete('/DeleteOpportunities/{id}', [OpportunitiesController::class, 'destroy'])->name('DeleteOpportunities')->middleware('permission:Opportunities.Delete');
 
 
 });
