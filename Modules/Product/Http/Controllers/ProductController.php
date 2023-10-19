@@ -2,14 +2,14 @@
 
 namespace Modules\Product\Http\Controllers;
 
-use App\Http\Requests\AddProductRequest;
 use App\Mail\ProductEmail;
 use App\Models\Product;
 use Illuminate\Routing\Controller;
+use Modules\Product\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
-    public function create(AddProductRequest $request){
+    public function create(ProductRequest $request){
 
 
         Product::create(request()->all());
@@ -37,7 +37,7 @@ class ProductController extends Controller
     }
 
 
-    public function edit(AddProductRequest $request,$id){
+    public function edit(ProductRequest $request, $id){
         $data = request()->all();
         Product::where('id', $id)->update($data);
         $product = request()->all();

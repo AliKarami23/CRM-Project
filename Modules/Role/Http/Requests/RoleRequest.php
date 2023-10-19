@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Modules\Role\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddProductRequest extends FormRequest
+class RoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,8 @@ class AddProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Product_name'=>'required' ,
-            'Description'=>'required' ,
-            'Category'=>'required' ,
-            'Price'=>'required' ,
-            'Inventory'=>'required' ,
-            'Color'=>'required' ,
-            'Image'=>'required' ,
-        ];
+            'name' => 'required|max:255',
+            'permissions' => 'required|array',
+            ];
     }
 }

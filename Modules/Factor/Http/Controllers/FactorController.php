@@ -3,14 +3,14 @@
 namespace Modules\Factor\Http\Controllers;
 
 use App\Models\Factor;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Factor\Http\Requests\FactorRequest;
 
 class FactorController extends Controller
 {
 
 
-    public function create(Request $request)
+    public function create(FactorRequest $request)
     {
 
         Factor::create($request->all());
@@ -25,7 +25,7 @@ class FactorController extends Controller
 
 
 
-    public function edit(Request $request, $id)
+    public function edit(FactorRequest $request, $id)
     {
         $factor = Factor::find($id);
 

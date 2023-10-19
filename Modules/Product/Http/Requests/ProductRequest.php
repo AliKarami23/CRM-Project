@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Modules\Product\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditAdminRequest extends FormRequest
+class ProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,13 @@ class EditAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'FullName' => ['required'],
-            'CompanyName' => ['required'],
-            'CompanyAddress' => ['required'],
-            'NumberOfCustomers' => ['required'],
-            'Email' => ['required'],
-            'PhoneNumber' => ['required'],
-            'Password' => ['required'],
+            'Product_name'=>'required' ,
+            'Description'=>'required' ,
+            'Category'=>'required' ,
+            'Price'=>'required' ,
+            'Inventory'=>'required' ,
+            'Color'=>'required' ,
+            'Image'=>'required' ,
         ];
     }
 }

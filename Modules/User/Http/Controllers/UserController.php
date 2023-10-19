@@ -2,14 +2,14 @@
 
 namespace Modules\User\Http\Controllers;
 
-use App\Http\Requests\EditAdminRequest;
-use App\Http\Requests\EditCustomerRequest;
 use App\Jobs\SingUpEmailJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Modules\User\Http\Requests\AdminRequest;
+use Modules\User\Http\Requests\CustomerRequest;
 
 class UserController extends Controller
 {
@@ -166,7 +166,7 @@ class UserController extends Controller
         return response()->json(['message' => 'Customer deleted successfully']);
     }
 
-    public function EditCustomer(EditCustomerRequest $request, $id)
+    public function EditCustomer(CustomerRequest $request, $id)
     {
         $user = User::where('Role', 'Customer')->find($id);
 
@@ -206,7 +206,7 @@ class UserController extends Controller
 
 
 
-    public function EditAdmin(EditAdminRequest $request, $id)
+    public function EditAdmin(AdminRequest $request, $id)
     {
         $admin = User::where('Role', 'Admin')->find($id);
 

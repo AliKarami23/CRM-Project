@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Modules\Order\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddOopRequest extends FormRequest
+class OrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,9 @@ class AddOopRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id'=>'required' ,
-            'Category'=>'required' ,
-            'product_id'=>'required' ,
-            'Number'=>'required' ,
             'Price'=>'required' ,
-            'TotalPrice'=>'required' ,
             'Description'=>'required' ,
+            'user_id'=>'required' ,
         ];
     }
 }

@@ -2,14 +2,14 @@
 
 namespace Modules\Order\Http\Controllers;
 
-use App\Http\Requests\AddOrderRequest;
 use App\Mail\OrderEmail;
 use App\Models\Order;
 use Illuminate\Routing\Controller;
+use Modules\Order\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
-    public function create(AddOrderRequest $request){
+    public function create(OrderRequest $request){
 
         $valid = request()->validate([
             'Price'=>'required' ,
@@ -45,7 +45,7 @@ class OrderController extends Controller
 
 
 
-    public  function  edit(AddOrderRequest $request,$id) {
+    public  function  edit(OrderRequest $request, $id) {
 
         $valid = request()->validate([
             'Price'=>'required' ,

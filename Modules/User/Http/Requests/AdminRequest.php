@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditCustomerRequest extends FormRequest
+class AdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +23,11 @@ class EditCustomerRequest extends FormRequest
     {
         return [
             'FullName' => ['required'],
-            'FatherName' => ['required'],
+            'CompanyName' => ['required'],
+            'CompanyAddress' => ['required'],
+            'NumberOfCustomers' => ['required'],
             'Email' => ['required'],
             'PhoneNumber' => ['required'],
-            'Country' => ['required'],
-            'City' => ['required'],
-            'Address' => ['required'],
-            'Gender' => ['required'],
-            'NationalCode' => ['required'],
-            'Job' => ['required'],
-            'Image' => ['required'],
-            'Education' => ['required'],
-            'CityEducation' => ['required'],
             'Password' => ['required'],
         ];
     }

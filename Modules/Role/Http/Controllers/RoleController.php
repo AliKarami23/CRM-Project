@@ -2,16 +2,14 @@
 
 namespace Modules\Role\Http\Controllers;
 
-use App\Http\Requests\AddRoleRequest;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Role\Http\Requests\RoleRequest;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    public function create(AddRoleRequest $request){
+    public function create(RoleRequest $request){
 
 
 
@@ -30,7 +28,7 @@ class RoleController extends Controller
                 ]);
 
     }
-    public function edit(AddRoleRequest $request, $id)
+    public function edit(RoleRequest $request, $id)
     {
         $role = Role::findOrFail($id);
 

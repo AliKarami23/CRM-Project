@@ -2,16 +2,14 @@
 
 namespace Modules\Opportunities\Http\Controllers;
 
-use App\Http\Requests\AddOopRequest;
 use App\Models\Opportunities;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Opportunities\Http\Requests\OopRequest;
 
 class OpportunitiesController extends Controller
 {
 
-    public function create(AddOopRequest $request){
+    public function create(OopRequest $request){
 
 
         Opportunities::create(request()->all());
@@ -31,7 +29,7 @@ class OpportunitiesController extends Controller
     }
 
 
-    public function edit(AddOopRequest $request,$id){
+    public function edit(OopRequest $request, $id){
 
 
         $Opportunities = Opportunities::findOrFail($id);
