@@ -177,8 +177,12 @@ class UserController extends Controller
 
         $user->update(array_merge($request->only(['Role', 'FullName', 'FatherName', 'Email', 'PhoneNumber', 'Country', 'City', 'Address', 'Gender', 'NationalCode', 'Job', 'Image', 'Education', 'CityEducation']), ['Password' => Hash::make($request->Password)]));
 
+        $customer = $request->all();
 
-        return response()->json(['message' => 'Customer information updated successfully']);
+        return response()->json([
+            'message' => 'Customer information updated successfully',
+            'customer' => $customer
+        ]);
     }
 
 
@@ -228,8 +232,11 @@ class UserController extends Controller
             'PhoneNumber' => $request->PhoneNumber,
             'Password' => Hash::make($request->Password)
         ]);
-
-        return response()->json(['message' => 'Admin updated successfully'], 200);
+        $admin_request = $request->all();
+        return response()->json([
+            'message' => 'Admin updated successfully',
+            'admin' => $admin_request
+            ], 200);
     }
 
 

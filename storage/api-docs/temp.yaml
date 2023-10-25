@@ -1,29 +1,26 @@
 openapi: 3.0.3
 info:
-  title: Swagger Petstore - OpenAPI 3.0
-  description: |-
-    This is a dfv Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
-    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
-    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
-    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+  title: CRM API
+  description: |
+    Welcome to the Customer Relationship Management (CRM) API, the central nervous system of your business. Our CRM platform empowers you to effortlessly manage users, create an extensive product catalog, handle financial transactions, streamline order processing, and seize every opportunity to grow your enterprise.
 
-    _If you're looking for the Swagger 2.0/OAS 2.0 version of Petstore, then click [here](https://editor.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Petstore OAS 2.0` menu option!_
+    With a user-friendly interface and powerful features, our CRM solution is designed to enhance your customer relationships, boost sales, and elevate your business to new heights. Embrace the future of customer management and explore endless possibilities with our API.
 
-    Some useful links:
-    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
-    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
-  termsOfService: http://swagger.io/terms/
+    Whether you're an admin or a customer, our API offers tailored solutions for your specific needs. Embrace innovation, streamline operations, and unlock the full potential of your business with our CRM platform.
+
+    Join us in this CRM journey, and together, we'll build strong, lasting relationships with your customers and seize every opportunity that comes your way. Your success story starts here with our CRM API.
+
   contact:
-    email: apiteam@swagger.io
+    email: ali.karami.ali313@gamil.com
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.11
+  version: 1.0.0
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-  - url: alikarami.serv00.net/
+  - url: http://alikarami.serv00.net
 tags:
   - name: User
   - name: Role
@@ -31,6 +28,8 @@ tags:
   - name: Factor
   - name: Opportunities
   - name: Product
+
+
 
 paths:
   '/user/SignUp({user_type})':
@@ -67,6 +66,682 @@ paths:
           description: Not found
         '405':
           description: Validation exception
+  '/user/ListUser':
+    get:
+      tags:
+        - User
+      summary: List Users
+      description: List users of the specified type (e.g., Admin, Customer).
+      operationId: ListUsers
+      requestBody:
+        description: Provide user type to list users of that type.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListUsersInput'
+      responses:
+        '200':
+          description: Successful retrieval of user list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListUsersOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/ListCustomer':
+    get:
+      tags:
+        - User
+      summary: List Customers
+      description: Displays customers based on id.
+      operationId: ListCustomers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListUsersInput'
+      responses:
+        '200':
+          description: Successful retrieval of customer list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Customer:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CustomerOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/EditCustomer':
+    put:
+      tags:
+        - User
+      summary: Edit Customer
+      description: Edit customer information.
+      operationId: EditCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditCustomerInput'
+      responses:
+        '200':
+          description: Customer information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditCustomerOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/DeleteCustomer':
+    delete:
+      tags:
+        - User
+      summary: Delete Customer
+      description: Permanently remove a customer from the system.
+      operationId: DeleteCustomer
+      requestBody:
+        description: Provide a valid authentication token to delete the customer account.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: "your_authentication_token"
+              required:
+                - token
+      responses:
+        '200':
+          description: Customer deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Customer deleted successfully"
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/ListAdmin':
+    get:
+      tags:
+        - User
+      summary: List Admin
+      description: Displays Admin based on id
+      operationId: ListAdmin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListUsersInput'
+      responses:
+        '200':
+          description: Successful retrieval of Admin list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Customer:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ListAdminOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/EditAdmin':
+    put:
+      tags:
+        - User
+      summary: Edit Admin
+      description: Edit Admin information.
+      operationId: EditAdmin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditAdminInput'
+      responses:
+        '200':
+          description: Admin information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditAdminOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/DeleteAdmin':
+    delete:
+      tags:
+        - User
+      summary: Delete Admin
+      description: Permanently remove a customer from the system.
+      operationId: DeleteCustomer
+      requestBody:
+        description: Provide a valid authentication token to delete the customer account.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: "your_authentication_token"
+              required:
+                - token
+      responses:
+        '200':
+          description: Admin deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Admin deleted successfully"
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/Logout':
+    post:
+      tags:
+        - User
+      summary: Logout
+      description: Perform a user logout action.
+      operationId: Logout
+      requestBody:
+        description: Provide a valid authentication token to perform the logout action.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: "your_authentication_token"
+              required:
+                - token
+      responses:
+        '200':
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Logout:
+                    type: string
+                    example: "Goodbye"
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/user/Login':
+    post:
+      tags:
+        - User
+      summary: Login
+      description: Authenticate and log in a user.
+      operationId: Login
+      requestBody:
+        description: Provide user credentials to log in.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                PhoneNumber:
+                  type: string
+                  example: "090123456789"
+                Email:
+                  type: string
+                  example: "example@gmail.com"
+                Password:
+                  type: string
+                  example: "123456789"
+              required:
+                - PhoneNumber
+                - Email
+                - Password
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginOutput'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  '/AddRole':
+    post:
+      tags:
+        - Role
+      summary: Add Role
+      description: Add a new role with specified permissions.
+      operationId: AddRole
+      requestBody:
+        description: Provide a valid authentication token to add a new role.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddRoleInput'
+      responses:
+        '200':
+          description: Role is added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddRoleOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/EditRole/{id}':
+    put:
+      tags:
+        - Role
+      summary: Edit Role
+      description: Edit an existing role with specified permissions.
+      operationId: EditRole
+      requestBody:
+        description: Provide a valid authentication token and the role details to edit an existing role.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditRoleInput'
+      responses:
+        '200':
+          description: Role is edited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditRoleOutput'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  '/ListRoles':
+    get:
+      tags:
+        - Role
+      summary: List Roles
+      description: Retrieve a list of roles and associated permissions.
+      operationId: ListRoles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListRolesInput'
+      responses:
+        '200':
+          description: List of roles retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRolesOutput'
+        '400':
+          description: Invalid request
+  '/DeleteRole':
+    delete:
+      tags:
+        - Role
+      summary: Delete Role
+      description: Permanently remove a role from the system.
+      operationId: DeleteRole
+      requestBody:
+        description: Provide a valid authentication token to delete a role.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: "your_authentication_token"
+      responses:
+        '200':
+          description: Role is Delete
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Role is Delete"
+        '400':
+          description: Invalid request
+  '/ListOrders':
+    get:
+      tags:
+        - Order
+      summary: List Orders
+      description: Retrieve a list of orders.
+      operationId: ListOrders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListOrdersInput'
+      responses:
+        '200':
+          description: List of orders retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOrdersOutput'
+        '400':
+          description: Invalid request
+  '/AddOrder':
+    post:
+      tags:
+        - Order
+      summary: Add Order
+      description: Add a new order.
+      operationId: AddOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddOrderInput'
+      responses:
+        '200':
+          description: Order added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddOrderOutput'
+        '400':
+          description: Invalid request
+  '/DeleteOrder':
+    delete:
+      tags:
+        - Order
+      summary: Delete Order
+      description: Delete an order.
+      operationId: DeleteOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteOrderInput'
+      responses:
+        '200':
+          description: Order deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteOrderOutput'
+        '400':
+          description: Invalid request
+  '/EditOrder':
+    put:
+      tags:
+        - Order
+      summary: Edit Order
+      description: Edit an existing order.
+      operationId: EditOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditOrderInput'
+      responses:
+        '200':
+          description: Order edited successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditOrderOutput'
+        '400':
+          description: Invalid request
+  '/AddProduct':
+    post:
+      tags:
+        - Product
+      summary: Add Product
+      description: Add a new product.
+      operationId: AddProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProductInput'
+      responses:
+        '200':
+          description: Product added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddProductOutput'
+        '400':
+          description: Invalid request
+  '/DeleteProduct':
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      description: Delete a product.
+      operationId: DeleteProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteProductInput'
+      responses:
+        '200':
+          description: Product deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteProductOutput'
+        '400':
+          description: Invalid request
+  '/EditProduct':
+    put:
+      tags:
+        - Product
+      summary: Edit Product
+      description: Edit an existing product.
+      operationId: EditProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditProductInput'
+      responses:
+        '200':
+          description: Product edited successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditProductOutput'
+        '400':
+          description: Invalid request
+  '/ListProducts':
+    get:
+      tags:
+        - Product
+      summary: List Products
+      description: Retrieve a list of products.
+      operationId: ListProducts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListProductsInput'
+      responses:
+        '200':
+          description: List of products retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProductsOutput'
+        '400':
+          description: Invalid request
+  /AddFactor:
+    post:
+      tags:
+        - Factor
+      summary: Add Factor
+      description: Add a new factor.
+      operationId: AddFactor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddFactorInput'
+      responses:
+        '200':
+          description: Factor added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddFactorOutput'
+        '400':
+          description: Invalid request
+  /EditFactor:
+    put:
+        tags:
+          - Factor
+        summary: Edit Factor
+        description: Edit an existing factor.
+        operationId: EditFactor
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditFactorInput'
+        responses:
+          '200':
+            description: Factor edited successfully
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/EditFactorOutput'
+          '400':
+            description: Invalid request
+  /DeleteFactor:
+    delete:
+      tags:
+        - Factor
+      summary: Delete Factor
+      description: Delete a factor.
+      operationId: DeleteFactor
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Factor deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteFactorOutput'
+        '400':
+          description: Invalid request
+  /ListFactors:
+    get:
+      tags:
+        - Factor
+      summary: List Factors
+      description: Retrieve a list of factors.
+      operationId: ListFactors
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of factors retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFactorsOutput'
+        '400':
+          description: Invalid request
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 components:
   schemas:
     AdminInput:
@@ -295,3 +970,1013 @@ components:
         message:
           type: string
           example: "Welcome email sent successfully"
+    ListUsersInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_access_token_here"
+    ListUsersOutput:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+                example: 1
+              Role:
+                type: string
+                example: "SuperAdmin"
+              Email:
+                type: string
+                example: "superadmin@example.com"
+              PhoneNumber:
+                type: string
+                example: "09121234567"
+              FullName:
+                type: string
+                example: "John Doe"
+              CompanyName:
+                type: string
+                example: "ABC Inc."
+              CompanyAddress:
+                type: string
+                example: "123 Main Street, City, Country"
+              NumberOfCustomers:
+                type: integer
+                example: 100
+              FatherName:
+                type: string
+                example: "John's Father"
+              Country:
+                type: string
+                example: "Country"
+              City:
+                type: string
+                example: "City"
+              Address:
+                type: string
+                example: "456 Elm Street, City, Country"
+              Gender:
+                type: string
+                example: "Male"
+              NationalCode:
+                type: string
+                example: "1234567890"
+              Job:
+                type: string
+                example: "Software Developer"
+              Image:
+                type: string
+                example: "image_url.jpg"
+              Education:
+                type: string
+                example: "Bachelor's Degree"
+              CityEducation:
+                type: string
+                example: "City of Education"
+              created_at:
+                type: string
+                format: date-time
+                example: "2023-10-25T07:44:55.000000Z"
+              updated_at:
+                type: string
+                format: date-time
+                example: "2023-10-25T07:44:55.000000Z"
+    EditCustomerInput:
+      type: object
+      properties:
+        Role:
+          type: string
+          example: "Customer"
+        FullName:
+          type: string
+          example: "John Doe"
+        FatherName:
+          type: string
+          example: "John's Father"
+        Email:
+          type: string
+          example: "customer@example.com"
+        PhoneNumber:
+          type: string
+          example: "09121234567"
+        Country:
+          type: string
+          example: "Country"
+        City:
+          type: string
+          example: "City"
+        Address:
+          type: string
+          example: "123 Main Street, City, Country"
+        Gender:
+          type: string
+          example: "Male"
+        NationalCode:
+          type: string
+          example: "1234567890"
+        Job:
+          type: string
+          example: "Software Developer"
+        Image:
+          type: string
+          example: "image_url.jpg"
+        Education:
+          type: string
+          example: "Bachelor's Degree"
+        CityEducation:
+          type: string
+          example: "City of Education"
+        Password:
+          type: string
+          example: "your_secure_password"
+
+    EditCustomerOutput:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Customer information updated successfully"
+        customer:
+          type: object
+          properties:
+            Role:
+              type: string
+              example: "Customer"
+            FullName:
+              type: string
+              example: "John Doe"
+            FatherName:
+              type: string
+              example: "John's Father"
+            Email:
+              type: string
+              example: "customer@example.com"
+            PhoneNumber:
+              type: string
+              example: "09121234567"
+            Country:
+              type: string
+              example: "Country"
+            City:
+              type: string
+              example: "City"
+            Address:
+              type: string
+              example: "123 Main Street, City, Country"
+            Gender:
+              type: string
+              example: "Male"
+            NationalCode:
+              type: string
+              example: "1234567890"
+            Job:
+              type: string
+              example: "Software Developer"
+            Image:
+              type: string
+              example: "image_url.jpg"
+            Education:
+              type: string
+              example: "Bachelor's Degree"
+            CityEducation:
+              type: string
+              example: "City of Education"
+            Password:
+              type: string
+              example: "your_secure_password"
+
+    ListAdminOutput:
+      type: object
+      properties:
+        Admin:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+                example: 3
+              Role:
+                type: string
+                example: "Admin"
+              Email:
+                type: string
+                example: "admin@example.com"
+              PhoneNumber:
+                type: string
+                example: "123456789"
+              FullName:
+                type: string
+                example: "John Doe"
+              CompanyName:
+                type: string
+                example: "ABC Inc."
+              CompanyAddress:
+                type: string
+                example: "123 Company St."
+              NumberOfCustomers:
+                type: string
+                example: "10"
+              FatherName:
+                type: string
+                example: "Mike Doe"
+              Country:
+                type: string
+                example: "USA"
+              City:
+                type: string
+                example: "New York"
+              Address:
+                type: string
+                example: "456 Main St."
+              Gender:
+                type: string
+                example: "Male"
+              NationalCode:
+                type: string
+                example: "1234567890"
+              Job:
+                type: string
+                example: "Manager"
+              Image:
+                type: string
+                example: "https://example.com/image.jpg"
+              Education:
+                type: string
+                example: "Ph.D. in Engineering"
+              CityEducation:
+                type: string
+                example: "Los Angeles"
+              created_at:
+                type: string
+                format: date-time
+                example: "2023-10-25T10:06:31.000000Z"
+              updated_at:
+                type: string
+                format: date-time
+                example: "2023-10-25T10:06:31.000000Z"
+    EditAdminInput:
+      type: object
+      properties:
+        Role:
+          type: string
+          example: "Admin"
+        Email:
+          type: string
+          example: "admin@example.com"
+        PhoneNumber:
+          type: string
+          example: "123456789"
+        CompanyName:
+          type: string
+          example: "ABC Inc."
+        CompanyAddress:
+          type: string
+          example: "123 Company St."
+        NumberOfCustomers:
+          type: string
+          example: "10"
+        FullName:
+          type: string
+          example: "John Doe"
+        Password:
+          type: string
+          example: "password123"
+
+    EditAdminOutput:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admin updated successfully"
+        admin:
+          type: object
+          properties:
+            Role:
+              type: string
+              example: "Admin"
+            Email:
+              type: string
+              example: "admin@example.com"
+            PhoneNumber:
+              type: string
+              example: "123456789"
+            CompanyName:
+              type: string
+              example: "ABC Inc."
+            CompanyAddress:
+              type: string
+              example: "123 Company St."
+            NumberOfCustomers:
+              type: string
+              example: "10"
+            FullName:
+              type: string
+              example: "John Doe"
+            Password:
+              type: string
+              example: "password123"
+    LoginOutput:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        Role:
+          type: string
+          example: "SuperAdmin"
+        Email:
+          type: string
+          example: "ali@gmail.com"
+        PhoneNumber:
+          type: string
+          example: "0912"
+        FullName:
+          type: string
+          example: "John Doe"
+        CompanyName:
+          type: string
+          example: "ABC Inc."
+        CompanyAddress:
+          type: string
+          example: "123 Company St."
+        NumberOfCustomers:
+          type: string
+          example: "10"
+        FatherName:
+          type: string
+          example: "Michael Doe"
+        Country:
+          type: string
+          example: "USA"
+        City:
+          type: string
+          example: "New York"
+        Address:
+          type: string
+          example: "123 Main St."
+        Gender:
+          type: string
+          example: "Male"
+        NationalCode:
+          type: string
+          example: "1234567890"
+        Job:
+          type: string
+          example: "Software Developer"
+        Image:
+          type: string
+          example: "http://example.com/profile.jpg"
+        Education:
+          type: string
+          example: "Master's Degree in Computer Science"
+        CityEducation:
+          type: string
+          example: "Los Angeles"
+        created_at:
+          type: string
+          format: date-time
+          example: "2023-10-25T07:41:38.000000Z"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2023-10-25T07:41:38.000000Z"
+    AddRoleInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_authentication_token"
+        name:
+          type: string
+          example: "Customerpro"
+        permissions:
+          type: array
+          items:
+            type: string
+          example: [ "18", "15" ]
+    AddRoleOutput:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Role is added"
+        role:
+          type: object
+          properties:
+            guard_name:
+              type: string
+              example: "api"
+            name:
+              type: string
+              example: "Customerpro"
+            updated_at:
+              type: string
+              format: date-time
+              example: "2023-10-25T10:35:57.000000Z"
+            created_at:
+              type: string
+              format: date-time
+              example: "2023-10-25T10:35:57.000000Z"
+            id:
+              type: integer
+              format: int64
+              example: 4
+        permissions:
+          type: array
+          items:
+            type: string
+          example: [ "18", "15" ]
+    EditRoleInput:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Customerpro"
+        permissions:
+          type: array
+          items:
+            type: string
+          example: [ "17", "14" ]
+      required:
+        - name
+        - permissions
+
+    EditRoleOutput:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Role is Edit"
+        role:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 4
+            name:
+              type: string
+              example: "Customerpro"
+            guard_name:
+              type: string
+              example: "api"
+            created_at:
+              type: string
+              format: date-time
+              example: "2023-10-25T10:35:57.000000Z"
+            updated_at:
+              type: string
+              format: date-time
+              example: "2023-10-25T10:35:57.000000Z"
+    ListRolesInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_authentication_token"
+
+    ListRolesOutput:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+                example: 2
+              name:
+                type: string
+                example: "Admin"
+              guard_name:
+                type: string
+                example: "api"
+              created_at:
+                type: string
+                format: date-time
+                example: "2023-10-25T07:41:38.000000Z"
+              updated_at:
+                type: string
+                format: date-time
+                example: "2023-10-25T07:41:38.000000Z"
+        permission:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: int64
+                example: 1
+              name:
+                type: string
+                example: "['1','4','7']"
+              guard_name:
+                type: string
+                example: "api"
+              created_at:
+                type: string
+                example: "2023-10-25T07:41:38.000000Z"
+              updated_at:
+                type: string
+                example: "2023-10-25T07:41:38.000000Z"
+    AddOrderInput:
+      type: object
+      properties:
+        product_id:
+          type: string
+          example: "1"
+        Price:
+          type: string
+          example: "1000"
+        Description:
+          type: string
+          example: "Sample Order Description"
+        user_id:
+          type: string
+          example: "1"
+
+    AddOrderOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "Order is Add"
+        order:
+          type: object
+          properties:
+            product_id:
+              type: string
+              example: "1"
+            Price:
+              type: string
+              example: "1000"
+            Description:
+              type: string
+              example: "Sample Order Description"
+            user_id:
+              type: string
+              example: "1"
+        message:
+          type: string
+          example: "Order email sent successfully"
+    DeleteOrderInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_authentication_token"
+
+    DeleteOrderOutput:
+      type: array
+      items:
+        type: string
+      example:
+        - "Order is Deleted"
+
+    ListOrdersInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_authentication_token"
+
+    ListOrdersOutput:
+      type: array
+      items:
+        type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        Price:
+          type: string
+          example: "1000"
+        Description:
+          type: string
+          example: "Sample Order Description"
+        user_id:
+          type: string
+          example: "1"
+        created_at:
+          type: string
+          format: date-time
+          example: "2023-10-25T12:11:37.000000Z"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2023-10-25T12:11:37.000000Z"
+
+    EditOrderInput:
+      type: object
+      properties:
+        product_id:
+          type: string
+          example: "1"
+        Price:
+          type: string
+          example: "1000"
+        Description:
+          type: string
+          example: "Modified Order Description"
+        user_id:
+          type: string
+          example: "1"
+
+    EditOrderOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "Order is Edit"
+        order:
+          type: object
+          properties:
+            product_id:
+              type: string
+              example: "1"
+            Price:
+              type: string
+              example: "1000"
+            Description:
+              type: string
+              example: "Modified Order Description"
+            user_id:
+              type: string
+              example: "1"
+    AddProductInput:
+      type: object
+      properties:
+        Product_name:
+          type: string
+          example: "Product ABC"
+        Description:
+          type: string
+          example: "A wonderful product."
+        Category:
+          type: string
+          example: "Electronics"
+        Price:
+          type: string
+          example: "499.99"
+        Inventory:
+          type: string
+          example: "100"
+        Color:
+          type: string
+          example: "Black"
+        Image:
+          type: string
+          example: "https://example.com/product_image.jpg"
+    AddProductOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "Product is added"
+        product:
+          type: object
+          properties:
+            Product_name:
+              type: string
+              example: "Product ABC"
+            Description:
+              type: string
+              example: "A wonderful product."
+            Category:
+              type: string
+              example: "Electronics"
+            Price:
+              type: string
+              example: "499.99"
+            Inventory:
+              type: string
+              example: "100"
+            Color:
+              type: string
+              example: "Black"
+            Image:
+              type: string
+              example: "https://example.com/product_image.jpg"
+        message:
+          type: string
+          example: "Product email sent successfully"
+    EditProductInput:
+      type: object
+      properties:
+        Product_name:
+          type: string
+          example: "Updated Product"
+        Description:
+          type: string
+          example: "An updated product."
+        Category:
+          type: string
+          example: "Updated Category"
+        Price:
+          type: string
+          example: "599.99"
+        Inventory:
+          type: string
+          example: "50"
+        Color:
+          type: string
+          example: "Red"
+        Image:
+          type: string
+          example: "https://example.com/updated_product_image.jpg"
+    EditProductOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "Product is updated"
+        product:
+          type: object
+          properties:
+            Product_name:
+              type: string
+              example: "Updated Product"
+            Description:
+              type: string
+              example: "An updated product."
+            Category:
+              type: string
+              example: "Updated Category"
+            Price:
+              type: string
+              example: "599.99"
+            Inventory:
+              type: string
+              example: "50"
+            Color:
+              type: string
+              example: "Red"
+            Image:
+              type: string
+              example: "https://example.com/updated_product_image.jpg"
+    DeleteProductInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_authentication_token"
+    DeleteProductOutput:
+      type: array
+      items:
+        type: string
+        example: "Product is deleted"
+    ListProductsInput:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "your_authentication_token"
+    ListProductsOutput:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 1
+          Product_name:
+            type: string
+            example: "Product ABC"
+          Description:
+            type: string
+            example: "A wonderful product."
+          Category:
+            type: string
+            example: "Electronics"
+          Price:
+            type: string
+            example: "499.99"
+          Inventory:
+            type: integer
+            format: int64
+            example: 100
+          Color:
+            type: string
+            example: "Black"
+          Image:
+            type: string
+            example: "https://example.com/product_image.jpg"
+          created_at:
+            type: string
+            format: date-time
+            example: "2023-10-25T12:24:56.000000Z"
+          updated_at:
+            type: string
+            format: date-time
+            example: "2023-10-25T12:24:56.000000Z"
+    AddFactorInput:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: "1"
+        factor_name:
+          type: string
+          example: "Sample Factor"
+        Description:
+          type: string
+          example: "This is a sample factor description."
+        factor_date:
+          type: string
+          example: "2023-10-25"
+        factor_cost:
+          type: string
+          example: "100.50"
+        factor_number:
+          type: string
+          example: "12345"
+        order_id:
+          type: string
+          example: "6789"
+      required:
+        - user_id
+        - factor_name
+        - factor_date
+        - factor_cost
+        - factor_number
+        - order_id
+
+    AddFactorOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "Factor added successfully"
+        Factor:
+          type: object
+          properties:
+            user_id:
+              type: string
+              example: "1"
+            factor_name:
+              type: string
+              example: "Sample Factor"
+            Description:
+              type: string
+              example: "This is a sample factor description."
+            factor_date:
+              type: string
+              example: "2023-10-25"
+            factor_cost:
+              type: string
+              example: "100.50"
+            factor_number:
+              type: string
+              example: "12345"
+            order_id:
+              type: string
+              example: "6789"
+      required:
+        - json
+        - Factor
+    EditFactorInput:
+      type: object
+      properties:
+        factor_id:
+          type: string
+          example: "123"
+        updated_factor_data:
+          type: object
+          properties:
+            user_id:
+              type: string
+              example: "1"
+            factor_name:
+              type: string
+              example: "Updated Factor"
+            Description:
+              type: string
+              example: "This is the updated factor description."
+            factor_date:
+              type: string
+              example: "2023-10-26"
+            factor_cost:
+              type: string
+              example: "150.75"
+            factor_number:
+              type: string
+              example: "54321"
+            order_id:
+              type: string
+              example: "9876"
+      required:
+        - factor_id
+        - updated_factor_data
+    EditFactorOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "Factor edited successfully"
+        Factor:
+          type: object
+          properties:
+            user_id:
+              type: string
+              example: "1"
+            factor_name:
+              type: string
+              example: "Updated Factor"
+            Description:
+              type: string
+              example: "This is the updated factor description."
+            factor_date:
+              type: string
+              example: "2023-10-26"
+            factor_cost:
+              type: string
+              example: "150.75"
+            factor_number:
+              type: string
+              example: "54321"
+            order_id:
+              type: string
+              example: "9876"
+      required:
+        - json
+        - Factor
+    DeleteFactorOutput:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Factor deleted successfully"
+      required:
+        - message
+    ListFactorsOutput:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 1
+          Factor_name:
+            type: string
+            example: "Factor ABC"
+          Description:
+            type: string
+            example: "A wonderful factor."
+          Factor_date:
+            type: string
+            example: "2023-10-25"
+          Factor_cost:
+            type: string
+            example: "499.99"
+          Factor_number:
+            type: string
+            example: "100"
+          Order_id:
+            type: string
+            example: "123"
+          created_at:
+            type: string
+            format: date-time
+            example: "2023-10-25T12:24:56.000000Z"
+          updated_at:
+            type: string
+            format: date-time
+            example: "2023-10-25T12:24:56.000000Z"
+      example:
+        - {
+          "id": 1,
+          "Factor_name": "Factor ABC",
+          "Description": "A wonderful factor.",
+          "Factor_date": "2023-10-25",
+          "Factor_cost": "499.99",
+          "Factor_number": "100",
+          "Order_id": "123",
+          "created_at": "2023-10-25T12:24:56.000000Z",
+          "updated_at": "2023-10-25T12:24:56.000000Z"
+        }
+        - {
+          "id": 2,
+          "Factor_name": "Factor XYZ",
+          "Description": "Another factor description.",
+          "Factor_date": "2023-10-26",
+          "Factor_cost": "299.99",
+          "Factor_number": "101",
+          "Order_id": "124",
+          "created_at": "2023-10-26T12:24:56.000000Z",
+          "updated_at": "2023-10-26T12:24:56.000000Z"
+        }

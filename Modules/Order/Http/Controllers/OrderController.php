@@ -27,7 +27,7 @@ class OrderController extends Controller
         $order = request()->all();
 
         $content = "your order is add.";
-        OrderEmail::dispatch($content);
+//        OrderEmail::dispatch($content);
 
         return response()->json([
             'json'=>'Order is Add',

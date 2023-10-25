@@ -17,7 +17,7 @@ class ProductController extends Controller
         $product = request()->all();
 
         $Product_name = $request->Product_name;
-        ProductEmail::dispatch($Product_name);
+//        ProductEmail::dispatch($Product_name);
 
 
         return response()->json([
