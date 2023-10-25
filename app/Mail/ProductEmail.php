@@ -28,7 +28,7 @@ class ProductEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('info@gmail.com','ali@gmail.com support'),
+            from: new Address('info@gmail.com','CRM'),
             subject: 'product add',
         );
     }

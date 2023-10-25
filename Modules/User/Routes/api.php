@@ -15,7 +15,7 @@ use \Modules\User\Http\Controllers\UserController;
 |
 */
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
 
     Route::get('/ListUser', [UserController::class, 'ListUser'])->name('ListUser')->middleware('permission:User.List');
 

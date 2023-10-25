@@ -4,5 +4,6 @@
     "Order": true,
     "Opportunities": true,
     "Product": true,
-    "Role": true
+    "Role": true,
+    "Map": true
 }
