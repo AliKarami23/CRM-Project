@@ -728,6 +728,94 @@ paths:
                 $ref: '#/components/schemas/ListFactorsOutput'
         '400':
           description: Invalid request
+  /AddOpportunity:
+    post:
+      tags:
+        - Opportunities
+      summary: Add Opportunity
+      description: Add a new opportunity.
+      operationId: AddOpportunity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddOpportunityInput'
+      responses:
+        '200':
+          description: Opportunity added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddOpportunityOutput'
+        '400':
+          description: Invalid request
+  /ListOpportunities:
+    get:
+      tags:
+        - Opportunities
+      summary: List Opportunities
+      description: Retrieve a list of opportunities.
+      operationId: ListOpportunities
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of opportunities retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOpportunitiesOutput'
+        '400':
+          description: Invalid request
+  /DeleteOpportunity:
+    delete:
+      tags:
+        - Opportunities
+      summary: Delete Opportunity
+      description: Delete an opportunity.
+      operationId: DeleteOpportunity
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Opportunity deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteOpportunityOutput'
+        '400':
+          description: Invalid request
+  /EditOpportunity:
+    put:
+      tags:
+        - Opportunities
+      summary: Edit Opportunity
+      description: Edit an existing opportunity.
+      operationId: EditOpportunity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditOpportunityInput'
+      responses:
+        '200':
+          description: Opportunity edited successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditOpportunityOutput'
+        '400':
+          description: Invalid request
 
 
 
@@ -1980,3 +2068,238 @@ components:
           "created_at": "2023-10-26T12:24:56.000000Z",
           "updated_at": "2023-10-26T12:24:56.000000Z"
         }
+    AddOpportunityInput:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: "1"
+        Product_id:
+          type: string
+          example: "1"
+        Category:
+          type: string
+          example: "Electronics"
+        product_id:
+          type: string
+          example: "1"
+        Number:
+          type: string
+          example: "85453"
+        Color:
+          type: string
+          example: "Black"
+        Price:
+          type: string
+          example: "4564.99"
+        TotalPrice:
+          type: string
+          example: "56456.00"
+        Description:
+          type: string
+          example: "This is a sample description."
+        Status:
+          type: string
+          example: "Active"
+      required:
+        - user_id
+        - Product_id
+        - Category
+        - product_id
+        - Number
+        - Color
+        - Price
+        - TotalPrice
+        - Description
+        - Status
+    AddOpportunityOutput:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: "2"
+        Product_id:
+          type: string
+          example: "3"
+        Category:
+          type: string
+          example: "New Category"
+        product_id:
+          type: string
+          example: "4"
+        Number:
+          type: string
+          example: "99999"
+        Color:
+          type: string
+          example: "Red"
+        Price:
+          type: string
+          example: "7890"
+        TotalPrice:
+          type: string
+          example: "987654"
+        Description:
+          type: string
+          example: "A customized description."
+        Status:
+          type: string
+          example: "Updated Status"
+      required:
+        - user_id
+        - Product_id
+        - Category
+        - product_id
+        - Number
+        - Color
+        - Price
+        - TotalPrice
+        - Description
+        - Status
+    ListOpportunitiesOutput:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: "2"
+        Product_id:
+          type: string
+          example: "3"
+        Category:
+          type: string
+          example: "Electronics"
+        product_id:
+          type: string
+          example: "4"
+        Number:
+          type: string
+          example: "99999"
+        Color:
+          type: string
+          example: "Red"
+        Price:
+          type: string
+          example: "7890.99"
+        TotalPrice:
+          type: string
+          example: "987654.00"
+        Description:
+          type: string
+          example: "A customized description."
+        Status:
+          type: string
+          example: "Updated Status"
+      required:
+        - user_id
+        - Product_id
+        - Category
+        - product_id
+        - Number
+        - Color
+        - Price
+        - TotalPrice
+        - Description
+        - Status
+    DeleteOpportunityOutput:
+      type: array
+      items:
+        type: string
+      example:
+        - "opportunities is Deleted"
+    EditOpportunityInput:
+      type: object
+      properties:
+        user_id:
+          type: string
+          example: "1"
+        Product_id:
+          type: string
+          example: "1"
+        Category:
+          type: string
+          example: "Updated Category"
+        product_id:
+          type: string
+          example: "1"
+        Number:
+          type: string
+          example: "99999"
+        Color:
+          type: string
+          example: "Blue"
+        Price:
+          type: string
+          example: "7890.99"
+        TotalPrice:
+          type: string
+          example: "987654.00"
+        Description:
+          type: string
+          example: "An updated description."
+        Status:
+          type: string
+          example: "Updated Status"
+      required:
+        - user_id
+        - Product_id
+        - Category
+        - product_id
+        - Number
+        - Color
+        - Price
+        - TotalPrice
+        - Description
+        - Status
+    EditOpportunityOutput:
+      type: object
+      properties:
+        json:
+          type: string
+          example: "opportunities is Update"
+        opportunities:
+          type: object
+          properties:
+            user_id:
+              type: string
+              example: "1"
+            Product_id:
+              type: string
+              example: "1"
+            Category:
+              type: string
+              example: "Updated Category"
+            product_id:
+              type: string
+              example: "1"
+            Number:
+              type: string
+              example: "85453"
+            Color:
+              type: string
+              example: "Blue"
+            Price:
+              type: string
+              example: "7890.99"
+            TotalPrice:
+              type: string
+              example: "987654.00"
+            Description:
+              type: string
+              example: "An updated description."
+            Status:
+              type: string
+              example: "Updated Status"
+          required:
+            - user_id
+            - Product_id
+            - Category
+            - product_id
+            - Number
+            - Color
+            - Price
+            - TotalPrice
+            - Description
+            - Status
+      required:
+        - json
+        - opportunities
