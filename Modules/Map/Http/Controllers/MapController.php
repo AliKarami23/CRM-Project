@@ -4,6 +4,7 @@ namespace Modules\Map\Http\Controllers;
 
 use App\Http\Requests\LocationRequest;
 use App\Models\Map;
+use \Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class MapController extends Controller
@@ -11,7 +12,10 @@ class MapController extends Controller
 
     public function index()
     {
-        //
+        $map = Map::all();
+        return response()->json([
+            'map' => $map
+        ]);
     }
 
     public function create(LocationRequest $request)
@@ -28,14 +32,28 @@ class MapController extends Controller
         return response()->json(json_encode($result,true));
     }
 
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $map = Map::find($id);
+
+        if (!$map) {
+            return response()->json(['error' => 'map not found'], 404);
+        }
+
+        $map->update($request->all());
+
+        return response()->json([
+            'message' => 'map is Edit',
+            'map' => $map
+        ]);
     }
 
 
     public function destroy($id)
     {
-        //
+        Map::destroy($id);
+
+        return response()->json([
+            'json'=>'map is Deleted']);
     }
 }
