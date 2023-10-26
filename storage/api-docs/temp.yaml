@@ -32,34 +32,54 @@ tags:
 
 
 paths:
-  '/user/SignUp({user_type})':
+  /user/SignUp/is-admin:
     post:
       tags:
         - User
-      summary: Sign Up {user_type}
-      description: Sign up and create a new {user_type} user account in the system.
-      operationId: SignUp{user_type}
-      parameters:
-        - name: user_type
-          in: path
-          required: true
-          schema:
-            type: string
-          description: User type (e.g., Admin, Customer)
+      summary: Sign Up Admin
+      description: Sign up and create a new Admin user account in the system.
+      operationId: SignUpAdmin
       requestBody:
-        description: Provide user details to sign up and create a new {user_type} user account.
+        description: Provide user details to sign up and create a new Admin user account.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/{user_type}Input'
+              $ref: '#/components/schemas/AdminInput'
       responses:
         '200':
           description: Successful sign up
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/{user_type}Output'
+                $ref: '#/components/schemas/AdminOutput'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Not found
+        '405':
+          description: Validation exception
+  /user/SignUp/is-customer:
+    post:
+      tags:
+        - User
+      summary: Sign Up Customer
+      description: Sign up and create a new Customer user account in the system.
+      operationId: SignUpCustomer
+      requestBody:
+        description: Provide user details to sign up and create a new Customer user account.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '200':
+          description: Successful sign up
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOutput'
         '400':
           description: Invalid ID supplied
         '404':
