@@ -4,38 +4,45 @@ namespace Modules\Order\Http\Controllers;
 
 use App\Mail\OrderEmail;
 use App\Models\Order;
+use App\Models\Product;
+use \Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Order\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
-    public function create(OrderRequest $request){
+    public function create(Request $request){
 
-        $valid = request()->validate([
-            'Price'=>'required' ,
-            'Description'=>'required' ,
-            'user_id'=>'required' ,
+        $productIds = $request->product_id;
+        $totalPrice = 0;
+        foreach ($productIds as $productId) {
+            $product = Product::find($productId);
+            if ($product) {
+                $totalPrice += $product->price;
+            }
+        }
+        $order_product_id = implode(',', $productIds);
 
+        $order = Order::create([
+            'user_id' => $request->user_id,
+            'Description' => $request->Description,
+            'Total_price' => $totalPrice,
+            'order_number' => $request->order_number,
+            'Status' => $request->Status,
+            'product_id' => $order_product_id,
+            'Shipping_time' => $request->Shipping_time,
+            'distance' => $request->distance,
+            'vehicle' => $request->vehicle
         ]);
-
-        $insert = new Order();
-        $insert->price = request('Price');
-        $insert->description = request('Description');
-        $insert->user_id = request('user_id');
-        $insert->save();
-
-        $order = request()->all();
-
-        $content = "your order is add.";
-//        OrderEmail::dispatch($content);
 
         return response()->json([
             'json'=>'Order is Add',
-            'order'=>$order,
+            'order' => $order,
             'message' => 'order email sent successfully'
 
         ]);
     }
+//        OrderEmail::dispatch($content);
 
     public function index()
     {
@@ -45,13 +52,9 @@ class OrderController extends Controller
 
 
 
-    public  function  edit(OrderRequest $request, $id) {
+    public  function  edit(Request $request, $id) {
 
-        $valid = request()->validate([
-            'Price'=>'required' ,
-            'Description'=>'required' ,
-            'user_id'=>'required' ,
-        ]);
+
 
         $order = Order::findOrFail($id);
         $order->update([

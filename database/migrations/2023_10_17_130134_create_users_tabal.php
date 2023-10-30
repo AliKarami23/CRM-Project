@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('Image')->nullable();
             $table->string('Education')->nullable();
             $table->string('CityEducation')->nullable();
+            $table->string('origin_lag')->nullable();
+            $table->string('origin_lat')->nullable();
             $table->string('Password');
             $table->timestamps();
         });

@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
 //
         $this->call([
             RolesTableSeeder::class,
-            SuperAdminSeeder::class
+            SuperAdminSeeder::class,
+            VehicleSeeder::class
             ]);
     }
 }

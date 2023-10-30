@@ -12,17 +12,22 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'product_id',
-        'Price',
+        'user_id',
         'Description',
-        'user_id',];
+        'Total_price',
+        'order_number',
+        'Status',
+        'product_id',
+        'Shipping_time',
+        'Quantity',
+        'distance',
+        'vehicle'
+    ];
 
     public function factor(): HasMany
     {
         return $this->hasMany(Factor::class);
     }
-
 
 
     public function user(): BelongsTo

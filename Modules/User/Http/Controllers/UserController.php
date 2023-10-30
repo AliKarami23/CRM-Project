@@ -2,6 +2,7 @@
 
 namespace Modules\User\Http\Controllers;
 
+use App\Http\Controllers\SmsController;
 use App\Jobs\SingUpEmailJob;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class UserController extends Controller
     {
 
 
-        if ($request->Role == 'Admin') {
+        if ($request->Role == 'Seller') {
 
             $request->validate([
 
@@ -32,12 +33,16 @@ class UserController extends Controller
 
             $hashedPassword = Hash::make($request->Password);
 
-            $user = User::create(request()->all());
+            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
+            $user->assignRole('Seller');
 
-            $user->assignRole('Admin');
+            SingUpEmailJob::dispatch($request->PhoneNumber, $request->FullName);
 
-            SingUpEmailJob::dispatch($request->PhoneNumber,$request->FullName);
-
+//            $tmp = new SmsController();
+//            $PhoneNumber=$request->PhoneNumber;
+//            $FullName=$request->FullName;
+//            $Password=$request->Password;
+//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
 
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
@@ -48,7 +53,40 @@ class UserController extends Controller
 
 
         }
+        if ($request->Role == 'Admin') {
 
+
+            $request->validate([
+
+                'FullName' => ['required'],
+                'Email' => ['required'],
+                'NationalCode' => ['required'],
+                'PhoneNumber' => ['required'],
+                'Password' => ['required'],
+            ]);
+
+            $hashedPassword = Hash::make($request->Password);
+
+            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
+            $user->assignRole('Admin');
+
+
+            $_token = $user->createToken('UserToken')->plainTextToken;
+
+//            $tmp = new SmsController();
+//            $PhoneNumber=$request->PhoneNumber;
+//            $FullName=$request->FullName;
+//            $Password=$request->Password;
+//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
+
+            return response()->json([
+                'token' => $_token,
+                'user' => $user,
+                'message' => 'Welcome email sent successfully'
+            ]);
+
+
+        }
 
         if ($request->Role == 'Customer') {
 
@@ -71,7 +109,7 @@ class UserController extends Controller
 
             $hashedPassword = Hash::make($request->Password);
 
-            $user = User::create(request()->all());
+            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
 
             if ($request->hasFile('Image')) {
                 $imagePath = $request->file('Image')->store('images');
@@ -86,6 +124,12 @@ class UserController extends Controller
             $content = "Dear user, welcome to our platform. We're glad to have you on board.";
             $Email = 'ali@gmail.com';
             SingUpEmailJob::dispatch($Email, $content);
+
+//            $tmp = new SmsController();
+//            $PhoneNumber=$request->PhoneNumber;
+//            $FullName=$request->FullName;
+//            $Password=$request->Password;
+//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
 
             $_token = $user->createToken('UserToken')->plainTextToken;
             return response()->json([
@@ -138,7 +182,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function ListUser(){
+    public function ListUser()
+    {
         $users = User::all();
         return response()->json([
             'users' => $users
@@ -186,7 +231,8 @@ class UserController extends Controller
     }
 
 
-    public function ListAdmin(){
+    public function ListAdmin()
+    {
 
         $Admin = User::where('Role', 'Admin')->get();
         return response()->json([
@@ -207,7 +253,6 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Admin deleted successfully'], 200);
     }
-
 
 
     public function EditAdmin(AdminRequest $request, $id)
@@ -236,10 +281,8 @@ class UserController extends Controller
         return response()->json([
             'message' => 'Admin updated successfully',
             'admin' => $admin_request
-            ], 200);
+        ], 200);
     }
-
-
 
 
 }

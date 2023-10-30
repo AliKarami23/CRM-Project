@@ -22,11 +22,11 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'user_id'=>'required',
             'Product_name'=>'required' ,
             'Description'=>'required' ,
             'Category'=>'required' ,
             'Price'=>'required' ,
-            'Inventory'=>'required' ,
             'Color'=>'required' ,
             'Image'=>'required' ,
         ];

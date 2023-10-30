@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('factors', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('factor_name');
-            $table->string('Description');
-            $table->string('factor_date');
-            $table->integer('factor_cost');
-            $table->string('factor_number');
             $table->string('order_id');
+            $table->string('Status');
+            $table->string('Description');
+            $table->integer('Destination');
+            $table->integer('Total_price');
+            $table->string('factor_number');
+            $table->string('deliver_time');
             $table->timestamps();
         });
     }

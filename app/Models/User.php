@@ -10,15 +10,31 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory , HasApiTokens , HasRoles;
+    use HasFactory, HasApiTokens, HasRoles;
 
-    protected $guard_name  = 'api';
+    protected $guard_name = 'api';
 
     protected $fillable = [
-        'Role',
-        'Email',
-        'PhoneNumber',
-        'Password'
+        "Role",
+        "Email",
+        "PhoneNumber",
+        "FullName",
+        "CompanyName",
+        "CompanyAddress",
+        "NumberOfCustomers",
+        "FatherName",
+        "Country",
+        "City",
+        "Address",
+        "Gender",
+        "NationalCode",
+        "Job",
+        "Image",
+        "Education",
+        "CityEducation",
+        "origin_lag",
+        "origin_lat",
+        "Password",
     ];
 
     protected $hidden = [

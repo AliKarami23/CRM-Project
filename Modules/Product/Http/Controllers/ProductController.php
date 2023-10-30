@@ -13,7 +13,6 @@ class ProductController extends Controller
 
 
         Product::create(request()->all());
-
         $product = request()->all();
 
         $Product_name = $request->Product_name;

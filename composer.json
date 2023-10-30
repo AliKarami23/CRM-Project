@@ -8,13 +8,15 @@
         "php": "^8.1",
         "darkaonline/l5-swagger": "^8.5",
         "guzzlehttp/guzzle": "^7.2",
+        "ippanel/php-rest-sdk": "^2.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "nwidart/laravel-modules": "^10.0",
         "spatie/laravel-medialibrary": "*",
         "spatie/laravel-permission": "^5.11",
-        "ybazli/faker": "^1.0"
+        "ybazli/faker": "^1.0",
+        "ext-soap": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

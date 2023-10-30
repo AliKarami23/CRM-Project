@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use \Modules\Map\Http\Controllers\MapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/map', function (Request $request) {
-    return $request->user();
-});
+Route::post('/AddMap', [MapController::class, 'create'])->name('AddMap');

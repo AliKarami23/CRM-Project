@@ -21,7 +21,7 @@ class MapController extends Controller
     public function create(LocationRequest $request)
     {
         Map::create($request->validated());
-        $data = json_encode(['points' => [[$request->origin_lat, $request->origin_lng], [$request->destination_lat, $request->destination_lng]]]);
+        $data = json_encode(['points' => [[$request->origin_lng,$request->origin_lat], [$request->destination_lng,$request->destination_lat]]]);
         $url = "https://graphhopper.com/api/1/route?key=c55ff780-66d9-40e7-bec8-354a9e242f6b";
         $result = file_get_contents($url, false, stream_context_create([
             "http" => [
@@ -29,7 +29,7 @@ class MapController extends Controller
                 "header" => "Content-type: application/json",
                 "content" => $data
             ]]));
-        return response()->json(json_encode($result,true));
+        return response()->json(json_decode($result,true));
     }
 
     public function edit(Request $request,$id)

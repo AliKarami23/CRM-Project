@@ -11,13 +11,15 @@ class Factor extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'factor_name',
-        'Description',
-        'factor_date',
         'user_id',
-        'factor_cost',
+        'order_id',
+        'Status',
+        'user_id',
+        'Description',
+        'Destination',
+        'Total_price',
         'factor_number',
-        'order_id'
+        'deliver_time'
     ];
 
 
