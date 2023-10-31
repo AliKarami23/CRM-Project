@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+        'user_id',
+        'Location_lag',
+        'Location_lat',
+        'Status',
+        ];
 }
