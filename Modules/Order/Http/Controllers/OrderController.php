@@ -2,6 +2,7 @@
 
 namespace Modules\Order\Http\Controllers;
 
+use App\Jobs\AddOrderJob;
 use App\Mail\OrderEmail;
 use App\Models\Order;
 use App\Models\Product;
@@ -14,14 +15,14 @@ class OrderController extends Controller
     public function create(Request $request){
 
         $productIds = $request->product_id;
+        $order_product_id = implode(',', $productIds);
         $totalPrice = 0;
         foreach ($productIds as $productId) {
             $product = Product::find($productId);
             if ($product) {
-                $totalPrice += $product->price;
+                $totalPrice += $product->Price;
             }
         }
-        $order_product_id = implode(',', $productIds);
 
         $order = Order::create([
             'user_id' => $request->user_id,
@@ -32,8 +33,13 @@ class OrderController extends Controller
             'product_id' => $order_product_id,
             'Shipping_time' => $request->Shipping_time,
             'distance' => $request->distance,
+            'lag'=> $request->lag,
+            'lat'=> $request->lat,
+            'location'=> $request->location,
             'vehicle' => $request->vehicle
         ]);
+        $content = 'order is add by number' . $request->order_number;
+        AddOrderJob::dispatch($content);
 
         return response()->json([
             'json'=>'Order is Add',
@@ -42,7 +48,7 @@ class OrderController extends Controller
 
         ]);
     }
-//        OrderEmail::dispatch($content);
+
 
     public function index()
     {

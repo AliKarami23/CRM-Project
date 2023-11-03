@@ -21,6 +21,9 @@ class Order extends Model
         'Shipping_time',
         'Quantity',
         'distance',
+        'lag',
+        'lat',
+        'location',
         'vehicle'
     ];
 

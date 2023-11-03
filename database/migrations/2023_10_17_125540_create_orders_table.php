@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('product_id');
             $table->time('Shipping_time');
             $table->string('distance');
+            $table->float('lag');
+            $table->float('lat');
+            $table->string('location');
             $table->string('vehicle');
             $table->timestamps();
         });

@@ -50,6 +50,10 @@ class RolesTableSeeder extends Seeder
             ['name' => 'Role.Edit', 'guard_name' => 'api'],
             ['name' => 'Role.Delete', 'guard_name' => 'api'],
             ['name' => 'Role.List', 'guard_name' => 'api'],
+            ['name' => 'Store.Add', 'guard_name' => 'api'],
+            ['name' => 'Store.Edit', 'guard_name' => 'api'],
+            ['name' => 'Store.Delete', 'guard_name' => 'api'],
+            ['name' => 'Store.List', 'guard_name' => 'api'],
         ];
 
         $SellerPermissions = [
@@ -70,6 +74,10 @@ class RolesTableSeeder extends Seeder
             'Opportunities.Edit',
             'Opportunities.Delete',
             'Opportunities.List',
+            'Store.Add',
+            'Store.Edit',
+            'Store.Delete',
+            'Store.List',
         ];
 
         $CustomerPermissions = [
@@ -107,6 +115,10 @@ class RolesTableSeeder extends Seeder
             'Opportunities.Edit',
             'Opportunities.Delete',
             'Opportunities.List',
+            'Store.Add',
+            'Store.Edit',
+            'Store.Delete',
+            'Store.List',
         ];
 
         Permission::insert($SuperAdminPermissions);

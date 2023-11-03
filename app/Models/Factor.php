@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Factor extends Model
 {
     use HasFactory;
-    protected $fillable=[
+
+    protected $fillable = [
         'user_id',
         'order_id',
         'Status',

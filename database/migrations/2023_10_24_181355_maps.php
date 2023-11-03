@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('maps', function (Blueprint $table) {
             $table->id();
-            $table->string('origin_lag');
-            $table->string('origin_lat');
-            $table->string('destination_lag');
-            $table->string('destination_lat');
+            $table->float('origin_lag');
+            $table->float('origin_lat');
+            $table->float('destination_lag');
+            $table->float('destination_lat');
             $table->timestamps();
         });
     }

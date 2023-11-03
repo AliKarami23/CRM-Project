@@ -2,6 +2,7 @@
 
 namespace Modules\Product\Http\Controllers;
 
+use App\Jobs\AddProductJob;
 use App\Mail\ProductEmail;
 use App\Models\Product;
 use Illuminate\Routing\Controller;
@@ -16,7 +17,7 @@ class ProductController extends Controller
         $product = request()->all();
 
         $Product_name = $request->Product_name;
-//        ProductEmail::dispatch($Product_name);
+        AddProductJob::dispatch($Product_name);
 
 
         return response()->json([

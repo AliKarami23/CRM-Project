@@ -11,12 +11,14 @@ class StoreController extends Controller
 
         $store = request()->all();
         Store::create($store);
+        return response()->json([
+            'store' => $store
+        ]);
     }
     public function index(){
 
         $store = Store::all();
-        return response()->json(
-            [
+        return response()->json([
                 'store' => $store
             ]
         );
