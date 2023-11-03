@@ -23,12 +23,10 @@ class FactorRequest extends FormRequest
     {
         return [
             'user_id' => 'required',
-            'factor_name' => 'required',
-            'Description' => 'required',
-            'factor_date' => 'required',
-            'factor_cost' => 'required',
-            'factor_number' => 'required',
             'order_id' => 'required',
+            'Status' => 'required',
+            'Description' => 'required',
+            'factor_number' => 'required',
         ];
     }
 }

@@ -22,9 +22,17 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Price'=>'required' ,
-            'Description'=>'required' ,
             'user_id'=>'required' ,
+            'product_id'=>'required' ,
+            'order_number'=>'required' ,
+            'Description'=>'required' ,
+            'Shipping_time'=>'required' ,
+            'distance'=>'required' ,
+            'Status'=>'required' ,
+            'lag'=>'required' ,
+            'lat'=>'required' ,
+            'location'=>'required' ,
+            'vehicle'=>'required' ,
         ];
     }
 }

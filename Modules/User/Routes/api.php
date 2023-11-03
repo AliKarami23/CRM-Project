@@ -26,9 +26,9 @@ Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function ()
 
 
 
-    Route::get('/ListAdmin', [UserController::class, 'ListAdmin'])->name('ListAdmin')->middleware('permission:Admin.List');
-    Route::put('/EditAdmin/{id}', [UserController::class, 'EditAdmin'])->name('EditAdmin')->middleware('permission:Admin.Edit');
-    Route::delete('/DeleteAdmin/{id}', [UserController::class, 'DeleteAdmin'])->name('DeleteAdmin')->middleware('permission:Admin.Delete');
+    Route::get('/ListSeller', [UserController::class, 'ListSeller'])->name('ListSeller')->middleware('permission:Seller.List');
+    Route::put('/EditSeller/{id}', [UserController::class, 'EditSeller'])->name('EditSeller')->middleware('permission:Seller.Edit');
+    Route::delete('/DeleteSeller/{id}', [UserController::class, 'DeleteSeller'])->name('DeleteSeller')->middleware('permission:Seller.Delete');
 
     Route::post('/Logout', [UserController::class, 'Logout'])->name('Logout');
 });

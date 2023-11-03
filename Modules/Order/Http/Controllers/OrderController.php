@@ -12,16 +12,13 @@ use Modules\Order\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
-    public function create(Request $request){
-
+    public function create(OrderRequest $request){
         $productIds = $request->product_id;
-        $order_product_id = implode(',', $productIds);
         $totalPrice = 0;
+
         foreach ($productIds as $productId) {
-            $product = Product::find($productId);
-            if ($product) {
-                $totalPrice += $product->Price;
-            }
+            $product = Product::findOrFail($productId);
+            $totalPrice += $product->Price;
         }
 
         $order = Order::create([
@@ -30,22 +27,22 @@ class OrderController extends Controller
             'Total_price' => $totalPrice,
             'order_number' => $request->order_number,
             'Status' => $request->Status,
-            'product_id' => $order_product_id,
+            'product_id' => implode(',', $productIds),
             'Shipping_time' => $request->Shipping_time,
             'distance' => $request->distance,
-            'lag'=> $request->lag,
-            'lat'=> $request->lat,
-            'location'=> $request->location,
+            'lag' => $request->lag,
+            'lat' => $request->lat,
+            'location' => $request->location,
             'vehicle' => $request->vehicle
         ]);
-        $content = 'order is add by number' . $request->order_number;
+
+        $content = 'order is add by number ' . $request->order_number;
         AddOrderJob::dispatch($content);
 
         return response()->json([
-            'json'=>'Order is Add',
+            'json' => 'Order is Add',
             'order' => $order,
             'message' => 'order email sent successfully'
-
         ]);
     }
 
@@ -58,25 +55,29 @@ class OrderController extends Controller
 
 
 
-    public  function  edit(Request $request, $id) {
+    public function edit(OrderRequest $request, $id){
+        $order = Order::find($id);
 
+        if (!$order) return response()->json(['error' => 'Order not found'], 404);
 
+        $totalPrice = 0;
 
-        $order = Order::findOrFail($id);
-        $order->update([
-            $order->price = request('Price'),
-            $order->description = request('Description'),
-            $order->user_id = request('user_id'),
-            $order->save()
-        ]);
+        foreach ($request->product_id as $productId) {
+            $product = Product::findOrFail($productId);
+            $totalPrice += $product->Price;
+        }
 
-        $order = request()->all();
+        $order->update(array_merge($request->except('product_id'), [
+            'Total_price' => $totalPrice,
+            'product_id' => implode(',', $request->product_id),
+        ]));
 
-        return response()->json([
-            'json'=>'Order is Edit',
-            'order'=>$order
-        ]);
+        AddOrderJob::dispatch("Order is updated with number {$request->order_number}");
+
+        return response()->json(['json' => 'Order is updated', 'order' => $order]);
     }
+
+
 
     public function destroy($id){
 

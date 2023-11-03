@@ -38,14 +38,23 @@ class ProductController extends Controller
 
 
     public function edit(ProductRequest $request, $id){
-        $data = request()->all();
-        Product::where('id', $id)->update($data);
-        $product = request()->all();
+        $data = $request->all();
+        $product = Product::find($id);
+
+        if (!$product) {
+            return response()->json([
+                'error' => 'Product not found'
+            ], 404);
+        }
+
+        $product->update($data);
+
         return response()->json([
-                'json'=>'Product is Edit',
-                'product'=>$product]
-        );
+            'json' => 'Product is updated',
+            'product' => $product
+        ]);
     }
+
 
 
     public function destroy($id){

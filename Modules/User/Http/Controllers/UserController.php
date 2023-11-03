@@ -9,92 +9,36 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use Modules\User\Http\Requests\AdminRequest;
+use Modules\User\Http\Requests\SellerRequest;
 use Modules\User\Http\Requests\CustomerRequest;
 
 class UserController extends Controller
 {
     public function SingUp(Request $request)
     {
+        $rules = [
+            'FullName' => ['required'],
+            'Email' => ['required'],
+            'PhoneNumber' => ['required'],
+            'Password' => ['required'],
+        ];
 
-
+        $role = '';
         if ($request->Role == 'Seller') {
-
-            $request->validate([
-
-                'FullName' => ['required'],
+            $rules = array_merge($rules, [
                 'CompanyName' => ['required'],
                 'CompanyAddress' => ['required'],
                 'NumberOfCustomers' => ['required'],
-                'Email' => ['required'],
-                'PhoneNumber' => ['required'],
-                'Password' => ['required'],
             ]);
-
-            $hashedPassword = Hash::make($request->Password);
-
-            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
-            $user->assignRole('Seller');
-
-            SingUpEmailJob::dispatch($request->PhoneNumber, $request->FullName);
-
-//            $tmp = new SmsController();
-//            $PhoneNumber=$request->PhoneNumber;
-//            $FullName=$request->FullName;
-//            $Password=$request->Password;
-//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
-
-            $_token = $user->createToken('UserToken')->plainTextToken;
-            return response()->json([
-                'token' => $_token,
-                'user' => $user,
-                'message' => 'Welcome email sent successfully'
-            ]);
-
-
-        }
-        if ($request->Role == 'Admin') {
-
-
-            $request->validate([
-
-                'FullName' => ['required'],
-                'Email' => ['required'],
+            $role = 'Seller';
+        } elseif ($request->Role == 'Seller') {
+            $rules = array_merge($rules, [
                 'NationalCode' => ['required'],
-                'PhoneNumber' => ['required'],
-                'Password' => ['required'],
             ]);
-
-            $hashedPassword = Hash::make($request->Password);
-
-            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
-            $user->assignRole('Admin');
-
-
-            $_token = $user->createToken('UserToken')->plainTextToken;
-
-//            $tmp = new SmsController();
-//            $PhoneNumber=$request->PhoneNumber;
-//            $FullName=$request->FullName;
-//            $Password=$request->Password;
-//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
-
-            return response()->json([
-                'token' => $_token,
-                'user' => $user,
-                'message' => 'Welcome email sent successfully'
-            ]);
-
-
-        }
-
-        if ($request->Role == 'Customer') {
-
-            $request->validate([
-                'FullName' => ['required'],
+            $role = 'Seller';
+        } elseif ($request->Role == 'Customer') {
+            $rules = array_merge($rules, [
                 'FatherName' => ['required'],
-                'Email' => ['required'],
-                'PhoneNumber' => ['required'],
                 'Country' => ['required'],
                 'City' => ['required'],
                 'Address' => ['required'],
@@ -104,43 +48,40 @@ class UserController extends Controller
                 'Image' => ['required'],
                 'Education' => ['required'],
                 'CityEducation' => ['required'],
-                'Password' => ['required'],
             ]);
-
-            $hashedPassword = Hash::make($request->Password);
-
-            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
-
-            if ($request->hasFile('Image')) {
-                $imagePath = $request->file('Image')->store('images');
-            } else {
-                $imagePath = null;
-            }
-
-            $user_data = $request->all();
-
-            $user->assignRole('Customer');
-
-            $content = "Dear user, welcome to our platform. We're glad to have you on board.";
-            $Email = 'ali@gmail.com';
-            SingUpEmailJob::dispatch($Email, $content);
-
-//            $tmp = new SmsController();
-//            $PhoneNumber=$request->PhoneNumber;
-//            $FullName=$request->FullName;
-//            $Password=$request->Password;
-//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
-
-            $_token = $user->createToken('UserToken')->plainTextToken;
-            return response()->json([
-                'data' => $user_data,
-                'token' => $_token,
-                'message' => 'Welcome email sent successfully'
-            ]);
-
+            $role = 'Customer';
+        } else {
+            return response()->json(['error' => 'Invalid Role'], 400);
         }
 
+        $request->validate($rules);
 
+        $hashedPassword = Hash::make($request->Password);
+        $user_data = $request->merge(['Password' => $hashedPassword])->all();
+
+        $user = User::create($user_data);
+        $user->assignRole($role);
+
+        $tmp = new SmsController();
+        $PhoneNumber = $request->PhoneNumber;
+        $FullName = $request->FullName;
+        $Password = $request->Password;
+        $tmp->SendSmsSingUp($PhoneNumber, $FullName, $Password);
+
+        $_token = $user->createToken('UserToken')->plainTextToken;
+
+        $content = $role == 'Customer' ? "Dear user, welcome to our platform. We're glad to have you on board." : 'Welcome email sent successfully';
+
+        if ($role == 'Customer') {
+            $Email = $request->Email;
+            SingUpEmailJob::dispatch($Email, $content);
+        }
+
+        return response()->json([
+            'data' => $user_data,
+            'token' => $_token,
+            'message' => $content
+        ]);
     }
 
 
@@ -154,33 +95,29 @@ class UserController extends Controller
     }
 
 
-    public function Login(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
-            'PhoneNumber' => ['required'],
             'Email' => ['required', 'email'],
             'Password' => ['required'],
         ]);
 
         $user = User::where('Email', $request->Email)->first();
-        if (!$user) {
-            throw ValidationException::withMessages(
-                ['Email' => 'user is not found']
-            );
+
+        if (!$user || !Hash::check($request->Password, $user->Password)) {
+            throw ValidationException::withMessages([
+                'Email' => ['Invalid credentials']
+            ]);
         }
 
-        if (!Hash::check($request->Password, $user->Password)) {
-            throw ValidationException::withMessages(
-                ['Email' => 'Password is not true']
-            );
-        }
+        $token = $user->createToken('UserToken')->plainTextToken;
 
-        $_token = $user->createToken('UserToken')->plainTextToken;
         return response()->json([
-            'token' => $_token,
+            'token' => $token,
             'user' => $user
         ]);
     }
+
 
     public function ListUser()
     {
@@ -231,36 +168,36 @@ class UserController extends Controller
     }
 
 
-    public function ListAdmin()
+    public function ListSeller()
     {
 
-        $Admin = User::where('Role', 'Admin')->get();
+        $Seller = User::where('Role', 'Seller')->get();
         return response()->json([
-            'Admin' => $Admin
+            'Seller' => $Seller
         ]);
     }
 
 
-    public function DeleteAdmin($id)
+    public function DeleteSeller($id)
     {
-        $admin = User::where('Role', 'Admin')->find($id);
+        $Seller = User::where('Role', 'Seller')->find($id);
 
-        if (!$admin) {
-            return response()->json(['message' => 'Admin not found'], 404);
+        if (!$Seller) {
+            return response()->json(['message' => 'Seller not found'], 404);
         }
 
-        $admin->delete();
+        $Seller->delete();
 
-        return response()->json(['message' => 'Admin deleted successfully'], 200);
+        return response()->json(['message' => 'Seller deleted successfully'], 200);
     }
 
 
-    public function EditAdmin(AdminRequest $request, $id)
+    public function EditSeller(SellerRequest $request, $id)
     {
-        $admin = User::where('Role', 'Admin')->find($id);
+        $Seller = User::where('Role', 'Seller')->find($id);
 
-        if (!$admin) {
-            return response()->json(['message' => 'Admin not found'], 404);
+        if (!$Seller) {
+            return response()->json(['message' => 'Seller not found'], 404);
         }
 
         $request->validate([
@@ -268,7 +205,7 @@ class UserController extends Controller
         ]);
 
 
-        $admin->update([
+        $Seller->update([
             'FullName' => $request->FullName,
             'CompanyName' => $request->CompanyName,
             'CompanyAddress' => $request->CompanyAddress,
@@ -277,10 +214,10 @@ class UserController extends Controller
             'PhoneNumber' => $request->PhoneNumber,
             'Password' => Hash::make($request->Password)
         ]);
-        $admin_request = $request->all();
+        $Seller_request = $request->all();
         return response()->json([
-            'message' => 'Admin updated successfully',
-            'admin' => $admin_request
+            'message' => 'Seller updated successfully',
+            'Seller' => $Seller_request
         ], 200);
     }
 

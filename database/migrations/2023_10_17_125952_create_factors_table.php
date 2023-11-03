@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('order_id');
             $table->string('Status');
             $table->string('Description');
-            $table->integer('Destination');
+            $table->longText('Destination');
             $table->integer('Total_price');
             $table->string('factor_number');
             $table->string('deliver_time');

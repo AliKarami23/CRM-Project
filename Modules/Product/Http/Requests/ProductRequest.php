@@ -28,6 +28,8 @@ class ProductRequest extends FormRequest
             'Category'=>'required' ,
             'Price'=>'required' ,
             'Color'=>'required' ,
+            'Attributes'=>'required' ,
+            'Quantity'=>'required' ,
             'Image'=>'required' ,
         ];
     }
