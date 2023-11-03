@@ -18,7 +18,7 @@ class CarSeeder extends Seeder
             'lag'=>'35.6977277105765',
             'lat'=>'51.43889590856994',
             'Status'=>'ok',
-            'location'=>'یاران دریان, Tehran, District 12, Nateqi Street, Tehran Province, 1151713513, Iran',
+            'location'=>'Tehran, District 12',
         ]);
     }
 }
