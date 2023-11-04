@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TelegramBotController;
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -13,6 +14,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/EditStore/{id}', [StoreController::class, 'edit'])->name('EditStore')->middleware('permission:Store.Edit');
     Route::delete('/DeleteStore/{id}', [StoreController::class, 'destroy'])->name('DeleteStore')->middleware('permission:Store.Delete');
 
+    Route::post('telegram/webhook', [TelegramBotController::class, 'action']);
+    Route::get('telegram/show-results', [TelegramBotController::class, 'ShowResults']);
 });
 
 
