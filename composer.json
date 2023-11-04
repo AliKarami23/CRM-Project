@@ -9,6 +9,7 @@
         "ext-soap": "*",
         "ably/ably-php": "^1.1",
         "darkaonline/l5-swagger": "^8.5",
+        "defstudio/telegraph": "^1.38",
         "guzzlehttp/guzzle": "^7.2",
         "ippanel/php-rest-sdk": "^2.0",
         "laravel/framework": "^10.10",
