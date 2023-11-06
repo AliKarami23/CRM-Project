@@ -16,29 +16,85 @@ class UserController extends Controller
 {
     public function SingUp(Request $request)
     {
-        $rules = [
-            'FullName' => ['required'],
-            'Email' => ['required'],
-            'PhoneNumber' => ['required'],
-            'Password' => ['required'],
-        ];
 
-        $role = '';
+
         if ($request->Role == 'Seller') {
-            $rules = array_merge($rules, [
+
+            $request->validate([
+
+                'FullName' => ['required'],
                 'CompanyName' => ['required'],
                 'CompanyAddress' => ['required'],
                 'NumberOfCustomers' => ['required'],
+                'Email' => ['required'],
+                'PhoneNumber' => ['required'],
+                'Password' => ['required'],
             ]);
-            $role = 'Seller';
-        } elseif ($request->Role == 'Seller') {
-            $rules = array_merge($rules, [
+
+            $hashedPassword = Hash::make($request->Password);
+
+            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
+            $user->assignRole('Seller');
+
+            SingUpEmailJob::dispatch($request->PhoneNumber, $request->FullName);
+
+//            $tmp = new SmsController();
+//            $PhoneNumber=$request->PhoneNumber;
+//            $FullName=$request->FullName;
+//            $Password=$request->Password;
+//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
+
+            $_token = $user->createToken('UserToken')->plainTextToken;
+            return response()->json([
+                'token' => $_token,
+                'user' => $user,
+                'message' => 'Welcome email sent successfully'
+            ]);
+
+
+        }
+        if ($request->Role == 'Admin') {
+
+
+            $request->validate([
+
+                'FullName' => ['required'],
+                'Email' => ['required'],
                 'NationalCode' => ['required'],
+                'PhoneNumber' => ['required'],
+                'Password' => ['required'],
             ]);
-            $role = 'Seller';
-        } elseif ($request->Role == 'Customer') {
-            $rules = array_merge($rules, [
+
+            $hashedPassword = Hash::make($request->Password);
+
+            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
+            $user->assignRole('Admin');
+
+
+            $_token = $user->createToken('UserToken')->plainTextToken;
+
+//            $tmp = new SmsController();
+//            $PhoneNumber=$request->PhoneNumber;
+//            $FullName=$request->FullName;
+//            $Password=$request->Password;
+//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
+
+            return response()->json([
+                'token' => $_token,
+                'user' => $user,
+                'message' => 'Welcome email sent successfully'
+            ]);
+
+
+        }
+
+        if ($request->Role == 'Customer') {
+
+            $request->validate([
+                'FullName' => ['required'],
                 'FatherName' => ['required'],
+                'Email' => ['required'],
+                'PhoneNumber' => ['required'],
                 'Country' => ['required'],
                 'City' => ['required'],
                 'Address' => ['required'],
@@ -48,40 +104,43 @@ class UserController extends Controller
                 'Image' => ['required'],
                 'Education' => ['required'],
                 'CityEducation' => ['required'],
+                'Password' => ['required'],
             ]);
-            $role = 'Customer';
-        } else {
-            return response()->json(['error' => 'Invalid Role'], 400);
-        }
 
-        $request->validate($rules);
+            $hashedPassword = Hash::make($request->Password);
 
-        $hashedPassword = Hash::make($request->Password);
-        $user_data = $request->merge(['Password' => $hashedPassword])->all();
+            $user = User::create($request->merge(['Password' => $hashedPassword])->all());
 
-        $user = User::create($user_data);
-        $user->assignRole($role);
+            if ($request->hasFile('Image')) {
+                $imagePath = $request->file('Image')->store('images');
+            } else {
+                $imagePath = null;
+            }
 
-        $tmp = new SmsController();
-        $PhoneNumber = $request->PhoneNumber;
-        $FullName = $request->FullName;
-        $Password = $request->Password;
-        $tmp->SendSmsSingUp($PhoneNumber, $FullName, $Password);
+            $user_data = $request->all();
 
-        $_token = $user->createToken('UserToken')->plainTextToken;
+            $user->assignRole('Customer');
 
-        $content = $role == 'Customer' ? "Dear user, welcome to our platform. We're glad to have you on board." : 'Welcome email sent successfully';
-
-        if ($role == 'Customer') {
-            $Email = $request->Email;
+            $content = "Dear user, welcome to our platform. We're glad to have you on board.";
+            $Email = 'ali@gmail.com';
             SingUpEmailJob::dispatch($Email, $content);
+
+//            $tmp = new SmsController();
+//            $PhoneNumber=$request->PhoneNumber;
+//            $FullName=$request->FullName;
+//            $Password=$request->Password;
+//            $tmp->SendSmsSingUp($PhoneNumber,$FullName,$Password);
+
+            $_token = $user->createToken('UserToken')->plainTextToken;
+            return response()->json([
+                'data' => $user_data,
+                'token' => $_token,
+                'message' => 'Welcome email sent successfully'
+            ]);
+
         }
 
-        return response()->json([
-            'data' => $user_data,
-            'token' => $_token,
-            'message' => $content
-        ]);
+
     }
 
 
