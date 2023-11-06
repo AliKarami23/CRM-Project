@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             SuperAdminSeeder::class,
             VehicleSeeder::class,
-            CarSeeder::class
+            CarSeeder::class,
+            BotTelegramSeeder::class
             ]);
     }
 }
