@@ -24,14 +24,5 @@ class WebHookHandler extends EmptyWebhookHandler
         $this->chat->message('start ok')->send();
     }
 
-    public function product(){
-        $productCount = Product::count();
-        $this->chat->message("تعداد محصولات: " . $productCount)->send();
-    }
-
-    public function factor(){
-        $factorCount = Factor::count();
-        $this->chat->message("تعداد فاکتورها: " . $factorCount)->send();
-    }
 
 }
