@@ -28,10 +28,6 @@ class WebHookHandler extends EmptyWebhookHandler
         $this->chat->message("تعداد مدیران: " . $adminCount)->send();
     }
 
-    public function customer(){
-        $customerCount = User::where('Role', 'Customer')->count();
-        $this->chat->message("تعداد مشتریان: " . $customerCount)->send();
-    }
 
     public function store(){
         $storeCount = Store::count();
