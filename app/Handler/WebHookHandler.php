@@ -2,6 +2,7 @@
 
 namespace App\Handler;
 
+use App\Models\Factor;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Store;
@@ -16,12 +17,40 @@ class WebHookHandler extends EmptyWebhookHandler
 
     public function handleChatMessage(Stringable $text): void
     {
-        $this->chat->message('ok')->send();
-    }
+        $keyboard = Keyboard::create()
+            ->row(
+                Button::create('مشاهده ادمین‌ها')->callbackData('admin'),
+                Button::create('مشاهده مشتریان')->callbackData('customer')
+            )
+            ->row(
+                Button::create('مشاهده فروشگاه‌ها')->callbackData('store'),
+                Button::create('مشاهده سفارش‌ها')->callbackData('order')
+            )
+            ->row(
+                Button::create('مشاهده محصولات')->callbackData('product')
+            );
+
+        $this->chat->message('لطفاً یک گزینه را انتخاب کنید:')->options($keyboard)->send();    }
 
     public function start(){
-        $this->chat->message('start ok')->send();
+        $keyboard = Keyboard::create()
+            ->row(
+                Button::create('مشاهده ادمین‌ها')->callbackData('admin'),
+                Button::create('مشاهده مشتریان')->callbackData('customer')
+            )
+            ->row(
+                Button::create('مشاهده فروشگاه‌ها')->callbackData('store'),
+                Button::create('مشاهده سفارش‌ها')->callbackData('order')
+            )
+            ->row(
+                Button::create('مشاهده محصولات')->callbackData('product')
+            );
+
+        $this->chat->message('لطفاً یک گزینه را انتخاب کنید:')->options($keyboard)->send();
     }
+
+
+
     public function admin(){
         $adminCount = User::where('Role', 'Admin')->count();
         $this->chat->message("تعداد مدیران: " . $adminCount)->send();
@@ -48,6 +77,6 @@ class WebHookHandler extends EmptyWebhookHandler
     }
 
     public function factor(){
-        $this->chat->message('start ok')->send();
-    }
+        $productCount = Factor::count();
+        $this->chat->message("تعداد فاکتور ها: " . $productCount)->send();    }
 }
