@@ -7,12 +7,12 @@ use App\Models\Factor;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Store;
-use App\Models\User;
 use App\Models\Vehicle;
 use GuzzleHttp\Client;
-use \Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 use Modules\Factor\Http\Requests\FactorRequest;
+
 
 class FactorController extends Controller
 {
@@ -96,6 +96,8 @@ class FactorController extends Controller
         $shipping_price = ($base_price + ($base_price * $Final_distance * $distance_odds) + ($base_price * $Final_time * $distance));
         $total_price = $product_price + $shipping_price;
 
+
+        $str_number = Str::random();
         // Create a factor
         Factor::create([
             'user_id' => $request->user_id,
@@ -104,9 +106,27 @@ class FactorController extends Controller
             'Status' => $request->Status,
             'Description' => $request->Description,
             'Destination' => json_encode($routeData),
-            'factor_number' => $request->factor_number,
+            'factor_number' => $str_number,
             'deliver_time' => $deliver_time,
         ]);
+
+        $token = "Vqu6QOrZgXv8cOufFGwv5q2FBy7NEkrAdh7aLrphmrc";
+        $args = [
+            "amount" => 1000,
+            "payerIdentity" => auth()->user()->PhoneNumber,
+            "payerName" => auth()->user()->FullName,
+            "returnUrl" => route('FactorEnd'),
+            "clientRefId" => $str_number
+        ];
+
+        $payment = new \PayPing\Payment($token);
+
+        try {
+            $payment->pay($args);
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+        }
+
 
         $Factor = $request->all();
 
@@ -126,7 +146,6 @@ class FactorController extends Controller
             return response()->json(['error' => 'Factor not found'], 404);
         }
 
-        // Check if the user wants to update locations
         if ($request->has('origin_lat') && $request->has('origin_lag') &&
             $request->has('destination_lat') && $request->has('destination_lag')) {
             $origin_lat = $request->origin_lat;
@@ -134,30 +153,12 @@ class FactorController extends Controller
             $destination_lat = $request->destination_lat;
             $destination_lag = $request->destination_lag;
 
-            // Update origin and destination locations
             $factor->origin_lat = $origin_lat;
             $factor->origin_lag = $origin_lag;
             $factor->destination_lat = $destination_lat;
             $factor->destination_lag = $destination_lag;
         }
-
-        // Check if the user wants to update products
-        if ($request->has('product_id')) {
-            $productIds = $request->product_id;
-            $product_price = 0;
-
-            foreach ($productIds as $productId) {
-                $product = Product::findOrFail($productId);
-                $product_price += $product->Price;
-            }
-
-            // Update product information
-            $factor->product_id = implode(',', $productIds);
-            $factor->Total_price = $product_price;
-        }
-
-        // Update other factor information
-        $factor->update($request->except(['origin_lat', 'origin_lag', 'destination_lat', 'destination_lag', 'product_id']));
+        $factor->update($request->except(['origin_lat', 'origin_lag', 'destination_lat', 'destination_lag']));
 
         return response()->json([
             'message' => 'Factor is Edit',
@@ -176,6 +177,14 @@ class FactorController extends Controller
 
 
     public function index()
+    {
+
+        $Factor = Factor::all();
+        return response()->json([
+            'Factor' => $Factor
+        ]);
+    }
+    public function FactorEnd()
     {
 
         $Factor = Factor::all();

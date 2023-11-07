@@ -26,7 +26,6 @@ class FactorRequest extends FormRequest
             'order_id' => 'required',
             'Status' => 'required',
             'Description' => 'required',
-            'factor_number' => 'required',
         ];
     }
 }

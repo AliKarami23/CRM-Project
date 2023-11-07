@@ -19,4 +19,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 Route::post('telegram/webhook', [TelegramBotController::class, 'start']);
+Route::post('FactorEnd', [\Modules\Factor\Http\Controllers\FactorController::class, 'FactorEnd'])->name('FactorEnd');
+
 
