@@ -26,8 +26,7 @@ class TelegramBotController extends Controller
                 Button::make('Product')->action('getProductData'),
                 Button::make('Factor')->action('getFactorData'),
             ]))->send();
-
-        //        $chat_tem = TelegraphBot::create([
+//        $chat_tem = TelegraphBot::create([
 //            'token' => '6957060195:AAHO38f9qFUi972pMND0lxSe28bzYIhO7N8',
 //            'name' => 'test',
 //        ]);

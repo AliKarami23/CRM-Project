@@ -8,6 +8,9 @@ use App\Models\Product;
 use App\Models\Store;
 use App\Models\User;
 use DefStudio\Telegraph\Handlers\EmptyWebhookHandler;
+use DefStudio\Telegraph\Keyboard\Button;
+use DefStudio\Telegraph\Keyboard\Keyboard;
+use DefStudio\Telegraph\Telegraph;
 use Illuminate\Support\Stringable;
 
 class WebHookHandler extends EmptyWebhookHandler
@@ -19,7 +22,19 @@ class WebHookHandler extends EmptyWebhookHandler
     }
 
     public function start(){
-        $this->chat->message('start ok')->send();
+        $telegraph = new Telegraph();
+
+        $message = "لطفا یک گزینه را انتخاب کنید:";
+        $keyboard = Keyboard::make()->buttons([
+            Button::make('Customer')->action('getCustomerData'),
+            Button::make('Admin')->action('getAdminData'),
+            Button::make('Store')->action('getStoreData'),
+            Button::make('Order')->action('getOrderData'),
+            Button::make('Product')->action('getProductData'),
+            Button::make('Factor')->action('getFactorData'),
+        ]);
+
+        $telegraph->sendMessage($this->chat->getId(), $message, $keyboard);
     }
     public function admin(){
         $adminCount = User::where('Role', 'Admin')->count();
