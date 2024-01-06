@@ -1,10 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TelegramBotController;
+use Illuminate\Support\Facades\Route;
 
+require __DIR__ . '/user.php';
+require __DIR__ . '/factor.php';
+require __DIR__ . '/order.php';
+require __DIR__ . '/product.php';
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -19,6 +22,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 Route::post('telegram/webhook', [TelegramBotController::class, 'start']);
-Route::post('FactorEnd', [\Modules\Factor\Http\Controllers\FactorController::class, 'FactorEnd'])->name('FactorEnd');
+Route::post('FactorEnd', [\App\Http\Controllers\FactorController::class, 'FactorEnd'])->name('FactorEnd');
 
 
